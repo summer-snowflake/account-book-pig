@@ -9,6 +9,9 @@
 
 ## 開発
 
+開発は[@kae_kasui](https://twitter.com/kae_kasui)が中心になって実装しています。
+Railsを触ったことがない人も開発の練習のために参加してみてはどうでしょうか。
+
 ### バックエンド
 
 - Ruby 2系
@@ -30,7 +33,7 @@
 
 ## CI環境
 
-wercker
+werckerを利用
 
 ## 環境構築
 
@@ -102,7 +105,7 @@ rails db:migrate
 rails db:seed # 現在のところは不要
 ```
 
-### 初期データの作成
+### 初期データの作成（TODO: rails db:seedで入れられるようにします）
 
 ```
 bin/rails c
