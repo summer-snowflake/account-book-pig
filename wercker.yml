@@ -30,7 +30,3 @@ deploy:
       install-toolbelt: true
       app-name: $APP_NAME
       key-name: HEROKU_SSH_KEY
-  after-steps:
-    - wantedly/pretty-slack-notify:
-      webhook_url: "$SLACK_WEBHOOK_URL"
-      channel: dev
