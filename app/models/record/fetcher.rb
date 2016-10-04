@@ -42,7 +42,7 @@ class Record::Fetcher
     elsif @year.nonzero?
       records.the_year(Date.new(@year, 1, 1))
     else
-      records.the_day(Date.today)
+      records.the_day(Time.zone.now.to_date)
     end
   end
 end
