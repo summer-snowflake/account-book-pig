@@ -14,5 +14,3 @@ test:
 production:
   <<: *default
   database: account-book-pig_production
-  user: <%= ENV['POSTGRESQL_USERNAME'] %>
-  host: db
