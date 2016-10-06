@@ -6,6 +6,7 @@ json.records do
     json.charge record.charge
     json.category_id record.category.id
     json.category_name record.category.name
+    json.breakdown_id record.breakdown_id
     json.breakdown_name record.breakdown.try(:name)
     json.place_name record.place.try(:name)
     json.memo record.memo

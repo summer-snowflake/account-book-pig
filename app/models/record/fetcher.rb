@@ -10,6 +10,7 @@ class Record::Fetcher
     @month = params[:month].to_i
     @day = params[:day].to_i
     @category_id = params[:category_id]
+    @breakdown_id = params[:breakdown_id]
     @offset = params[:offset]
   end
 
@@ -17,6 +18,7 @@ class Record::Fetcher
     records = @user.records.order(published_at: :desc, created_at: :desc)
     records = find_by_date(records)
     records = records.where(category_id: @category_id) if @category_id
+    records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
     @total_count = records.count
     records = records.offset(@offset) if @offset.present?
     records.limit(Settings.records.per)
@@ -30,7 +32,8 @@ class Record::Fetcher
   def all_as_csv
     records = @user.records.order(:published_at)
     records = find_by_date(records)
-    records.where(category_id: @category_id) if @category_id
+    records = records.where(category_id: @category_id) if @category_id
+    records.where(breakdown_id: @breakdown_id) if @breakdown_id
   end
 
   private

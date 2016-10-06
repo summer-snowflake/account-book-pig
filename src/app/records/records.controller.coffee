@@ -19,6 +19,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       day: vm.day
       offset: vm.offset
       category_id: $stateParams.category_id
+      breakdown_id: $stateParams.breakdown_id
     RecordsFactory.getRecords(params).then((res) ->
       vm.records = res.records
       vm.total_count = res.total_count
@@ -46,6 +47,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
       day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
       category_id: undefined
+      breakdown_id: undefined
     )
 
   # 月
@@ -62,6 +64,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       year: vm.year
       month: ('0' + vm.month).slice(-2)
       category_id: undefined
+      breakdown_id: undefined
     )
 
   # 年
@@ -78,6 +81,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
     $state.go('yearly_list',
       year: vm.year
       category_id: undefined
+      breakdown_id: undefined
     )
 
   if $stateParams.day
@@ -140,6 +144,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       day: vm.day
       offset: vm.offset
       category_id: $stateParams.category_id
+      breakdown_id: $stateParams.breakdown_id
     RecordsFactory.getCSVRecords(params).then((res) ->
       if window.navigator.msSaveOrOpenBlob
         blob = new Blob([ decodeURIComponent(encodeURI(result.data)) ], type: 'text/csv;charset=utf-8;')
@@ -176,6 +181,27 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
         month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
         day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
         category_id: category_id
+      )
+
+  # 内訳をクリック
+  vm.clickBreakdown = (breakdown_id) ->
+    if vm.selected_list == 'year'
+      $state.go('yearly_list',
+        year: vm.year
+        breakdown_id: breakdown_id
+      )
+    else if vm.selected_list == 'month'
+      $state.go('monthly_list',
+        year: vm.year
+        month: ('0' + vm.month).slice(-2)
+        breakdown_id: breakdown_id
+      )
+    else if vm.selected_list == 'day'
+      $state.go('daily_list',
+        year: Number($filter('date')(vm.date, 'yyyy'))
+        month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+        day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+        breakdown_id: breakdown_id
       )
 
   getRecordsWithDate()
