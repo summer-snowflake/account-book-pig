@@ -139,6 +139,7 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       month: vm.month
       day: vm.day
       offset: vm.offset
+      category_id: $stateParams.category_id
     RecordsFactory.getCSVRecords(params).then((res) ->
       if window.navigator.msSaveOrOpenBlob
         blob = new Blob([ decodeURIComponent(encodeURI(result.data)) ], type: 'text/csv;charset=utf-8;')
