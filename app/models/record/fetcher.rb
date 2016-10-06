@@ -29,8 +29,8 @@ class Record::Fetcher
 
   def all_as_csv
     records = @user.records.order(:published_at)
-    records = records.where(category_id: @category_id) if @category_id
-    find_by_date(records)
+    records = find_by_date(records)
+    records.where(category_id: @category_id) if @category_id
   end
 
   private
