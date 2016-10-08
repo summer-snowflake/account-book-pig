@@ -46,12 +46,12 @@ class UsersController < ApplicationController
 
   # GET /user/authorize_email
   def authorize_email
-    user = User.find(params[:user_id])
-    if user.update_email_by(params[:token])
+    updator = User::EmailUpdator.new(email_params)
+    if updator.authorize
       host = Rails.env.production? ? '' : 'http://localhost:3000'
       redirect_to "#{host}/#/?updated_email=ok"
     else
-      render_error user, 401
+      render_error updator.user, 401
     end
   end
 
@@ -81,5 +81,9 @@ class UsersController < ApplicationController
   def setting_params
     params.permit(:breakdown_field, :place_field, :tag_field, :memo_field,
                   :currency)
+  end
+
+  def email_params
+    params.permit(:user_id, :token)
   end
 end
