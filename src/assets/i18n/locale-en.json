@@ -92,6 +92,7 @@
     "TWITTER_LOGIN": "Login via Twitter",
     "EMAIL_LOGIN": "Login via Email",
     "PRE_AUTH": "Pre-authentication",
+    "REFINE_SEARCH": "Refine words",
     "SELECTED": "Selected",
     "UNREAD": "Unread"
   },

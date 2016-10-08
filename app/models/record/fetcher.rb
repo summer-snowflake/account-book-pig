@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Record::Fetcher
   include ActiveModel::Model
-  attr_accessor :total_count
+  attr_accessor :total_count, :category_name, :breakdown_name, :place_name
 
   def initialize(user: nil, params: nil, sort_type: nil)
     @user = user
@@ -18,9 +18,8 @@ class Record::Fetcher
   def all
     records = @user.records.order(published_at: :desc, created_at: :desc)
     records = find_by_date(records)
-    records = records.where(category_id: @category_id) if @category_id
-    records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
-    records = records.where(place_id: @place_id) if @place_id
+    records = find_by_refine(records)
+    set_refine_word
     @total_count = records.count
     records = records.offset(@offset) if @offset.present?
     records.limit(Settings.records.per)
@@ -34,9 +33,7 @@ class Record::Fetcher
   def all_as_csv
     records = @user.records.order(:published_at)
     records = find_by_date(records)
-    records = records.where(category_id: @category_id) if @category_id
-    records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
-    records.where(place_id: @place_id) if @place_id
+    find_by_refine(records)
   end
 
   private
@@ -51,5 +48,22 @@ class Record::Fetcher
     else
       records.the_day(Time.zone.now.to_date)
     end
+  end
+
+  def find_by_refine(records)
+    records = records.where(category_id: @category_id) if @category_id
+    records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
+    records = records.where(place_id: @place_id) if @place_id
+    records
+  end
+
+  def set_refine_word
+    @category_name = @user.categories.find(@category_id).name if @category_id
+    if @breakdown_id
+      breakdown = @user.breakdowns.find(@breakdown_id)
+      @breakdown_name = breakdown.name
+      @category_name = breakdown.category.name
+    end
+    @place_name = @user.places.find(@place_id).name if @place_id
   end
 end

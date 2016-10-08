@@ -25,6 +25,9 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
       vm.records = res.records
       vm.total_count = res.total_count
       vm.user = res.user
+      vm.category_name = res.category_name
+      vm.breakdown_name = res.breakdown_name
+      vm.place_name = res.place_name
       total_array = []
       for i in [0..vm.total_count]
         total_array.push(i)
@@ -228,6 +231,72 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
         month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
         day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
         place_id: place_id
+      )
+
+  # カテゴリの絞込みをクリアする
+  vm.clearCategory = () ->
+    vm.category_name = undefined
+    if vm.selected_list == 'year'
+      $state.go('yearly_list',
+        year: vm.year
+        category_id: undefined
+      )
+    else if vm.selected_list == 'month'
+      $state.go('monthly_list',
+        year: vm.year
+        month: ('0' + vm.month).slice(-2)
+        category_id: undefined
+      )
+    else if vm.selected_list == 'day'
+      $state.go('daily_list',
+        year: Number($filter('date')(vm.date, 'yyyy'))
+        month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+        day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+        category_id: undefined
+      )
+
+  # 内訳の絞込みをクリアする
+  vm.clearBreakdown = () ->
+    vm.breakdown_name = undefined
+    if vm.selected_list == 'year'
+      $state.go('yearly_list',
+        year: vm.year
+        breakdown_id: undefined
+      )
+    else if vm.selected_list == 'month'
+      $state.go('monthly_list',
+        year: vm.year
+        month: ('0' + vm.month).slice(-2)
+        breakdown_id: undefined
+      )
+    else if vm.selected_list == 'day'
+      $state.go('daily_list',
+        year: Number($filter('date')(vm.date, 'yyyy'))
+        month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+        day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+        breakdown_id: undefined
+      )
+
+  # お店・施設の絞込みをクリアする
+  vm.clearPlace = () ->
+    vm.place_name = undefined
+    if vm.selected_list == 'year'
+      $state.go('yearly_list',
+        year: vm.year
+        place_id: undefined
+      )
+    else if vm.selected_list == 'month'
+      $state.go('monthly_list',
+        year: vm.year
+        month: ('0' + vm.month).slice(-2)
+        place_id: undefined
+      )
+    else if vm.selected_list == 'day'
+      $state.go('daily_list',
+        year: Number($filter('date')(vm.date, 'yyyy'))
+        month: ('0' + Number($filter('date')(vm.date, 'MM'))).slice(-2)
+        day: ('0' + Number($filter('date')(vm.date, 'dd'))).slice(-2)
+        place_id: undefined
       )
 
   getRecordsWithDate()

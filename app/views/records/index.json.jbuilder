@@ -24,3 +24,7 @@ json.total_count @total_count
 json.user do
   json.currency @user.currency
 end
+
+json.category_name @category_name
+json.breakdown_name @breakdown_name
+json.place_name @place_name

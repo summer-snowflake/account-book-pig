@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :tags
   has_many :tallies
   has_many :captures
+  has_many :breakdowns, through: :categories
 
   enum status: { inactive: 1, registered: 2 }
 
@@ -101,12 +102,10 @@ class User < ActiveRecord::Base
   end
 
   def maximum_values
-    {
-      category: Settings.user.categories.maximum_length,
+    { category: Settings.user.categories.maximum_length,
       breakdown: Settings.category.breakdowns.maximum_length,
       place: Settings.user.places.maximum_length,
-      record: Settings.user.records.maximum_length
-    }
+      record: Settings.user.records.maximum_length }
   end
 
   private

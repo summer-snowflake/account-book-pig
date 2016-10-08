@@ -93,6 +93,7 @@
     "TWITTER_LOGIN": "Twitterでログインしています",
     "EMAIL_LOGIN": "メールアドレスでログインしています",
     "PRE_AUTH": "認証前",
+    "REFINE_SEARCH": "絞込み",
     "SELECTED": "登録済",
     "UNREAD": "未読"
   },
