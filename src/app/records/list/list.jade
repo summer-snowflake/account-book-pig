@@ -40,6 +40,11 @@ form.form.form-inline
     span(ng-show="list.selected_list == 'year'") {{ list.year }}年
     span(translate='LABELS.ADD_RECORDS')
   .panel-body#with-background
+    p(ng-show='list.category_name || list.breakdown_name || list.place_name')
+      span {{ 'LABELS.REFINE_SEARCH' | translate }} :
+      label.label.label-warning {{ list.category_name }}
+      label.label.label-info {{ list.breakdown_name }}
+      label.label.label-primary {{ list.place_name }}
     loading-directive
     table.table(ng-show='list.records')
       tr(ng-repeat='record in list.records')

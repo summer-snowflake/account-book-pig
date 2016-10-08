@@ -6,6 +6,9 @@ class RecordsController < ApplicationController
     fetcher = Record::Fetcher.new(user: current_user, params: params)
     @user = current_user
     @records = fetcher.all
+    @category_name = fetcher.category_name
+    @breakdown_name = fetcher.breakdown_name
+    @place_name = fetcher.place_name
     @total_count = fetcher.total_count
   end
 

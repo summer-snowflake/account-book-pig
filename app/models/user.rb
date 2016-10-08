@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :tags
   has_many :tallies
   has_many :captures
+  has_many :breakdowns, through: :categories
 
   enum status: { inactive: 1, registered: 2 }
 
