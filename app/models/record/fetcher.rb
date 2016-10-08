@@ -59,11 +59,7 @@ class Record::Fetcher
 
   def set_refine_word
     @category_name = @user.categories.find(@category_id).name if @category_id
-    if @breakdown_id
-      breakdown = @user.breakdowns.find(@breakdown_id)
-      @breakdown_name = breakdown.name
-      @category_name = breakdown.category.name
-    end
+    @breakdown_name = @user.breakdowns.find(@breakdown_id).name if @breakdown_id
     @place_name = @user.places.find(@place_id).name if @place_id
   end
 end
