@@ -86,14 +86,8 @@ class User < ActiveRecord::Base
     @new_email_token ||= add_new_email_token
   end
 
-  def update_email_by(token)
-    token_user = User.find_by_valid_token(:new_email, token)
-    if self == token_user
-      update(email: new_email, new_email: '') && remove_token(:new_email)
-    else
-      errors[:base] << I18n.t('errors.messages.users.invalid_token')
-      false
-    end
+  def authorize_new_email
+    update(email: new_email, new_email: '')
   end
 
   def each_maximum_values
