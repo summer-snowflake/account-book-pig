@@ -5,6 +5,7 @@ FactoryGirl.define do
     user
     category
     breakdown
+    place
     charge { rand(0..10_000) }
     sequence(:memo) { |i| "めも#{i}" }
   end
