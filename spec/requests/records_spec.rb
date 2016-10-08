@@ -153,7 +153,7 @@ describe 'GET /records', autodoc: true do
           },
           category_name: nil,
           breakdown_name: nil,
-          place_name: nil 
+          place_name: nil
         }
         expect(response.body).to be_json_as(json)
       end
@@ -217,7 +217,7 @@ describe 'GET /records', autodoc: true do
           },
           category_name: nil,
           breakdown_name: nil,
-          place_name: nil 
+          place_name: nil
         }
         expect(response.body).to be_json_as(json)
       end

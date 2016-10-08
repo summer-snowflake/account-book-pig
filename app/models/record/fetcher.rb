@@ -19,9 +19,7 @@ class Record::Fetcher
     records = @user.records.order(published_at: :desc, created_at: :desc)
     records = find_by_date(records)
     records = find_by_refine(records)
-    @category_name = @user.categories.find(@category_id).name if @category_id
-    @breakdown_name = @user.breakdowns.find(@breakdown_id).name if @breakdown_id
-    @place_name = @user.places.find(@place_id).name if @place_id
+    set_refine_word
     @total_count = records.count
     records = records.offset(@offset) if @offset.present?
     records.limit(Settings.records.per)
@@ -57,5 +55,15 @@ class Record::Fetcher
     records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
     records = records.where(place_id: @place_id) if @place_id
     records
+  end
+
+  def set_refine_word
+    @category_name = @user.categories.find(@category_id).name if @category_id
+    if @breakdown_id
+      breakdown = @user.breakdowns.find(@breakdown_id)
+      @breakdown_name = breakdown.name
+      @category_name = breakdown.category.name
+    end
+    @place_name = @user.places.find(@place_id).name if @place_id
   end
 end
