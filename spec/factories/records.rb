@@ -4,6 +4,7 @@ FactoryGirl.define do
     published_at Time.zone.today
     user
     category
+    breakdown
     charge { rand(0..10_000) }
     sequence(:memo) { |i| "めも#{i}" }
   end
