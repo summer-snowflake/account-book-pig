@@ -42,9 +42,15 @@ form.form.form-inline
   .panel-body#with-background
     p(ng-show='list.category_name || list.breakdown_name || list.place_name')
       span {{ 'LABELS.REFINE_SEARCH' | translate }} :
-      label.label.label-warning {{ list.category_name }}
-      label.label.label-info {{ list.breakdown_name }}
-      label.label.label-primary {{ list.place_name }}
+      label.label.label-warning(ng-show='list.category_name')
+        span {{ list.category_name }}
+        span.glyphicon.glyphicon-remove#right-icon
+      label.label.label-info(ng-show='list.breakdown_name')
+        span {{ list.breakdown_name }}
+        span.glyphicon.glyphicon-remove#right-icon
+      label.label.label-primary(ng-show='list.place_name')
+        span {{ list.place_name }}
+        span.glyphicon.glyphicon-remove#right-icon
     loading-directive
     table.table(ng-show='list.records')
       tr(ng-repeat='record in list.records')
