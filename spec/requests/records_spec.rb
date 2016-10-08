@@ -64,7 +64,10 @@ describe 'GET /records', autodoc: true do
           total_count: 2,
           user: {
             currency: user.currency
-          }
+          },
+          category_name: nil,
+          breakdown_name: nil,
+          place_name: nil
         }
         expect(response.body).to be_json_as(json)
       end
@@ -111,7 +114,10 @@ describe 'GET /records', autodoc: true do
           total_count: 2,
           user: {
             currency: user.currency
-          }
+          },
+          category_name: nil,
+          breakdown_name: nil,
+          place_name: nil
         }
         expect(response.body).to be_json_as(json)
       end
@@ -144,7 +150,10 @@ describe 'GET /records', autodoc: true do
           total_count: 1,
           user: {
             currency: user.currency
-          }
+          },
+          category_name: nil,
+          breakdown_name: nil,
+          place_name: nil 
         }
         expect(response.body).to be_json_as(json)
       end
@@ -205,7 +214,10 @@ describe 'GET /records', autodoc: true do
           total_count: 3,
           user: {
             currency: user.currency
-          }
+          },
+          category_name: nil,
+          breakdown_name: nil,
+          place_name: nil 
         }
         expect(response.body).to be_json_as(json)
       end
