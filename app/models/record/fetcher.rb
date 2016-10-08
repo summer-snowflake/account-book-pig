@@ -11,6 +11,7 @@ class Record::Fetcher
     @day = params[:day].to_i
     @category_id = params[:category_id]
     @breakdown_id = params[:breakdown_id]
+    @place_id = params[:place_id]
     @offset = params[:offset]
   end
 
@@ -19,6 +20,7 @@ class Record::Fetcher
     records = find_by_date(records)
     records = records.where(category_id: @category_id) if @category_id
     records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
+    records = records.where(place_id: @place_id) if @place_id
     @total_count = records.count
     records = records.offset(@offset) if @offset.present?
     records.limit(Settings.records.per)
@@ -33,7 +35,8 @@ class Record::Fetcher
     records = @user.records.order(:published_at)
     records = find_by_date(records)
     records = records.where(category_id: @category_id) if @category_id
-    records.where(breakdown_id: @breakdown_id) if @breakdown_id
+    records = records.where(breakdown_id: @breakdown_id) if @breakdown_id
+    records.where(place_id: @place_id) if @place_id
   end
 
   private

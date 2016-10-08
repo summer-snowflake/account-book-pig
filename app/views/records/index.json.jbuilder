@@ -8,6 +8,7 @@ json.records do
     json.category_name record.category.name
     json.breakdown_id record.breakdown_id
     json.breakdown_name record.breakdown.try(:name)
+    json.place_id record.place_id
     json.place_name record.place.try(:name)
     json.memo record.memo
     json.tags record.tags do |tag|

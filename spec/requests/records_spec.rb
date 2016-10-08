@@ -39,6 +39,7 @@ describe 'GET /records', autodoc: true do
               category_name: record2.category.name,
               breakdown_id: record2.breakdown.id,
               breakdown_name: record2.breakdown.try(:name),
+              place_id: record2.place.id,
               place_name: record2.place.try(:name),
               memo: record2.memo,
               tags: [
@@ -54,6 +55,7 @@ describe 'GET /records', autodoc: true do
               category_name: record1.category.name,
               breakdown_id: record1.breakdown.id,
               breakdown_name: record1.breakdown.try(:name),
+              place_id: record1.place.id,
               place_name: record1.place.try(:name),
               memo: record1.memo,
               tags: []
@@ -86,6 +88,7 @@ describe 'GET /records', autodoc: true do
               category_name: record2.category.name,
               breakdown_id: record2.breakdown.id,
               breakdown_name: record2.breakdown.try(:name),
+              place_id: record2.place.id,
               place_name: record2.place.try(:name),
               memo: record2.memo,
               tags: []
@@ -99,6 +102,7 @@ describe 'GET /records', autodoc: true do
               category_name: record1.category.name,
               breakdown_id: record1.breakdown.id,
               breakdown_name: record1.breakdown.try(:name),
+              place_id: record1.place.id,
               place_name: record1.place.try(:name),
               memo: record1.memo,
               tags: []
@@ -131,6 +135,7 @@ describe 'GET /records', autodoc: true do
               category_name: record3.category.name,
               breakdown_id: record3.breakdown.id,
               breakdown_name: record3.breakdown.try(:name),
+              place_id: record3.place.id,
               place_name: record3.place.try(:name),
               memo: record3.memo,
               tags: []
@@ -163,6 +168,7 @@ describe 'GET /records', autodoc: true do
               category_name: record2.category.name,
               breakdown_id: record2.breakdown.id,
               breakdown_name: record2.breakdown.try(:name),
+              place_id: record2.place.id,
               place_name: record2.place.try(:name),
               memo: record2.memo,
               tags: []
@@ -176,6 +182,7 @@ describe 'GET /records', autodoc: true do
               category_name: record1.category.name,
               breakdown_id: record1.breakdown.id,
               breakdown_name: record1.breakdown.try(:name),
+              place_id: record1.place.id,
               place_name: record1.place.try(:name),
               memo: record1.memo,
               tags: []
@@ -189,6 +196,7 @@ describe 'GET /records', autodoc: true do
               category_name: record3.category.name,
               breakdown_id: record3.breakdown.id,
               breakdown_name: record3.breakdown.try(:name),
+              place_id: record3.place.id,
               place_name: record3.place.try(:name),
               memo: record3.memo,
               tags: []
