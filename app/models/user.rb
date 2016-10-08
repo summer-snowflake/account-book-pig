@@ -102,8 +102,6 @@ class User < ActiveRecord::Base
       record: Settings.user.records.maximum_length }
   end
 
-  private
-
   def add_new_email_token
     add_token(
       :new_email,
@@ -111,6 +109,8 @@ class User < ActiveRecord::Base
       expires_at: Settings.new_email_token.expire_after.seconds.from_now
     )
   end
+
+  private
 
   def set_currency
     self.currency = '¥' # TODO: ロケールによりデフォルトを変更する
