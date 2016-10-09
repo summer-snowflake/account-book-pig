@@ -1,4 +1,4 @@
-ImportFactory = ($location, $q, $http, localStorageService, toastr, $translate, IndexService) ->
+ImportFactory = ($location, $q, $http, localStorageService, $translate, IndexService) ->
   'ngInject'
   host = if $location.host() == 'localhost' then 'http://localhost:3001/' else ''
 
