@@ -47,7 +47,7 @@ defaults: &defaults
       admin_maximum_length: 99
     records:
       maximum_length: 200
-      admin_maximum_length: 999
+      admin_maximum_length: 9999
     nickname:
       maximum_length: 100
     email:

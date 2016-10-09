@@ -76,7 +76,7 @@ describe 'POST /places?name=name', autodoc: true do
         post '/places', params: params, headers: login_headers(user)
         expect(response.status).to eq 422
         json = {
-          error_messages: ['お店・施設は不正な値です']
+          error_messages: ['お店・施設名を入力してください']
         }
         expect(response.body).to be_json_as(json)
       end
