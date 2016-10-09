@@ -25,7 +25,7 @@
           span {{ 'COLUMNS.MEMO' | translate }}
       hr(ng-show='new_record.settings')
       .alert.alert-danger(role='alert' ng-show='new_record.total_record_count >= new_record.user.max_record_count')
-        span {{ 'MESSAGES.MAX_LENGTH_RECORDS' | translate:{ count:new_record.total_record_count } }}
+        span {{ 'MESSAGES.MAX_LENGTH_RECORDS' | translate:{ count:new_record.user.max_record_count } }}
       // フォーム
       form.form-horizontal(novalidate=true name='newRecordForm' ng-submit='new_record.submit()')
         // 日付

@@ -2,6 +2,9 @@
 require 'rails_helper'
 
 describe 'GET /places/:place_id/categories', autodoc: true do
+  before do
+    allow(Settings.user.categories).to receive(:maximum_length).and_return(5)
+  end
   let!(:user) { create(:email_user, :registered) }
   let!(:place) { create(:place, user: user) }
 

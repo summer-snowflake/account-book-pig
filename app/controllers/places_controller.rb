@@ -10,11 +10,11 @@ class PlacesController < ApplicationController
   end
 
   def create
-    current_user.places.new(place_params)
-    if current_user.save
+    place = current_user.places.new(place_params)
+    if place.save
       head 201
     else
-      render_error current_user
+      render_error place
     end
   end
 

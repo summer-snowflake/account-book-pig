@@ -1,4 +1,4 @@
-ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $translate, RecordsFactory) ->
+ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, RecordsFactory) ->
   'ngInject'
   vm = this
 
@@ -69,7 +69,6 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, toastr, $tran
     ImportFactory.postCaptureId(capture.id).then (res) ->
       vm.captures[index].registered = true
       vm.captures[index].record_id = res.record_id
-      toastr.success $translate.instant('MESSAGES.IMPORT_RECORD')
 
   # 「glyphicon-repeat」ボタン
   vm.reloadCapture = (index) ->

@@ -2,6 +2,10 @@
 require 'rails_helper'
 
 describe 'GET /dashboard', autodoc: true do
+  before do
+    allow(Settings.user.records).to receive(:maximum_length).and_return(5)
+  end
+
   let!(:user) { create(:email_user, :registered) }
 
   context 'ログインしていない場合' do
