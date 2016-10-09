@@ -94,7 +94,7 @@ describe 'POST /categories', autodoc: true do
       expect(response.status).to eq 422
 
       json = {
-        error_messages: ['カテゴリは不正な値です']
+        error_messages: ['カテゴリ名を入力してください']
       }
       expect(response.body).to be_json_as(json)
     end
@@ -224,15 +224,16 @@ describe 'POST /categories/sort', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
-    let!(:category1) { create(:category, user: user) }
-    let!(:category2) { create(:category, user: user) }
-    let!(:category3) { create(:category, user: user) }
-    let!(:category4) { create(:category, user: user) }
-    let!(:params) do
+    let(:category1) { create(:category, user: user) }
+    let(:category2) { create(:category, user: user) }
+    let(:category3) { create(:category, user: user) }
+    let(:category4) { create(:category, user: user) }
+    let(:params) do
       { sequence: [category3.id, category2.id, category4.id, category1.id] }
     end
 
     it '200を返し、データが正しいこと' do
+      allow(Settings.user.categories).to receive(:maximum_length).and_return(5)
       post '/categories/sort', params: params, headers: login_headers(user)
       expect(response.status).to eq 200
 

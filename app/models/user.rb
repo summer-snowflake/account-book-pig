@@ -25,14 +25,6 @@ class User < ActiveRecord::Base
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
   # TODO: ユーザーのランクによって制限数を変更する
-  validates :categories,
-            length: { maximum: Settings.user.categories.maximum_length,
-                      too_long: I18n.t('errors.messages.too_many') },
-            unless: :admin
-  validates :places,
-            length: { maximum: Settings.user.places.maximum_length,
-                      too_long: I18n.t('errors.messages.too_many') },
-            unless: :admin
 
   before_create :set_currency
 
@@ -42,13 +34,6 @@ class User < ActiveRecord::Base
 
   def active?
     registered? # TODO: 有効期限を確認する
-  end
-
-  def add_access_token
-    add_token(
-      :access, size: Settings.access_token.length,
-               expires_at: Settings.access_token.expire_after.seconds.from_now
-    )
   end
 
   def status_label_name
@@ -77,19 +62,6 @@ class User < ActiveRecord::Base
       klass.create_with(auth)
   end
 
-  def new_email_url(origin)
-    token = new_email_token.token
-    "#{origin}/user/authorize_email?user_id=#{id}&token=#{token}"
-  end
-
-  def new_email_token
-    @new_email_token ||= add_new_email_token
-  end
-
-  def authorize_new_email
-    update(email: new_email, new_email: '')
-  end
-
   def each_maximum_values
     user = admin? ? becomes(AdminUser) : self
     user.maximum_values
@@ -102,12 +74,32 @@ class User < ActiveRecord::Base
       record: Settings.user.records.maximum_length }
   end
 
+  def add_access_token
+    add_token(
+      :access, size: Settings.access_token.length,
+               expires_at: Settings.access_token.expire_after.seconds.from_now
+    )
+  end
+
   def add_new_email_token
     add_token(
       :new_email,
       size: Settings.password_token.length,
       expires_at: Settings.new_email_token.expire_after.seconds.from_now
     )
+  end
+
+  def new_email_token
+    @new_email_token ||= add_new_email_token
+  end
+
+  def new_email_url(origin)
+    token = new_email_token.token
+    "#{origin}/user/authorize_email?user_id=#{id}&token=#{token}"
+  end
+
+  def authorize_new_email
+    update(email: new_email, new_email: '')
   end
 
   private

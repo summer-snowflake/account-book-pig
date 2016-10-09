@@ -13,6 +13,7 @@ class Category < ActiveRecord::Base
   validates :breakdowns,
             length: { maximum: Settings.category.breakdowns.maximum_length,
                       too_long: I18n.t('errors.messages.too_many') }
+  validate :should_be_less_than_maximum, on: :create
 
   before_create :set_position
   before_destroy :confirm_contents
@@ -41,6 +42,19 @@ class Category < ActiveRecord::Base
       I18n.t('labels.barance_of_payments.income')
     else
       I18n.t('labels.barance_of_payments.outgo')
+    end
+  end
+
+  private
+
+  def should_be_less_than_maximum
+    maximum_count = if user.admin
+                      Settings.user.categories.admin_maximum_length
+                    else
+                      Settings.user.categories.maximum_length
+                    end
+    if maximum_count <= user.categories.count
+      errors[:base] << I18n.t('errors.messages.categories.too_many', count: maximum_count)
     end
   end
 end

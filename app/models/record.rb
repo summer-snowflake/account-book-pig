@@ -17,6 +17,7 @@ class Record < ActiveRecord::Base
                                      allow_blank: true }
   validates :category, presence: true
   validates :memo, length: { maximum: Settings.record.memo.maximum_length }
+  validate :should_be_less_than_maximum, on: :create
 
   scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
   scope :the_month, lambda { |first_day|
@@ -59,5 +60,18 @@ class Record < ActiveRecord::Base
       tagged << TaggedRecord.new(record_id: id, tag_id: tag_id)
     end
     tagged_records.destroy_all ? TaggedRecord.import(tagged) : false
+  end
+
+  private
+
+  def should_be_less_than_maximum
+    maximum_count = if user.admin
+                      Settings.user.records.admin_maximum_length
+                    else
+                      Settings.user.records.maximum_length
+                    end
+    if maximum_count <= user.records.count
+      errors[:base] << I18n.t('errors.messages.records.too_many', count: maximum_count)
+    end
   end
 end
