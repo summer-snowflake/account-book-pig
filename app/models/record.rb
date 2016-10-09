@@ -71,7 +71,8 @@ class Record < ActiveRecord::Base
                       Settings.user.records.maximum_length
                     end
     if maximum_count <= user.records.count
-      errors[:base] << I18n.t('errors.messages.records.too_many', count: maximum_count)
+      errors[:base] <<
+        I18n.t('errors.messages.records.too_many', count: maximum_count)
     end
   end
 end

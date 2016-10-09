@@ -54,7 +54,8 @@ class Category < ActiveRecord::Base
                       Settings.user.categories.maximum_length
                     end
     if maximum_count <= user.categories.count
-      errors[:base] << I18n.t('errors.messages.categories.too_many', count: maximum_count)
+      errors[:base] <<
+        I18n.t('errors.messages.categories.too_many', count: maximum_count)
     end
   end
 end

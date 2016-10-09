@@ -24,7 +24,8 @@ class Place < ActiveRecord::Base
                       Settings.user.places.maximum_length
                     end
     if maximum_count <= user.places.count
-      errors[:base] << I18n.t('errors.messages.places.too_many', count: maximum_count)
+      errors[:base] <<
+        I18n.t('errors.messages.places.too_many', count: maximum_count)
     end
   end
 end
