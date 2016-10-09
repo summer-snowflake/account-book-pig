@@ -38,9 +38,9 @@ PlacesController = (SettingsFactory, $scope, IndexService, $uibModal, toastr, $t
   vm.addCategory = (index) ->
     place = vm.places[index]
     modalInstance = $uibModal.open(
-      templateUrl: 'app/settings/modals/new_categorize.html'
+      templateUrl: 'app/settings/place/modals/new_categorize.html'
       controller: 'NewCategorizeController'
-      controllerAs: 'adding_category'
+      controllerAs: 'vm'
       resolve: { place_id: place.id }
     )
     modalInstance.result.then () ->
