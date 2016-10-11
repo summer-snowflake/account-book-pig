@@ -1,0 +1,15 @@
+.modal-header
+  form.form-inline(novalidate=true name='addCategoryForm' ng-submit='vm.submit()')
+    button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='vm.sending || !vm.category_id')
+    a.btn.btn-default(type='submit' translate='BUTTONS.CANCEL' ng-click='vm.cancel()')
+.modal-body
+  loading-directive(target='modal')
+  select.form-control(ng-model='vm.category_id' ng-show='vm.categories')
+    optgroup(label="{{ 'LABELS.INCOME' | translate }}" ng-show='income_categories.length != 0')
+      option(ng-value='category.id'
+             ng-repeat='category in income_categories = (vm.categories | filter: { selected_place:false, barance_of_payments:true })')
+        | {{ category.name }}
+    optgroup(label="{{ 'LABELS.OUTGO' | translate }}" ng-show='outgo_categories.length != 0')
+      option(ng-value='category.id'
+             ng-repeat='category in outgo_categories = (vm.categories | filter: { selected_place:false, barance_of_payments:false })')
+        | {{ category.name }}

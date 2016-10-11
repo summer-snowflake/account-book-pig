@@ -16,13 +16,16 @@ class Category < ActiveRecord::Base
   validate :should_be_less_than_maximum, on: :create
 
   before_create :set_position
-  before_destroy :confirm_contents
+  before_destroy :should_not_have_contents
 
+  # callback: before_create
   def set_position
     self.position = user.categories.count
+    # FIXME: 削除すると並び順が変わる可能性がある
   end
 
-  def confirm_contents
+  # callback: before_destroy
+  def should_not_have_contents
     if breakdowns.any?
       errors[:base] << I18n.t('errors.messages.categories.destroy_breakdowns')
       throw :abort
@@ -47,6 +50,7 @@ class Category < ActiveRecord::Base
 
   private
 
+  # validate
   def should_be_less_than_maximum
     maximum_count = if user.admin
                       Settings.user.categories.admin_maximum_length
