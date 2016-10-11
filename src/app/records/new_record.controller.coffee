@@ -1,4 +1,4 @@
-NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, SettingsFactory) ->
+NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, SettingsFactory, $filter) ->
   'ngInject'
   vm = this
 
@@ -27,7 +27,9 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
   getRecordsWithDate = (target_date) ->
     IndexService.records_loading = true
     params =
-      date: String(target_date)
+      year: Number($filter('date')(target_date, 'yyyy'))
+      month: Number($filter('date')(target_date, 'MM'))
+      day: Number($filter('date')(target_date, 'dd'))
     RecordsFactory.getRecords(params).then((res) ->
       vm.records_published_at = target_date
       vm.day_records = res.records
