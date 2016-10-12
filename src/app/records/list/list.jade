@@ -66,8 +66,7 @@ form.form.form-inline
         td
           span.glyphicon.glyphicon-bookmark#left-icon(ng-repeat='tag in record.tags' ng-style="{color:tag.color_code}" uib-tooltip='{{tag.name}}')
         td
-          span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
-          span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
+          payments-glyphicon-directive(payments='record.payments')
         td {{ list.user.currency }} {{ record.charge | currency:'':0 }}
         td
           a(href='' ng-click='list.showRecord($index)')

@@ -40,8 +40,7 @@
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td
-          span.glyphicon.glyphicon-arrow-up.green(ng-show='capture.category_payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
-          span.glyphicon.glyphicon-arrow-down.red(ng-show='capture.category_payments == false' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
+          payments-glyphicon-directive(payments='capture.category_payments')
         td
           span.glyphicon.glyphicon-exclamation-sign.red#left-icon(ng-show='capture.category_name && !capture.category_id')
           span {{ capture.category_name }}
