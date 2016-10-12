@@ -2,6 +2,7 @@ json.id @capture.id
 json.created_at I18n.l(@capture.created_at)
 json.published_at @capture.published_at
 json.category_name @capture.category_name
+json.category_payments @capture.category.try(:barance_of_payments)
 json.category_id @capture.category_id
 json.breakdown_name @capture.breakdown_name
 json.breakdown_id @capture.breakdown_id
