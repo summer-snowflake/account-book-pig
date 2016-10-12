@@ -26,8 +26,7 @@
             td
               label.label.label-primary {{ record.place_name }}
             td
-              span.glyphicon.glyphicon-arrow-up.green(ng-show='record.payments' uib-tooltip="{{ 'TOOLTIPS.INCOME' | translate }}")
-              span.glyphicon.glyphicon-arrow-down.red(ng-show='!record.payments' uib-tooltip="{{ 'TOOLTIPS.OUTGO' | translate }}")
+              payments-glyphicon-directive(payments='record.payments')
             td {{ mypage.user.currency }} {{ record.charge | currency:'':0 }}
             td
               a(href='' ng-click='mypage.showRecord($index)')
