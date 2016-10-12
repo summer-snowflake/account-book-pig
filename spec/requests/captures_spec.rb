@@ -169,6 +169,7 @@ describe 'GET /capture/:id', autodoc: true do
         created_at: capture.created_at.strftime('%Y/%m/%d %H:%M:%S'),
         published_at: capture.published_at.strftime('%Y-%m-%d'),
         category_name: capture.category_name,
+        category_payments: capture.category.try(:barance_of_payments),
         category_id: capture.category_id,
         breakdown_name: capture.breakdown_name,
         breakdown_id: capture.breakdown_id,

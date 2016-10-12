@@ -83,7 +83,6 @@ RecordsController = ($filter, IndexService , RecordsFactory, localStorageService
   vm.selectYear = (year) ->
     vm.year = year
     vm.offset = 0
-    console.log vm.year
     $state.go('yearly_list',
       year: vm.year
       category_id: undefined
