@@ -14,7 +14,7 @@ class Feedback < ActiveRecord::Base
   def notice_to_slack
     Slack.chat_postMessage(
       text: "```#{content}```",
-      username: "#{user.try(:id)}. #{user.try(:_name)}#{email}",
+      username: "#{user.try(:id)}. #{user.try(:screen_name)}#{email}",
       channel: '#feedbacks'
     )
   end

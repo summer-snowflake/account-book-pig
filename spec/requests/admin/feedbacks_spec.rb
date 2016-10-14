@@ -39,7 +39,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               checked: user_feedback.checked,
               email: user_feedback.email,
               user_id: user_feedback.user_id,
-              user_name: user_feedback.user.try(:_name),
+              user_name: user_feedback.user.try(:screen_name),
               content: simple_format(user_feedback.content),
               created_at: I18n.l(user_feedback.created_at)
             },
@@ -48,7 +48,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               checked: feedback.checked,
               email: feedback.email,
               user_id: feedback.user_id,
-              user_name: feedback.user.try(:_name),
+              user_name: feedback.user.try(:screen_name),
               content: simple_format(feedback.content),
               created_at: I18n.l(feedback.created_at)
             }
@@ -72,7 +72,7 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               checked: feedback.checked,
               email: feedback.email,
               user_id: feedback.user_id,
-              user_name: feedback.user.try(:_name),
+              user_name: feedback.user.try(:screen_name),
               content: simple_format(feedback.content),
               created_at: I18n.l(feedback.created_at)
             }

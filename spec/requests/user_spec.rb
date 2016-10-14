@@ -25,7 +25,7 @@ describe 'GET /user', autodoc: true do
         email: user.email,
         new_email: user.new_email,
         nickname: user.nickname,
-        user_name: user._name,
+        user_name: user.screen_name,
         currency: user.currency,
         admin: user.admin,
         max_values: user.each_maximum_values
@@ -47,7 +47,7 @@ describe 'GET /user', autodoc: true do
         email: user.email,
         new_email: user.new_email,
         nickname: user.nickname,
-        user_name: user._name,
+        user_name: user.screen_name,
         currency: user.currency,
         admin: user.admin,
         max_values: user.each_maximum_values
@@ -69,7 +69,7 @@ describe 'GET /user', autodoc: true do
         email: user.email,
         new_email: user.new_email,
         nickname: user.nickname,
-        user_name: user._name,
+        user_name: user.screen_name,
         currency: user.currency,
         admin: user.admin,
         auth: {
@@ -95,7 +95,7 @@ describe 'GET /user', autodoc: true do
         email: user.email,
         new_email: user.new_email,
         nickname: user.nickname,
-        user_name: user._name,
+        user_name: user.screen_name,
         currency: user.currency,
         admin: user.admin,
         auth: {

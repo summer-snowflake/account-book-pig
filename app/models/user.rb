@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
 
   before_create :set_currency
 
-  def _name
-    becomes(type.classify.constantize)._name
+  def screen_name
+    becomes(type.classify.constantize).screen_name
   end
 
   def active?

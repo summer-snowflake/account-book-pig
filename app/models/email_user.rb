@@ -9,7 +9,7 @@ class EmailUser < User
             on: :create
   validate :uniqueness_email, if: 'email.present?'
 
-  def _name
+  def screen_name
     nickname || email
   end
 

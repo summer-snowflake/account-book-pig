@@ -14,7 +14,7 @@ class TwitterUser < User
     twitter_user
   end
 
-  def _name
+  def screen_name
     nickname || auth.try(:name) || auth.try(:screen_name)
   end
 end
