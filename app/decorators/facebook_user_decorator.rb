@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class FacebookUserDecorator < Draper::Decorator
+class FacebookUserDecorator < UserDecorator
   delegate_all
 
   def screen_name

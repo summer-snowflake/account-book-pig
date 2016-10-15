@@ -1,14 +1,5 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
-  STATUS_LABEL_NAME = {
-    inactive: 'label-default', registered: 'label-success'
-  }.freeze
-  TYPE_LABEL_NAME = {
-    EmailUser: 'label-warning',
-    TwitterUser: 'label-info',
-    FacebookUser: 'label-primary'
-  }.freeze
-
   tokenizable
   has_many :feedbacks
   has_many :categories
@@ -30,14 +21,6 @@ class User < ActiveRecord::Base
 
   def active?
     registered? # TODO: 有効期限を確認する
-  end
-
-  def status_label_name
-    STATUS_LABEL_NAME[status.to_sym]
-  end
-
-  def type_label_name
-    TYPE_LABEL_NAME[type.to_sym]
   end
 
   def _status

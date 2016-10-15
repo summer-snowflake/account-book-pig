@@ -1,5 +1,6 @@
 json.users do
   json.array! @users do |user|
+    user = user.decorate
     json.id user.id
     json.admin user.admin?
     json.type_label_name user.type_label_name

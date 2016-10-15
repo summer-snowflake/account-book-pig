@@ -2,8 +2,8 @@
 require 'rails_helper'
 
 describe 'GET /admin/users', autodoc: true do
-  let!(:user) { create(:email_user, :registered) }
-  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
+  let!(:admin_user) { create(:email_user, :admin_user, :registered).decorate }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -87,8 +87,8 @@ describe 'GET /admin/users', autodoc: true do
 end
 
 describe 'GET /users/:id', autodoc: true do
-  let!(:user) { create(:email_user, :registered) }
-  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
+  let!(:admin_user) { create(:email_user, :admin_user, :registered).decorate }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class EmailUserDecorator < Draper::Decorator
+class EmailUserDecorator < UserDecorator
   delegate_all
 
   def screen_name
