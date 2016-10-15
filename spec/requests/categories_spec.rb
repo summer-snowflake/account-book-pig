@@ -41,7 +41,7 @@ describe 'GET /categories', autodoc: true do
             records_count: 0
           }
         ],
-        max_category_count: Settings.user.categories.maximum_length
+        max_category_count: Settings.category.maximum_size
       }
       expect(response.body).to be_json_as(json)
     end
@@ -233,7 +233,8 @@ describe 'POST /categories/sort', autodoc: true do
     end
 
     it '200を返し、データが正しいこと' do
-      allow(Settings.user.categories).to receive(:maximum_length).and_return(5)
+      # NOTE: test環境のapplication.ymlで設定済み
+      allow(Settings.category).to receive(:maximum_size).and_return(5)
       post '/categories/sort', params: params, headers: login_headers(user)
       expect(response.status).to eq 200
 

@@ -53,9 +53,9 @@ class Category < ActiveRecord::Base
   # validate
   def should_be_less_than_maximum
     maximum_count = if user.admin
-                      Settings.user.categories.admin_maximum_length
+                      Settings.category.maximum_admin_size
                     else
-                      Settings.user.categories.maximum_length
+                      Settings.category.maximum_size
                     end
     if maximum_count <= user.categories.count
       errors[:base] <<

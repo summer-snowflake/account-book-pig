@@ -21,6 +21,8 @@ defaults: &defaults
     name:
       maximum_length: 100
   category:
+    maximum_size: 20
+    maximum_admin_size: 99
     breakdowns:
       maximum_length: 20
       admin_maximum_length: 99
@@ -39,9 +41,6 @@ defaults: &defaults
     name:
       maximum_length: 20
   user:
-    categories:
-      maximum_length: 20
-      admin_maximum_length: 99
     places:
       maximum_length: 20
       admin_maximum_length: 99
@@ -85,15 +84,14 @@ development:
 test:
   <<: *defaults
   category:
+    maximum_size: 3
+    maximum_admin_size: 5
     breakdowns:
       admin_maximum_length: 5
       maximum_length: 3
     name:
       maximum_length: 100
   user:
-    categories:
-      admin_maximum_length: 5
-      maximum_length: 3
     places:
       admin_maximum_length: 5
       maximum_length: 3

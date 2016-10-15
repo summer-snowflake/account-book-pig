@@ -3,7 +3,8 @@ require 'rails_helper'
 
 describe 'GET /places/:place_id/categories', autodoc: true do
   before do
-    allow(Settings.user.categories).to receive(:maximum_length).and_return(5)
+    allow(Settings.category).to receive(:maximum_size).and_return(5)
+    # NOTE: test環境のapplication.ymlで設定済み
   end
   let!(:user) { create(:email_user, :registered) }
   let!(:place) { create(:place, user: user) }

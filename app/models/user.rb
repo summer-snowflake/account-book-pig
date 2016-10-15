@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def maximum_values
-    { category: Settings.user.categories.maximum_length,
+    { category: Settings.category.maximum_size,
       breakdown: Settings.category.breakdowns.maximum_length,
       place: Settings.user.places.maximum_length,
       record: Settings.user.records.maximum_length }
