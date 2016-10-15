@@ -48,7 +48,7 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
           ng-model='edit_record.category_id'
           required='true'
           ng-change='edit_record.selectCategory()'
-          ng-options='category.id as category.name group by category._payments_name for category in edit_record.categories'
+          ng-options='category.id as category.name group by category.human_payments_name for category in edit_record.categories'
         )
         span.errors(ng-messages='editRecordForm.category_id.$error' ng-show='editRecordForm.$submitted && editRecordForm.category_id.$error')
           div(ng-message='required')
