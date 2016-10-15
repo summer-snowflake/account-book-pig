@@ -16,8 +16,16 @@ class UserDecorator < Draper::Decorator
     becomes(type.classify.constantize).decorate.screen_name
   end
 
+  def human_type_name
+    I18n.t("labels.type.#{type.underscore}")
+  end
+
   def type_label_name
     TYPE_LABEL_NAME[type.to_sym]
+  end
+
+  def human_status_name
+    I18n.t("labels.status.#{status}")
   end
 
   def status_label_name
