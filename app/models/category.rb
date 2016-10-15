@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
             presence: true,
             length: { maximum: Settings.category.name.maximum_length }
   validates :breakdowns,
-            length: { maximum: Settings.category.breakdowns.maximum_length,
+            length: { maximum: Settings.breakdown.max_count,
                       too_long: I18n.t('errors.messages.too_many') }
   validate :should_be_less_than_maximum, on: :create
 

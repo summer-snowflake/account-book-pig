@@ -18,14 +18,12 @@ defaults: &defaults
   tally:
     interval: <%= 5.hours.to_i %>
   breakdown:
+    max_count: 20
     name:
       maximum_length: 100
   category:
     max_count: 20
     max_count_of_admin: 99
-    breakdowns:
-      maximum_length: 20
-      admin_maximum_length: 99
     name:
       maximum_length: 100
   place:
@@ -84,9 +82,10 @@ test:
   category:
     max_count: 3
     max_count_of_admin: 5
-    breakdowns:
-      admin_maximum_length: 5
-      maximum_length: 3
+    name:
+      maximum_length: 100
+  breakdown:
+    max_count: 3
     name:
       maximum_length: 100
   place:
