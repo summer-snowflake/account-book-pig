@@ -233,7 +233,6 @@ describe 'POST /categories/sort', autodoc: true do
     end
 
     it '200を返し、データが正しいこと' do
-      # NOTE: test環境のapplication.ymlで設定済み
       allow(Settings.category).to receive(:max_count).and_return(5)
       post '/categories/sort', params: params, headers: login_headers(user)
       expect(response.status).to eq 200
