@@ -12,4 +12,4 @@ json.places do
   end
 end
 
-json.max_place_count @user.each_maximum_values[:place]
+json.max_place_count @user.max_place_count

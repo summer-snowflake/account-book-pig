@@ -35,4 +35,16 @@ class UserDecorator < Draper::Decorator
   def status_label_name
     STATUS_LABEL_NAME[status.to_sym]
   end
+
+  def max_category_count
+    admin? ? Settings.category.max_count_of_admin : Settings.category.max_count
+  end
+
+  def max_place_count
+    admin? ? Settings.place.max_count_of_admin : Settings.place.max_count
+  end
+
+  def max_record_count
+    admin? ? Settings.record.max_count_of_admin : Settings.record.max_count
+  end
 end

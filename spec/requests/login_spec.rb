@@ -25,8 +25,7 @@ describe 'POST /session?email=email&password=password', autodoc: true do
           nickname: user.nickname,
           user_name: user.screen_name,
           currency: user.currency,
-          admin: user.admin,
-          max_values: user.each_maximum_values
+          admin: user.admin
         }
       }
       expect(response.body).to be_json_as(json)

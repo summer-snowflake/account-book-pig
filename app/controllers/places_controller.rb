@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:update, :destroy]
 
   def index
-    @user = current_user
+    @user = current_user.decorate
     # TODO: N+1を解消する
     @places = @user.places.order(created_at: :desc)
   end

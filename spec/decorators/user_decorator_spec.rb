@@ -94,4 +94,44 @@ RSpec.describe UserDecorator, type: :decorator do
       end
     end
   end
+
+  describe 'max count' do
+    let!(:user) { create(:email_user, :registered).decorate }
+    let!(:admin_user) { create(:email_user, :registered, admin: true).decorate }
+
+    shared_examples_for 'max count' do
+      context 'admin is true' do
+        it 'max count is 5' do
+          expect(admin_max_count).to eq 5
+        end
+      end
+
+      context 'admin is false' do
+        it 'max count is 3' do
+          expect(max_count).to eq 3
+        end
+      end
+    end
+
+    describe '#max_category_count' do
+      let(:admin_max_count) { admin_user.max_category_count }
+      let(:max_count) { user.max_category_count }
+
+      it_behaves_like 'max count'
+    end
+
+    describe '#max_place_count' do
+      let(:admin_max_count) { admin_user.max_place_count }
+      let(:max_count) { user.max_place_count }
+
+      it_behaves_like 'max count'
+    end
+
+    describe '#max_record_count' do
+      let(:admin_max_count) { admin_user.max_record_count }
+      let(:max_count) { user.max_record_count }
+
+      it_behaves_like 'max count'
+    end
+  end
 end

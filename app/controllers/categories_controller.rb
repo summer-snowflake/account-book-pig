@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :authenticate
 
   def index
-    @user = current_user
+    @user = current_user.decorate
     @categories = @user.categories.order(:position)
   end
 

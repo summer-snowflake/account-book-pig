@@ -26,5 +26,5 @@ json.user do
   json.tag_field @user.tag_field
   json.memo_field @user.memo_field
   json.currency @user.currency
-  json.max_record_count @user.each_maximum_values[:record]
+  json.max_record_count @user.max_record_count
 end
