@@ -34,6 +34,8 @@ defaults: &defaults
     name:
       maximum_length: 100
   record:
+    max_count: 200
+    max_count_of_admin: 9999
     memo:
       maximum_length: 10000
   capture:
@@ -43,9 +45,6 @@ defaults: &defaults
     name:
       maximum_length: 20
   user:
-    records:
-      maximum_length: 200
-      admin_maximum_length: 9999
     nickname:
       maximum_length: 100
     email:
@@ -95,10 +94,12 @@ test:
     max_count_of_admin: 5
     name:
       maximum_length: 100
+  record:
+    max_count: 3
+    max_count_of_admin: 5
+    memo:
+      maximum_length: 10000
   user:
-    records:
-      admin_maximum_length: 5
-      maximum_length: 3
     nickname:
       maximum_length: 100
     email:

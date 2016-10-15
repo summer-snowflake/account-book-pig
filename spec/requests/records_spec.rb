@@ -311,7 +311,7 @@ describe 'GET /records/new', autodoc: true do
           tag_field: true,
           memo_field: true,
           currency: user.currency,
-          max_record_count: Settings.user.records.maximum_length
+          max_record_count: Settings.record.max_count
         }
       }
       expect(response.body).to be_json_as(json)

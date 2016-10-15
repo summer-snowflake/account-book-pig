@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     { category: Settings.category.max_count,
       breakdown: Settings.category.breakdowns.maximum_length,
       place: Settings.place.max_count,
-      record: Settings.user.records.maximum_length }
+      record: Settings.record.max_count }
   end
 
   def add_access_token
