@@ -14,8 +14,4 @@ class FacebookUser < User
     fb_user.auth = auth_data
     fb_user
   end
-
-  def screen_name
-    nickname || auth.try(:name) || auth.try(:screen_name)
-  end
 end

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(login_params)
     render_error @session, 401 unless @session.save
-    @user = @session.user
+    @user = @session.user.decorate if @session.user
     @session
   end
 

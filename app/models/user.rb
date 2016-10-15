@@ -28,10 +28,6 @@ class User < ActiveRecord::Base
 
   before_create :set_currency
 
-  def screen_name
-    becomes(type.classify.constantize).screen_name
-  end
-
   def active?
     registered? # TODO: 有効期限を確認する
   end

@@ -36,7 +36,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               id: message2.id,
               read: false,
               sent_at: '',
-              user_name: message2.user.screen_name,
+              user_name: message2.user.decorate.screen_name,
               feedback_content: message2.feedback.try(:content),
               content: message2.content,
               created_at: I18n.l(message2.created_at)
@@ -45,7 +45,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               id: message1.id,
               read: false,
               sent_at: '',
-              user_name: message1.user.screen_name,
+              user_name: message1.user.decorate.screen_name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
               created_at: I18n.l(message1.created_at)
@@ -69,7 +69,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               id: message1.id,
               read: false,
               sent_at: '',
-              user_name: message1.user.screen_name,
+              user_name: message1.user.decorate.screen_name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
               created_at: I18n.l(message1.created_at)

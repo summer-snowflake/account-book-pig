@@ -13,7 +13,9 @@ describe 'GET /user', autodoc: true do
   end
 
   context '管理者ユーザーがログインしている場合' do
-    let!(:user) { create(:email_user, :registered, :admin_user, email: email) }
+    let!(:user) do
+      create(:email_user, :registered, :admin_user, email: email).decorate
+    end
 
     it '200とユーザー情報を返すこと' do
       get '/user', params: '', headers: login_headers(user)
@@ -35,7 +37,7 @@ describe 'GET /user', autodoc: true do
   end
 
   context 'メールアドレスのユーザーがログインしている場合' do
-    let!(:user) { create(:email_user, :registered, email: email) }
+    let!(:user) { create(:email_user, :registered, email: email).decorate }
 
     it '200とユーザー情報を返すこと' do
       get '/user', params: '', headers: login_headers(user)
@@ -57,7 +59,7 @@ describe 'GET /user', autodoc: true do
   end
 
   context 'Twitterユーザーがログインしている場合' do
-    let!(:user) { create(:twitter_user, :registered) }
+    let!(:user) { create(:twitter_user, :registered).decorate }
 
     it '200とユーザー情報を返すこと' do
       get '/user', params: '', headers: login_headers(user)
@@ -83,7 +85,7 @@ describe 'GET /user', autodoc: true do
   end
 
   context 'Facebookユーザーがログインしている場合' do
-    let!(:user) { create(:facebook_user, :registered) }
+    let!(:user) { create(:facebook_user, :registered).decorate }
 
     it '200とユーザー情報を返すこと' do
       get '/user', params: '', headers: login_headers(user)

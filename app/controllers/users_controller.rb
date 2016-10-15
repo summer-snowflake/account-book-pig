@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate, except: %i(authorize_email)
 
   def show
-    @user = current_user
+    @user = current_user.decorate
   end
 
   def settings
