@@ -8,6 +8,6 @@ class MypagesController < ApplicationController
     fetcher = Record::Fetcher
               .new(user: current_user, params: params, sort_type: 'lately')
     @records = fetcher.mypage
-    @user = current_user
+    @user = current_user.decorate
   end
 end

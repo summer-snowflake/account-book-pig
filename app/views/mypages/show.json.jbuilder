@@ -31,4 +31,6 @@ end
 
 json.user do
   json.currency @user.currency
+  json.current_record_count @user.current_record_count
+  json.max_record_count @user.max_record_count
 end
