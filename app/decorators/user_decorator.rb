@@ -47,4 +47,8 @@ class UserDecorator < Draper::Decorator
   def max_record_count
     admin? ? Settings.record.max_count_of_admin : Settings.record.max_count
   end
+
+  def current_record_count
+    records.count
+  end
 end

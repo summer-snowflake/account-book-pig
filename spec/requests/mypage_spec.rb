@@ -10,7 +10,7 @@ describe 'GET /mypage', autodoc: true do
   end
 
   context 'ユーザーにお知らせとメッセージがある場合' do
-    let!(:user) { create(:email_user, :registered) }
+    let!(:user) { create(:email_user, :registered).decorate }
     let!(:user2) { create(:email_user, :registered) }
     let!(:notice1) { create(:notice, post_at: Time.zone.today) }
     let!(:notice2) { create(:notice, post_at: Time.zone.yesterday) }
@@ -90,7 +90,9 @@ describe 'GET /mypage', autodoc: true do
           }
         ],
         user: {
-          currency: user.currency
+          currency: user.currency,
+          current_record_count: user.records.count,
+          max_record_count: user.max_record_count
         }
       }
       expect(response.body).to be_json_as(json)
