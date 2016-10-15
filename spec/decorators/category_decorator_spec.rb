@@ -4,7 +4,9 @@ require 'rails_helper'
 RSpec.describe CategoryDecorator, type: :decorator do
   let!(:user) { create(:email_user, :registered) }
   let!(:payments) { [true, false].sample }
-  let!(:category) { create(:category, barance_of_payments: payments, user: user).decorate }
+  let!(:category) do
+    create(:category, barance_of_payments: payments, user: user).decorate
+  end
 
   describe '#human_payments_name' do
     context 'barance_of_payments is true' do
