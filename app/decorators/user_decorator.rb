@@ -24,6 +24,10 @@ class UserDecorator < Draper::Decorator
     TYPE_LABEL_NAME[type.to_sym]
   end
 
+  def last_login_time
+    I18n.l(last_sign_in_at) if last_sign_in_at
+  end
+
   def human_status_name
     I18n.t("labels.status.#{status}")
   end
