@@ -3,6 +3,6 @@ class EmailUserDecorator < Draper::Decorator
   delegate_all
 
   def screen_name
-    nickname || email
+    nickname.present? ? nickname : email
   end
 end
