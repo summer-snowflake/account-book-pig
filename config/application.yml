@@ -29,6 +29,8 @@ defaults: &defaults
     name:
       maximum_length: 100
   place:
+    max_count: 20
+    max_count_of_admin: 99
     name:
       maximum_length: 100
   record:
@@ -41,9 +43,6 @@ defaults: &defaults
     name:
       maximum_length: 20
   user:
-    places:
-      maximum_length: 20
-      admin_maximum_length: 99
     records:
       maximum_length: 200
       admin_maximum_length: 9999
@@ -91,10 +90,12 @@ test:
       maximum_length: 3
     name:
       maximum_length: 100
+  place:
+    max_count: 3
+    max_count_of_admin: 5
+    name:
+      maximum_length: 100
   user:
-    places:
-      admin_maximum_length: 5
-      maximum_length: 3
     records:
       admin_maximum_length: 5
       maximum_length: 3
