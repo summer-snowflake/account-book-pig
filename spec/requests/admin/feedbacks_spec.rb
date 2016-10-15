@@ -39,19 +39,25 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               id: user_feedback.id,
               checked: user_feedback.checked,
               email: user_feedback.email,
-              user_id: user_feedback.user_id,
-              user_name: user.try(:screen_name),
               content: simple_format(user_feedback.content),
-              created_at: I18n.l(user_feedback.created_at)
+              created_at: I18n.l(user_feedback.created_at),
+              user: {
+                id: user.try(:id),
+                screen_name: user.try(:screen_name),
+                email: user.try(:email)
+              }
             },
             {
               id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
-              user_name: feedback.user.try(:screen_name),
               content: simple_format(feedback.content),
-              created_at: I18n.l(feedback.created_at)
+              created_at: I18n.l(feedback.created_at),
+              user: {
+                id: nil,
+                screen_name: nil,
+                email: nil
+              }
             }
           ],
           total_count: 2
@@ -72,10 +78,13 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
-              user_name: feedback.user.try(:screen_name),
               content: simple_format(feedback.content),
-              created_at: I18n.l(feedback.created_at)
+              created_at: I18n.l(feedback.created_at),
+              user: {
+                id: nil,
+                screen_name: nil,
+                email: nil
+              }
             }
           ],
           total_count: 2
