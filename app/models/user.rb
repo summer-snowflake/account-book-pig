@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     registered? # TODO: 有効期限を確認する
   end
 
-  def last_login_time
-    I18n.l(last_sign_in_at) if last_sign_in_at
-  end
-
   def self.find_or_create(auth)
     klass = (auth['provider'].capitalize + 'User').constantize
     Auth.find_by_uid(auth['uid']).try(auth['provider'] + '_user') ||

@@ -71,4 +71,27 @@ RSpec.describe UserDecorator, type: :decorator do
       end
     end
   end
+
+  describe '#last_login_time' do
+    context 'last_sign_in_at is nil' do
+      let!(:user) do
+        create(:email_user, :registered, last_sign_in_at: nil).decorate
+      end
+
+      it 'last_login_time is empty' do
+        expect(user.last_login_time).to be_nil
+      end
+    end
+
+    context 'last_sign_in_at is not nil' do
+      let!(:user) do
+        create(:email_user, :registered,
+               last_sign_in_at: Time.zone.local(2016, 9, 1, 9, 0, 0)).decorate
+      end
+
+      it 'last_login_time is empty' do
+        expect(user.last_login_time).to eq '2016/09/01 09:00:00'
+      end
+    end
+  end
 end
