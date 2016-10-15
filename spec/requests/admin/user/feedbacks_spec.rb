@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
   let!(:admin_user) { create(:email_user, :admin_user, :registered) }
-  let!(:user) { create(:email_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
   let!(:feedback) { create(:feedback, user: user) }
 
   context 'ログインしていない場合' do
@@ -29,7 +29,7 @@ describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do
             checked: feedback.checked
           }
         ],
-        user_name: user._name
+        user_name: user.screen_name
       }
       expect(response.body).to be_json_as(json)
     end

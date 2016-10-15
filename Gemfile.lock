@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/audionerd/draper.git
+  revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
+  branch: rails5
+  specs:
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
+
+GIT
   remote: git://github.com/bkeepers/dotenv.git
   revision: 98e87eca929c482c323eb7a8c5da2bf116a0a2c2
   specs:
@@ -6,6 +17,16 @@ GIT
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
+
+GIT
+  remote: git://github.com/rails/activemodel-serializers-xml.git
+  revision: 570ee7ed33d60e44ca1f3ccbec3d1fbf61d52cbf
+  specs:
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -33,7 +54,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_decorator (0.7.1)
     activejob (5.0.0)
       activesupport (= 5.0.0)
       globalid (>= 0.3.6)
@@ -310,6 +330,7 @@ GEM
       json (~> 1.4)
     redis (3.3.1)
     ref (2.0.0)
+    request_store (1.3.1)
     rest-client (2.0.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -446,7 +467,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_decorator
+  activemodel-serializers-xml!
   activerecord-import
   autodoc
   bcrypt
@@ -460,6 +481,7 @@ DEPENDENCIES
   doc_raptor
   dotenv!
   dotenv-rails!
+  draper!
   exception_notification
   factory_girl_rails
   faker
