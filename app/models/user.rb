@@ -23,14 +23,6 @@ class User < ActiveRecord::Base
     registered? # TODO: 有効期限を確認する
   end
 
-  def _status
-    I18n.t("labels.status.#{status}")
-  end
-
-  def _type
-    I18n.t("labels.type.#{type.underscore}")
-  end
-
   def last_login_time
     I18n.l(last_sign_in_at) if last_sign_in_at
   end
