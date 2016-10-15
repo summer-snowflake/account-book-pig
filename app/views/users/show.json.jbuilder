@@ -13,5 +13,3 @@ if @user.try(:auth)
     json.screen_name @user.auth.try(:screen_name)
   end
 end
-
-json.max_values @user.each_maximum_values

@@ -29,18 +29,6 @@ class User < ActiveRecord::Base
       klass.create_with(auth)
   end
 
-  def each_maximum_values
-    user = admin? ? becomes(AdminUser) : self
-    user.maximum_values
-  end
-
-  def maximum_values
-    { category: Settings.category.max_count,
-      breakdown: Settings.breakdown.max_count,
-      place: Settings.place.max_count,
-      record: Settings.record.max_count }
-  end
-
   def add_access_token
     add_token(
       :access, size: Settings.access_token.length,

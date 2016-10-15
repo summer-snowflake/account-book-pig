@@ -17,7 +17,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @user = current_user
+    @user = current_user.decorate
     @categories = @user.categories.order(:position)
     @total_count = @user.records.count
     # TODO: N+1を解消する
