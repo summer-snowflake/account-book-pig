@@ -8,7 +8,7 @@ json.user do
   json.nickname @user.nickname
   json.user_name @user.screen_name
   json.currency @user.currency
-  json.admin @user.admin
+  json.admin @user.admin?
 
   if @user.try(:auth)
     json.auth do
