@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :tallies
   has_many :captures
   has_many :breakdowns, through: :categories
+  has_one :admin
 
   enum status: { inactive: 1, registered: 2 }
 
@@ -55,6 +56,10 @@ class User < ActiveRecord::Base
 
   def authorize_new_email
     update(email: new_email, new_email: '')
+  end
+
+  def admin?
+    admin.present?
   end
 
   private

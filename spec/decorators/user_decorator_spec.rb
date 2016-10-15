@@ -97,7 +97,7 @@ RSpec.describe UserDecorator, type: :decorator do
 
   describe 'max count' do
     let!(:user) { create(:email_user, :registered).decorate }
-    let!(:admin_user) { create(:email_user, :registered, admin: true).decorate }
+    let!(:admin_user) { create(:email_user, :registered, :admin_user).decorate }
 
     shared_examples_for 'max count' do
       context 'admin is true' do

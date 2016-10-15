@@ -29,7 +29,7 @@ describe 'GET /user', autodoc: true do
         nickname: user.nickname,
         user_name: user.screen_name,
         currency: user.currency,
-        admin: user.admin
+        admin: user.admin?
       }
       expect(response.body).to be_json_as(json)
     end
@@ -50,7 +50,7 @@ describe 'GET /user', autodoc: true do
         nickname: user.nickname,
         user_name: user.screen_name,
         currency: user.currency,
-        admin: user.admin
+        admin: user.admin?
       }
       expect(response.body).to be_json_as(json)
     end
@@ -71,7 +71,7 @@ describe 'GET /user', autodoc: true do
         nickname: user.nickname,
         user_name: user.screen_name,
         currency: user.currency,
-        admin: user.admin,
+        admin: user.admin?,
         auth: {
           name: user.auth.name,
           screen_name: user.auth.screen_name
@@ -96,7 +96,7 @@ describe 'GET /user', autodoc: true do
         nickname: user.nickname,
         user_name: user.screen_name,
         currency: user.currency,
-        admin: user.admin,
+        admin: user.admin?,
         auth: {
           name: user.auth.name,
           screen_name: user.auth.screen_name
