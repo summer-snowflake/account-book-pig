@@ -2,7 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe UserDecorator, type: :decorator do
-
   describe '#screen_name' do
     context 'email user nickname is empty' do
       let!(:user) { create(:email_user, :registered, nickname: '').decorate }
