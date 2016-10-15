@@ -35,10 +35,10 @@ class User < ActiveRecord::Base
   end
 
   def maximum_values
-    { category: Settings.user.categories.maximum_length,
-      breakdown: Settings.category.breakdowns.maximum_length,
-      place: Settings.user.places.maximum_length,
-      record: Settings.user.records.maximum_length }
+    { category: Settings.category.max_count,
+      breakdown: Settings.breakdown.max_count,
+      place: Settings.place.max_count,
+      record: Settings.record.max_count }
   end
 
   def add_access_token

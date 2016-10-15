@@ -39,7 +39,7 @@ describe 'GET /places', autodoc: true do
             ]
           }
         ],
-        max_place_count: Settings.user.places.maximum_length
+        max_place_count: Settings.place.max_count
       }
       expect(response.body).to be_json_as(json)
     end

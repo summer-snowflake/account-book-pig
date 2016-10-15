@@ -66,9 +66,9 @@ class Record < ActiveRecord::Base
 
   def should_be_less_than_maximum
     maximum_count = if user.admin
-                      Settings.user.records.admin_maximum_length
+                      Settings.record.max_count_of_admin
                     else
-                      Settings.user.records.maximum_length
+                      Settings.record.max_count
                     end
     if maximum_count <= user.records.count
       errors[:base] <<

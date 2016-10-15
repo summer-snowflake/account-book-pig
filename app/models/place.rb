@@ -19,9 +19,9 @@ class Place < ActiveRecord::Base
 
   def should_be_less_than_maximum
     maximum_count = if user.admin
-                      Settings.user.places.admin_maximum_length
+                      Settings.place.max_count_of_admin
                     else
-                      Settings.user.places.maximum_length
+                      Settings.place.max_count
                     end
     if maximum_count <= user.places.count
       errors[:base] <<
