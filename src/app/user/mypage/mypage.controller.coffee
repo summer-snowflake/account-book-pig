@@ -8,6 +8,8 @@ MypageController = (UserFactory, IndexService, $uibModal, RecordsFactory) ->
     vm.messages = res.messages
     vm.records = res.records
     vm.user = res.user
+    vm.max = String(res.user.max_record_count)
+    vm.bar_value = String(res.user.current_record_count)
     IndexService.loading = false
   ).catch (res) ->
     IndexService.loading = false

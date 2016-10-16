@@ -108,7 +108,8 @@
     "SET_CATEGORY": "カテゴリを設定",
     "TAGS_QUESTION": "escキーで候補を非表示にできます。候補から選択しない場合にご利用ください",
     "BREAKDOWNS": "内訳",
-    "PLACES": "お店・施設"
+    "PLACES": "お店・施設",
+    "RECORD_COUNT": "登録数"
   },
   "LINKS": {
     "DISPLAY_SETTING": ">>> 各項目の表示設定",

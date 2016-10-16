@@ -35,6 +35,14 @@
               a(href='' ng-click='mypage.destroyRecord($index)')
                 span.glyphicon.glyphicon-trash.green(uib-tooltip="{{'TOOLTIPS.DELETE' | translate}}")
 
+         div
+
+         uib-progressbar(type='success' class='progress-striped green' max='mypage.max' value='mypage.bar_value'
+                         uib-tooltip="{{ 'TOOLTIPS.RECORD_COUNT' | translate }} {{ mypage.bar_value }} / {{ mypage.max }}")
+           span#left-icon
+           span.green.glyphicon.glyphicon-piggy-bank#left-icon
+           span.green {{ mypage.bar_value }} / {{ mypage.max }}
+
   // お知らせ
   .col-md-6
     .panel.panel-default
