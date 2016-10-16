@@ -10,4 +10,4 @@ json.breakdowns do
   end
 end
 
-json.max_breakdown_count @user.each_maximum_values[:breakdown]
+json.max_breakdown_count Settings.breakdown.max_count

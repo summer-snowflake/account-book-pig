@@ -1,9 +1,10 @@
 json.categories do
   json.array! @categories do |category|
+    category = category.decorate
     json.id category.id
     json.name category.name
     json.barance_of_payments category.barance_of_payments
-    json._payments_name category._payments_name
+    json.human_payments_name category.human_payments_name
     json.breakdowns do
       json.array! category.breakdowns do |breakdown|
         json.id breakdown.id
@@ -26,5 +27,5 @@ json.user do
   json.tag_field @user.tag_field
   json.memo_field @user.memo_field
   json.currency @user.currency
-  json.max_record_count @user.each_maximum_values[:record]
+  json.max_record_count @user.max_record_count
 end

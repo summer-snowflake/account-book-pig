@@ -9,4 +9,4 @@ json.categories do
   end
 end
 
-json.max_category_count @user.each_maximum_values[:category]
+json.max_category_count @user.max_category_count

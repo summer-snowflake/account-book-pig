@@ -6,4 +6,4 @@ json.feedbacks do
   end
 end
 
-json.user_name @user._name
+json.user_name @user.screen_name

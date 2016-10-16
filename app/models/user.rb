@@ -1,14 +1,5 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
-  STATUS_LABEL_NAME = {
-    inactive: 'label-default', registered: 'label-success'
-  }.freeze
-  TYPE_LABEL_NAME = {
-    EmailUser: 'label-warning',
-    TwitterUser: 'label-info',
-    FacebookUser: 'label-primary'
-  }.freeze
-
   tokenizable
   has_many :feedbacks
   has_many :categories
@@ -19,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :tallies
   has_many :captures
   has_many :breakdowns, through: :categories
+  has_one :admin
 
   enum status: { inactive: 1, registered: 2 }
 
@@ -28,50 +20,14 @@ class User < ActiveRecord::Base
 
   before_create :set_currency
 
-  def _name
-    becomes(type.classify.constantize)._name
-  end
-
   def active?
     registered? # TODO: 有効期限を確認する
-  end
-
-  def status_label_name
-    STATUS_LABEL_NAME[status.to_sym]
-  end
-
-  def type_label_name
-    TYPE_LABEL_NAME[type.to_sym]
-  end
-
-  def _status
-    I18n.t("labels.status.#{status}")
-  end
-
-  def _type
-    I18n.t("labels.type.#{type.underscore}")
-  end
-
-  def last_login_time
-    I18n.l(last_sign_in_at) if last_sign_in_at
   end
 
   def self.find_or_create(auth)
     klass = (auth['provider'].capitalize + 'User').constantize
     Auth.find_by_uid(auth['uid']).try(auth['provider'] + '_user') ||
       klass.create_with(auth)
-  end
-
-  def each_maximum_values
-    user = admin? ? becomes(AdminUser) : self
-    user.maximum_values
-  end
-
-  def maximum_values
-    { category: Settings.user.categories.maximum_length,
-      breakdown: Settings.category.breakdowns.maximum_length,
-      place: Settings.user.places.maximum_length,
-      record: Settings.user.records.maximum_length }
   end
 
   def add_access_token
@@ -100,6 +56,10 @@ class User < ActiveRecord::Base
 
   def authorize_new_email
     update(email: new_email, new_email: '')
+  end
+
+  def admin?
+    admin.present?
   end
 
   private

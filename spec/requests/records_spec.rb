@@ -267,8 +267,8 @@ describe 'GET /records/new', autodoc: true do
 
   context 'メールアドレスのユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :registered) }
-    let!(:category) { create(:category, user: user) }
-    let!(:category2) { create(:category, user: user) }
+    let!(:category) { create(:category, user: user).decorate }
+    let!(:category2) { create(:category, user: user).decorate }
     let!(:breakdown) { create(:breakdown, category: category) }
     let!(:place) { create(:place, user: user) }
     let!(:categorize_place) do
@@ -285,7 +285,7 @@ describe 'GET /records/new', autodoc: true do
             id: category.id,
             name: category.name,
             barance_of_payments: category.barance_of_payments,
-            _payments_name: category._payments_name,
+            human_payments_name: category.human_payments_name,
             breakdowns: [
               id: breakdown.id,
               name: breakdown.name
@@ -299,7 +299,7 @@ describe 'GET /records/new', autodoc: true do
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
-            _payments_name: category2._payments_name,
+            human_payments_name: category2.human_payments_name,
             breakdowns: [],
             places: []
           }
@@ -311,7 +311,7 @@ describe 'GET /records/new', autodoc: true do
           tag_field: true,
           memo_field: true,
           currency: user.currency,
-          max_record_count: Settings.user.records.maximum_length
+          max_record_count: Settings.record.max_count
         }
       }
       expect(response.body).to be_json_as(json)
@@ -440,8 +440,8 @@ end
 
 describe 'GET /records/:id/edit', autodoc: true do
   let!(:user) { create(:email_user, :registered) }
-  let!(:category) { create(:category, user: user, position: 1) }
-  let!(:category2) { create(:category, user: user, position: 2) }
+  let!(:category) { create(:category, user: user, position: 1).decorate }
+  let!(:category2) { create(:category, user: user, position: 2).decorate }
   let!(:breakdown) { create(:breakdown, category: category) }
   let!(:place) { create(:place, user: user) }
   let!(:record) { create(:record, user: user, category: category) }
@@ -467,7 +467,7 @@ describe 'GET /records/:id/edit', autodoc: true do
             id: category.id,
             name: category.name,
             barance_of_payments: category.barance_of_payments,
-            _payments_name: category._payments_name,
+            human_payments_name: category.human_payments_name,
             breakdowns: [
               id: breakdown.id,
               name: breakdown.name
@@ -481,7 +481,7 @@ describe 'GET /records/:id/edit', autodoc: true do
             id: category2.id,
             name: category2.name,
             barance_of_payments: category2.barance_of_payments,
-            _payments_name: category2._payments_name,
+            human_payments_name: category2.human_payments_name,
             breakdowns: [],
             places: []
           }

@@ -10,7 +10,7 @@ describe 'GET /places', autodoc: true do
   end
 
   context 'メールアドレスのユーザーがログインしている場合' do
-    let!(:user) { create(:email_user, :registered) }
+    let!(:user) { create(:email_user, :registered).decorate }
     let!(:place) { create(:place, user: user) }
     let!(:place2) { create(:place, user: user) }
     let!(:category) { create(:category, user: user) }
@@ -39,7 +39,7 @@ describe 'GET /places', autodoc: true do
             ]
           }
         ],
-        max_place_count: Settings.user.places.maximum_length
+        max_place_count: Settings.place.max_count
       }
       expect(response.body).to be_json_as(json)
     end

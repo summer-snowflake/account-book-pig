@@ -2,8 +2,8 @@
 require 'rails_helper'
 
 describe 'GET /admin/users', autodoc: true do
-  let!(:user) { create(:email_user, :registered) }
-  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
+  let!(:admin_user) { create(:email_user, :admin_user, :registered).decorate }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -33,9 +33,9 @@ describe 'GET /admin/users', autodoc: true do
               id: admin_user.id,
               admin: admin_user.admin?,
               type_label_name: admin_user.type_label_name,
-              type: admin_user._type,
+              type: admin_user.human_type_name,
               status_label_name: admin_user.status_label_name,
-              status: admin_user._status,
+              status: admin_user.human_status_name,
               nickname: admin_user.nickname,
               email: admin_user.email,
               last_sign_in_at: I18n.l(Time.zone.now)
@@ -44,9 +44,9 @@ describe 'GET /admin/users', autodoc: true do
               id: user.id,
               admin: user.admin?,
               type_label_name: user.type_label_name,
-              type: user._type,
+              type: user.human_type_name,
               status_label_name: user.status_label_name,
-              status: user._status,
+              status: user.human_status_name,
               nickname: user.nickname,
               email: user.email,
               last_sign_in_at: I18n.l(user.last_sign_in_at)
@@ -70,9 +70,9 @@ describe 'GET /admin/users', autodoc: true do
               id: user.id,
               admin: user.admin?,
               type_label_name: user.type_label_name,
-              type: user._type,
+              type: user.human_type_name,
               status_label_name: user.status_label_name,
-              status: user._status,
+              status: user.human_status_name,
               nickname: user.nickname,
               email: user.email,
               last_sign_in_at: I18n.l(user.last_sign_in_at)
@@ -87,8 +87,8 @@ describe 'GET /admin/users', autodoc: true do
 end
 
 describe 'GET /users/:id', autodoc: true do
-  let!(:user) { create(:email_user, :registered) }
-  let!(:admin_user) { create(:email_user, :admin_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
+  let!(:admin_user) { create(:email_user, :admin_user, :registered).decorate }
 
   context 'ログインしていない場合' do
     it '401が返ってくること' do
@@ -116,9 +116,9 @@ describe 'GET /users/:id', autodoc: true do
         id: user.id,
         admin: user.admin?,
         type_label_name: user.type_label_name,
-        type: user._type,
+        type: user.human_type_name,
         status_label_name: user.status_label_name,
-        status: user._status,
+        status: user.human_status_name,
         nickname: user.nickname,
         email: user.email,
         last_sign_in_at: I18n.l(user.last_sign_in_at)

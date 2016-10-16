@@ -5,8 +5,7 @@ namespace :user do
       id = ENV['USER_ID']
       fail "ENV['USER_ID'] is not found." unless id
       user = User.find(id)
-      user.admin = true
-      user.save!
+      user.create_admin!
     rescue => ex
       puts ex.message
     end

@@ -4,7 +4,7 @@ require 'rails_helper'
 describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
   include ActionView::Helpers::TextHelper
 
-  let!(:user) { create(:email_user, :registered) }
+  let!(:user) { create(:email_user, :registered).decorate }
   let!(:admin_user) { create(:email_user, :admin_user, :registered) }
   let!(:feedback) { create(:feedback) }
   let!(:user_feedback) { create(:feedback, :login_user) }
@@ -32,25 +32,32 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
         get '/admin/feedbacks/', params: '', headers: login_headers(admin_user)
 
         expect(response.status).to eq 200
+        user = user_feedback.user.decorate if user_feedback.user
         json = {
           feedbacks: [
             {
               id: user_feedback.id,
               checked: user_feedback.checked,
               email: user_feedback.email,
-              user_id: user_feedback.user_id,
-              user_name: user_feedback.user.try(:_name),
               content: simple_format(user_feedback.content),
-              created_at: I18n.l(user_feedback.created_at)
+              created_at: I18n.l(user_feedback.created_at),
+              user: {
+                id: user.try(:id),
+                screen_name: user.try(:screen_name),
+                email: user.try(:email)
+              }
             },
             {
               id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
-              user_name: feedback.user.try(:_name),
               content: simple_format(feedback.content),
-              created_at: I18n.l(feedback.created_at)
+              created_at: I18n.l(feedback.created_at),
+              user: {
+                id: nil,
+                screen_name: nil,
+                email: nil
+              }
             }
           ],
           total_count: 2
@@ -71,10 +78,13 @@ describe 'GET /admin/feedbacks?offset=offset', autodoc: true do
               id: feedback.id,
               checked: feedback.checked,
               email: feedback.email,
-              user_id: feedback.user_id,
-              user_name: feedback.user.try(:_name),
               content: simple_format(feedback.content),
-              created_at: I18n.l(feedback.created_at)
+              created_at: I18n.l(feedback.created_at),
+              user: {
+                id: nil,
+                screen_name: nil,
+                email: nil
+              }
             }
           ],
           total_count: 2

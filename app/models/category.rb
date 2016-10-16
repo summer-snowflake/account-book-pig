@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
             presence: true,
             length: { maximum: Settings.category.name.maximum_length }
   validates :breakdowns,
-            length: { maximum: Settings.category.breakdowns.maximum_length,
+            length: { maximum: Settings.breakdown.max_count,
                       too_long: I18n.t('errors.messages.too_many') }
   validate :should_be_less_than_maximum, on: :create
 
@@ -40,22 +40,14 @@ class Category < ActiveRecord::Base
     places.map(&:id).include?(place_id)
   end
 
-  def _payments_name
-    if barance_of_payments
-      I18n.t('labels.barance_of_payments.income')
-    else
-      I18n.t('labels.barance_of_payments.outgo')
-    end
-  end
-
   private
 
   # validate
   def should_be_less_than_maximum
     maximum_count = if user.admin
-                      Settings.user.categories.admin_maximum_length
+                      Settings.category.max_count_of_admin
                     else
-                      Settings.user.categories.maximum_length
+                      Settings.category.max_count
                     end
     if maximum_count <= user.categories.count
       errors[:base] <<

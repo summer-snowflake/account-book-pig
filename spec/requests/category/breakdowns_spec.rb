@@ -31,7 +31,7 @@ describe 'GET /categories/:category_id/breakdowns', autodoc: true do
             name: breakdown.name
           }
         ],
-        max_breakdown_count: Settings.category.breakdowns.maximum_length
+        max_breakdown_count: Settings.breakdown.max_count
       }
       expect(response.body).to be_json_as(json)
     end
