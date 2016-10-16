@@ -32,7 +32,7 @@ defaults: &defaults
     name:
       maximum_length: 100
   record:
-    max_count: 200
+    max_count: 500
     max_count_of_admin: 9999
     memo:
       maximum_length: 10000

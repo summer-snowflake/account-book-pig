@@ -107,7 +107,8 @@
     "SET_CATEGORY": "Add a Category to the Shop",
     "TAGS_QUESTION": "You can use 'esc' key when don't select",
     "BREAKDOWNS": "Breakdowns",
-    "PLACES": "Shops & Locations"
+    "PLACES": "Shops & Locations",
+    "RECORD_COUNT": "Record Number"
   },
   "LINKS": {
     "DISPLAY_SETTING": ">>> Display Settings",

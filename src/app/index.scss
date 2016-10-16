@@ -365,3 +365,10 @@ body {
 .color-picker-wrapper .input-group { 
   width: 40%;
 }
+
+.progress {
+  background-color: rgba(#fff, 0.4);
+}
+.progress-bar-success {
+ background-color: lighten($green, 35%);
+}
