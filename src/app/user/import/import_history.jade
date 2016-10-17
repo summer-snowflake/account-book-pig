@@ -36,7 +36,8 @@
         th
         th
       tr(ng-repeat='capture in import_history.captures'
-         ng-mouseover='import_history.selectLine($index)')
+         ng-mouseover='import_history.selectLine($index)'
+         ng-class="import_history.updateAnimate")
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
         td {{ capture.published_at | date:'yyyy-MM-dd' }}
         td
@@ -65,7 +66,8 @@
         td
           span.red {{ capture.comment }}
         td
-          button.btn.btn-success.btn-sm(ng-disabled='capture.registered || capture.loading' ng-click='import_history.reloadCapture($index)')
+          button.btn.btn-success.btn-sm(ng-disabled='capture.registered || capture.loading'
+                                        ng-click='import_history.reloadCapture($index)')
             span.glyphicon.glyphicon-repeat
         td
           button.btn.btn-info.btn-sm(ng-hide='capture.registered' ng-click='import_history.showCapture($index)')
