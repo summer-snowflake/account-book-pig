@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/audionerd/draper.git
+  revision: e816e0e5876b76c648c0928f1c3f2aa2c7a3d1f2
+  branch: rails5
+  specs:
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
+
+GIT
   remote: git://github.com/bkeepers/dotenv.git
   revision: e4cbe7e0cebc5c71412b3971677fa3d8091f4fd7
   specs:
@@ -116,11 +127,6 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
-    draper (2.1.0)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     exception_notification (4.2.1)
@@ -476,7 +482,7 @@ DEPENDENCIES
   doc_raptor
   dotenv!
   dotenv-rails!
-  draper
+  draper!
   exception_notification
   factory_girl_rails
   faker
