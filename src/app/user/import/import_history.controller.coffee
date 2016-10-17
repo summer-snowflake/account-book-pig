@@ -1,8 +1,9 @@
-ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, RecordsFactory) ->
+ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, RecordsFactory, $timeout) ->
   'ngInject'
   vm = this
 
   vm.selectLineNumber = undefined
+  vm.updateAnimate = 'highright'
 
   getCaptures = () ->
     IndexService.loading = true
@@ -77,6 +78,7 @@ ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, R
     ImportFactory.getCapture(capture.id).then (res) ->
       vm.captures[index] = res
       capture.loading = false
+      vm.updateAnimate = 'highright'
 
   # 「glyphicon-trash」リンク
   vm.destroyCapture = (index) ->
