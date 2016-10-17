@@ -34,6 +34,7 @@ class Category < ActiveRecord::Base
       errors[:base] << I18n.t('errors.messages.categories.destroy_records')
       throw :abort
     end
+    true
   end
 
   def selected_place?(place_id)
@@ -53,5 +54,6 @@ class Category < ActiveRecord::Base
       errors[:base] <<
         I18n.t('errors.messages.categories.too_many', count: maximum_count)
     end
+    true
   end
 end

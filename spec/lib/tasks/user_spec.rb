@@ -27,6 +27,10 @@ describe 'user tasks' do
     end
 
     context 'when not set the user id' do
+      before do
+        ENV['USER_ID'] = (user.id + 1).to_s
+      end
+
       it 'add administrator authority to the user' do
         @rake['user:set_admin'].execute
 

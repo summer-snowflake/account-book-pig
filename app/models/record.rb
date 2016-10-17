@@ -74,5 +74,6 @@ class Record < ActiveRecord::Base
       errors[:base] <<
         I18n.t('errors.messages.records.too_many', count: maximum_count)
     end
+    true
   end
 end
