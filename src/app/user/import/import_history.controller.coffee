@@ -1,4 +1,4 @@
-ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, RecordsFactory, $timeout) ->
+ImportHistoryController = (IndexService, ImportFactory, $uibModal, $translate, RecordsFactory) ->
   'ngInject'
   vm = this
 
