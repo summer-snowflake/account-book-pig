@@ -27,7 +27,7 @@ class Record::Generator
   def save
     record = @user.records.new(@record_params)
     if record.save
-      @capture.destroy if @capture
+      @capture&.destroy
       record.create_or_update_tags(@tags_params)
       @id = record.id
     else

@@ -27,5 +27,6 @@ class Place < ActiveRecord::Base
       errors[:base] <<
         I18n.t('errors.messages.places.too_many', count: maximum_count)
     end
+    true
   end
 end
