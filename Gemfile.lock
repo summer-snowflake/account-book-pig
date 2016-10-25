@@ -321,7 +321,7 @@ GEM
     raindrops (0.17.0)
     rake (11.3.0)
     rake_shared_context (0.3.0)
-    rb-fsevent (0.9.7)
+    rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     rb-readline (0.5.3)
@@ -346,7 +346,7 @@ GEM
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
-    rspec-json_matcher (0.1.5)
+    rspec-json_matcher (0.1.6)
       awesome_print
       json
     rspec-mocks (3.5.0)
@@ -437,7 +437,7 @@ GEM
     tokens (2.1.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.2)
+    uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
