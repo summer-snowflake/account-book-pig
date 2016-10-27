@@ -125,7 +125,7 @@ GEM
     doc_raptor (0.5.0)
       httparty (>= 0.7.0)
     docile (1.1.5)
-    domain_name (0.5.20160826)
+    domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
