@@ -10,7 +10,6 @@
 ## 開発
 
 開発は[@kae_kasui](https://twitter.com/kae_kasui)が中心になって実装しています。
-Railsを触ったことがない人も開発の練習のために参加してみてはどうでしょうか。
 
 ### バックエンド
 
@@ -77,10 +76,11 @@ rbenv rehash
 ```
 git clone https://github.com/summer-snowflake/account-book-pig.git
 ```
-### PostgreSQLのインストール
+### PostgreSQLのインストールと起動
 
 ```
 brew install postgres
+postgres -D /usr/local/var/postgres
 ```
 
 ### Railsのインストール
