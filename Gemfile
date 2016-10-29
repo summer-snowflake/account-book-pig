@@ -40,9 +40,6 @@ gem 'uglifier'
 gem 'unicorn'
 gem 'validates_email_format_of'
 
-
-
-
 group :development, :test do
   gem 'bullet'
   gem 'factory_girl_rails'
