@@ -113,7 +113,7 @@ bin/rails c
 > user.save
 > exit
 
-rake user:add_admin USER_ID=1
+rake user:set_admin USER_ID=1
 ```
 
 ### サーバーの起動
