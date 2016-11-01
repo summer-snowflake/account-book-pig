@@ -19,7 +19,7 @@ class Record < ActiveRecord::Base
   validates :memo, length: { maximum: Settings.record.memo.maximum_length }
   validate :should_be_less_than_maximum, on: :create
 
-  scope :the_day, -> (target_day) { where(published_at: target_day.to_date) }
+  scope :the_day, ->(target_day) { where(published_at: target_day.to_date) }
   scope :the_month, lambda { |first_day|
     where(published_at: first_day..first_day.end_of_month)
   }
