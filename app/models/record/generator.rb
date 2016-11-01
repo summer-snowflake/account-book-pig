@@ -19,9 +19,7 @@ class Record::Generator
       category_id: @capture.category_id, breakdown_id: @capture.breakdown_id,
       place_id: @capture.place_id, charge: @capture.charge || 0
     }
-    @tags_params = @capture.tags.split(',').map do |n|
-      { id: @user.tags.find_by(name: n).try(:id), name: n }
-    end if @capture.tags
+    @tags_params = @capture.tags_using_hash
   end
 
   def save
