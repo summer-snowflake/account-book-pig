@@ -370,5 +370,18 @@ body {
   background-color: rgba(#fff, 0.4);
 }
 .progress-bar-success {
- background-color: lighten($green, 35%);
+  background-color: lighten($green, 35%);
+}
+
+.highright-add {
+  -webkit-transition: linear 1s;
+  -moz-transition: linear 1s;
+  -ms-transition: linear 1s;
+  -o-transition: linear 1s;
+  transition: linear 1s;
+  background-color: rgba(#fff, 0.6);
+}
+
+.highright-add-active{
+  background-color: transparent;
 }
