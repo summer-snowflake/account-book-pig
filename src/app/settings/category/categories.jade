@@ -77,3 +77,5 @@
               input.category-form(name='name' ng-model='categories.new_category_name' auto-focus=true type='text' required=true ng-maxlength='100')
             button.btn.btn-success(translate='BUTTONS.ADD' ng-disabled='newCategoryForm.$dirty && newCategoryForm.$invalid')
             a.btn.btn-default.pull-right(translate='BUTTONS.CANCEL' ng-click='categories.add_field = false')
+    p
+      span {{ 'LABELS.CATEGORY_COUNT' | translate }} : {{ categories.categories.length }} / {{ categories.max_category_count }}

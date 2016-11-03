@@ -47,4 +47,11 @@ class Capture < ApplicationRecord
     self.place = category.places.find_by(name: place_name) if category
     place_name.present? && place.nil?
   end
+
+  def tags_using_hash
+    return unless tags
+    tags.split(',').map do |n|
+      { id: user.tags.find_by(name: n).try(:id), name: n }
+    end
+  end
 end
