@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "dependencies": {},
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
+    "postinstall": "npm update && node_modules/.bin/bower install && node_modules/.bin/gulp build",
     "test": "node_modules/.bin/gulp test",
     "start": "NODE_ENV=production node gulp/server.js"
   },
   "devDependencies": {
     "babyparse": "^0.4.6",
+    "bootstrap": "^3.3.7",
     "bower": "^1.7.2",
     "browser-sync": "~2.17.5",
     "browser-sync-spa": "~1.0.3",
@@ -43,7 +44,7 @@
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~2.2.0",
     "gulp-uglify": "~2.0.0",
-    "gulp-useref": "~3.1.2",
+    "gulp-useref": "^3.1.2",
     "gulp-util": "~3.0.6",
     "haml": "~0.4.3",
     "hamljs": "^0.6.2",
@@ -57,13 +58,15 @@
     "karma-phantomjs-launcher": "~1.0.2",
     "lodash": "~4.16.4",
     "main-bower-files": "~2.13.1",
+    "node-sass": "^3.11.0",
     "phantomjs": "~2.1.7",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~4.0.0",
     "wrench": "~1.5.8"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "v7.0.0",
+    "npm": "3.10.8"
   },
   "cacheDirectories": [
     "bower_components",
