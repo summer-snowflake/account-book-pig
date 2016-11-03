@@ -62,7 +62,8 @@
     "wrench": "~1.5.8"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "v7.0.0",
+    "npm": "3.10.8"
   },
   "cacheDirectories": [
     "bower_components",
