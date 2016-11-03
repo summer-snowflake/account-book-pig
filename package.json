@@ -16,6 +16,7 @@
     "del": "~2.2.2",
     "eslint-plugin-angular": "~1.4.1",
     "estraverse": "~4.2.0",
+    "graceful-fs": "^4.1.10",
     "gulp": "~3.9.0",
     "gulp-angular-filesort": "~1.1.1",
     "gulp-angular-templatecache": "~2.0.0",
