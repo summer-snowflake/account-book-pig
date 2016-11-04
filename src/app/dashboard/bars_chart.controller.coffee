@@ -40,11 +40,11 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
     from = new Date(vm.year, vm.month, 1)
     to = new Date(vm.year, vm.month + 1, 0)
 
-    xScale = d3.time.scale()
+    xScale = d3.scaleTime()
       .domain([from, to])
       .range([margin.left, w])
 
-    yScale = d3.scale.linear()
+    yScale = d3.scaleLinear()
       .domain([0, Math.max.apply(null,
         vm.dataSet.map (d) ->
           unless vm.income
@@ -62,35 +62,35 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
     d3.select('svg').remove()
     svg = d3.select('.daily-graph')
       .append('svg')
-      .attr(
-        width: w + margin.left + margin.right
-        height: h + margin.top + margin.bottom
-      )
+      .attr('width', w + margin.left + margin.right)
+      .attr('height', h + margin.top + margin.bottom)
     svg.call(tip)
 
-    xAxis = d3.svg.axis().scale(xScale).orient('buttom').ticks(31).tickFormat(d3.time.format('%d'))
-    yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5)
+    xAxis = d3.axisBottom().scale(xScale).ticks(31).tickFormat(d3.timeFormat('%d'))
+    yAxis = d3.axisLeft().scale(yScale).ticks(5)
 
     svg.append('g')
-      .attr({ class: 'axis', transform: 'translate(0, ' + h + ')' }).call(xAxis)
+      .attr('class', 'axis')
+      .attr('transform', 'translate(0, ' + h + ')')
+      .call(xAxis)
       .append('text')
-      .attr({ x: w + 17, y: 17 })
+      .attr('x', w + 17).attr('y', 17)
       .text('(日)') # TODO: 英語ではday
 
-    svg.append('g').attr({ class: 'axis', transform: 'translate(' + margin.left + ', 0)'}).call(yAxis)
+    svg.append('g').attr('class', 'axis').attr('transform', 'translate(' + margin.left + ', 0)').call(yAxis)
 
     if vm.income
       svg.selectAll('.plus-bar')
         .data(vm.dataSet).enter()
         .append('rect')
-        .attr(
-          class: 'plus-bar'
-          x: (d) -> xScale(new Date(d.date)) - 13
-          y: h
-          width: 10
-          height: 0
-          fill: '#5e7535'
+        .attr('class', 'plus-bar')
+        .attr('x', (d) ->
+          xScale(new Date(d.date)) - 13
         )
+        .attr('y', h)
+        .attr('width', 10)
+        .attr('height', 0)
+        .attr('fill', '#5e7535')
         .on('mouseover', (d) ->
           d3.select(this).attr('style', 'fill:#9ebc6b')
           tip.html(d.plus).show()
@@ -101,22 +101,24 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
         )
         .transition()
         .duration(500)
-        .attr({
-          y: (d) -> yScale(d.plus)
-          height: (d) -> h - yScale(d.plus)
-        })
+        .attr('y', (d) ->
+          yScale(d.plus)
+        )
+        .attr('height', (d) ->
+          h - yScale(d.plus)
+        )
 
     if vm.outgo
       svg.selectAll('.minus-bar')
         .data(vm.dataSet).enter().append('rect')
-        .attr(
-          class: 'minus-bar'
-          x: (d) -> xScale(new Date(d.date)) - 1
-          y: h
-          width: 10
-          height: 0
-          fill: '#ac5e9f'
+        .attr('class', 'minus-bar')
+        .attr('x', (d) ->
+          xScale(new Date(d.date)) - 1
         )
+        .attr('y', h)
+        .attr('width', 10)
+        .attr('height', 0)
+        .attr('fill', '#ac5e9f')
         .on('mouseover', (d) ->
           d3.select(this).attr('style', 'fill:#d7b1d0')
           tip.html(d.minus).show()
@@ -127,10 +129,12 @@ BarsChartController = (DashboardFactory, D3Factory, IndexService, $scope) ->
         )
         .transition()
         .duration(500)
-        .attr({
-          y: (d) -> yScale(d.minus)
-          height: (d) -> h - yScale(d.minus)
-        })
+        .attr('y', (d) ->
+          yScale(d.minus)
+        )
+        .attr('height', (d) ->
+          h - yScale(d.minus)
+        )
 
   return
 
