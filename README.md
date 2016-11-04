@@ -1,6 +1,8 @@
 おこづかいちょうβ
 =======
 
+[![wercker status](https://app.wercker.com/status/abdace97f9ad0f730c2448ed2a170e66/s/master "wercker status")](https://app.wercker.com/project/byKey/abdace97f9ad0f730c2448ed2a170e66)
+
 ## 本番環境
 - http://account-book-pig.herokuapp.com/
 
