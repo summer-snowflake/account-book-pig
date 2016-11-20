@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.2'
 
 gem 'rails', '5.0.0.1'
 
@@ -24,7 +24,6 @@ gem 'pg'
 gem 'pusher'
 gem 'rails-i18n'
 gem 'rake_shared_context'
-gem 'rb-readline'
 gem 'rdefs'
 gem 'rest-client'
 gem 'sass-rails'
@@ -42,6 +41,7 @@ gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'bullet'
+  gem 'rack-cors'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'gimei'
@@ -49,7 +49,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-rescue'
-  gem 'rack-cors'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
 end
@@ -74,12 +73,11 @@ group :test do
   gem 'capybara-email'
   gem 'database_rewinder'
   gem 'rspec-json_matcher', require: false
-  gem 'rspec-power_assert'
+  # gem 'rspec-power_assert'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'simplecov'
   gem 'timecop'
   gem 'vcr'
-  gem 'webmock'
 end
 
 group :production do
