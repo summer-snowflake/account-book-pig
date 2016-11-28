@@ -10,7 +10,7 @@
   "devDependencies": {
     "babyparse": "^0.4.6",
     "bower": "^1.7.2",
-    "browser-sync": "~2.18.0",
+    "browser-sync": "~2.18.2",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
     "del": "~2.2.2",
