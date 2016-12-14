@@ -1,6 +1,7 @@
 {
   "name": "newAccountBook",
   "version": "0.0.1",
+  "homepage": "https://account-book-pig.herokuapp.com",
   "dependencies": {},
   "scripts": {
     "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
@@ -68,5 +69,8 @@
   "cacheDirectories": [
     "bower_components",
     "node_modules"
+  ],
+  "keywords": [
+    "staging": "https://account-book-pig-test.herokuapp.com"
   ]
 }
