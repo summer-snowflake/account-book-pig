@@ -71,6 +71,7 @@
     "node_modules"
   ],
   "keywords": [
-    "staging": "https://account-book-pig-test.herokuapp.com"
+    "https://account-book-pig-test.herokuapp.com",
+    "https://account-book-pig.herokuapp.com"
   ]
 }
