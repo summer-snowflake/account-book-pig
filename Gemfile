@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.3'
 
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.0.1'
 
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'activerecord-import'
