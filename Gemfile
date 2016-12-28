@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+ruby '2.4.0'
 
 gem 'rails', '5.0.1'
 
@@ -17,6 +17,7 @@ gem 'exception_notification'
 gem 'foreman'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'json', github: 'flori/json', branch: 'v1.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
