@@ -13,6 +13,6 @@ test:
 
 production:
   <<: *default
-  database: account-book-pig_production
+  database: account_book_pig_production
   user: <%= ENV['POSTGRESQL_USERNAME'] %>
-  host: db
+  host: <%= ENV['POSTGRESQL_HOST'] %>
