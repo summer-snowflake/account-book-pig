@@ -112,13 +112,6 @@ GEM
       capybara (~> 2.4)
       mail
     coderay (1.1.1)
-    coffee-rails (4.2.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.11.1)
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
     counter_culture (1.1.0)
@@ -466,7 +459,6 @@ DEPENDENCIES
   binding_of_caller
   bullet
   capybara-email
-  coffee-rails
   counter_culture
   database_rewinder
   doc_raptor
@@ -474,6 +466,7 @@ DEPENDENCIES
   dotenv-rails!
   draper!
   exception_notification
+  execjs
   factory_girl_rails
   faker
   foreman
