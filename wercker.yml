@@ -9,6 +9,13 @@ build:
 test:
   steps:
     - bundle-install
+    - script:
+      name: Build npm
+      code: |
+        sudo apt-get update
+        sudo apt-get -y install nodejs npm
+        npm install -g n
+        n latest
     - rails-database-yml
     - script:
       name: Set up DB
