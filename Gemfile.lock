@@ -466,7 +466,6 @@ DEPENDENCIES
   dotenv-rails!
   draper!
   exception_notification
-  execjs
   factory_girl_rails
   faker
   foreman
