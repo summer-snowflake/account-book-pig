@@ -64,8 +64,12 @@ describe 'GET /dashboard', autodoc: true do
       end
 
       context '月のパラメータがあった場合' do
+        let!(:one_month_ago) { 1.month.ago }
         let!(:params) do
-          { month: 1.month.ago.month }
+          {
+            year: one_month_ago.year,
+            month: one_month_ago.month
+          }
         end
 
         it '200と今月の集計結果を返すこと' do
@@ -73,8 +77,8 @@ describe 'GET /dashboard', autodoc: true do
           expect(response.status).to eq 200
 
           tally = Tally.find_by(user_id: user.id,
-                                year: Time.zone.today.year,
-                                month: 1.month.ago.month)
+                                year: one_month_ago.year,
+                                month: one_month_ago.month)
           json = {
             updated_at: I18n.l(tally.updated_at),
             data: [
