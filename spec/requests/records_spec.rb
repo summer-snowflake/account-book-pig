@@ -160,65 +160,108 @@ describe 'GET /records', autodoc: true do
     end
 
     context '年のパラメータがある場合' do
-      let!(:params) { { year: 2016 } }
+      let!(:params) { { year: Time.zone.today.year } }
 
       it '200とその年の収支一覧を返すこと' do
         get '/records', params: params, headers: login_headers(user)
         expect(response.status).to eq 200
 
-        json = {
-          records: [
+        json =
+          if Time.zone.today.month.to_i == 1
             {
-              id: record2.id,
-              published_at: record2.published_at.strftime('%Y-%m-%d'),
-              payments: record2.category.barance_of_payments,
-              charge: record2.charge,
-              category_id: record2.category.id,
-              category_name: record2.category.name,
-              breakdown_id: record2.breakdown.id,
-              breakdown_name: record2.breakdown.try(:name),
-              place_id: record2.place.id,
-              place_name: record2.place.try(:name),
-              memo: record2.memo,
-              tags: []
-            },
-            {
-              id: record1.id,
-              published_at: record1.published_at.strftime('%Y-%m-%d'),
-              payments: record1.category.barance_of_payments,
-              charge: record1.charge,
-              category_id: record1.category.id,
-              category_name: record1.category.name,
-              breakdown_id: record1.breakdown.id,
-              breakdown_name: record1.breakdown.try(:name),
-              place_id: record1.place.id,
-              place_name: record1.place.try(:name),
-              memo: record1.memo,
-              tags: []
-            },
-            {
-              id: record3.id,
-              published_at: record3.published_at.strftime('%Y-%m-%d'),
-              payments: record3.category.barance_of_payments,
-              charge: record3.charge,
-              category_id: record3.category.id,
-              category_name: record3.category.name,
-              breakdown_id: record3.breakdown.id,
-              breakdown_name: record3.breakdown.try(:name),
-              place_id: record3.place.id,
-              place_name: record3.place.try(:name),
-              memo: record3.memo,
-              tags: []
+              records: [
+                {
+                  id: record2.id,
+                  published_at: record2.published_at.strftime('%Y-%m-%d'),
+                  payments: record2.category.barance_of_payments,
+                  charge: record2.charge,
+                  category_id: record2.category.id,
+                  category_name: record2.category.name,
+                  breakdown_id: record2.breakdown.id,
+                  breakdown_name: record2.breakdown.try(:name),
+                  place_id: record2.place.id,
+                  place_name: record2.place.try(:name),
+                  memo: record2.memo,
+                  tags: []
+                },
+                {
+                  id: record1.id,
+                  published_at: record1.published_at.strftime('%Y-%m-%d'),
+                  payments: record1.category.barance_of_payments,
+                  charge: record1.charge,
+                  category_id: record1.category.id,
+                  category_name: record1.category.name,
+                  breakdown_id: record1.breakdown.id,
+                  breakdown_name: record1.breakdown.try(:name),
+                  place_id: record1.place.id,
+                  place_name: record1.place.try(:name),
+                  memo: record1.memo,
+                  tags: []
+                }
+              ],
+              total_count: 2,
+              user: {
+                currency: user.currency
+              },
+              category_name: nil,
+              breakdown_name: nil,
+              place_name: nil
             }
-          ],
-          total_count: 3,
-          user: {
-            currency: user.currency
-          },
-          category_name: nil,
-          breakdown_name: nil,
-          place_name: nil
-        }
+          else
+            {
+              records: [
+                {
+                  id: record2.id,
+                  published_at: record2.published_at.strftime('%Y-%m-%d'),
+                  payments: record2.category.barance_of_payments,
+                  charge: record2.charge,
+                  category_id: record2.category.id,
+                  category_name: record2.category.name,
+                  breakdown_id: record2.breakdown.id,
+                  breakdown_name: record2.breakdown.try(:name),
+                  place_id: record2.place.id,
+                  place_name: record2.place.try(:name),
+                  memo: record2.memo,
+                  tags: []
+                },
+                {
+                  id: record1.id,
+                  published_at: record1.published_at.strftime('%Y-%m-%d'),
+                  payments: record1.category.barance_of_payments,
+                  charge: record1.charge,
+                  category_id: record1.category.id,
+                  category_name: record1.category.name,
+                  breakdown_id: record1.breakdown.id,
+                  breakdown_name: record1.breakdown.try(:name),
+                  place_id: record1.place.id,
+                  place_name: record1.place.try(:name),
+                  memo: record1.memo,
+                  tags: []
+                },
+                {
+                  id: record3.id,
+                  published_at: record3.published_at.strftime('%Y-%m-%d'),
+                  payments: record3.category.barance_of_payments,
+                  charge: record3.charge,
+                  category_id: record3.category.id,
+                  category_name: record3.category.name,
+                  breakdown_id: record3.breakdown.id,
+                  breakdown_name: record3.breakdown.try(:name),
+                  place_id: record3.place.id,
+                  place_name: record3.place.try(:name),
+                  memo: record3.memo,
+                  tags: []
+                }
+              ],
+              total_count: 3,
+              user: {
+                currency: user.currency
+              },
+              category_name: nil,
+              breakdown_name: nil,
+              place_name: nil
+            }
+          end
         expect(response.body).to be_json_as(json)
       end
     end
