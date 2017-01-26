@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/bkeepers/dotenv.git
-  revision: 63854ce5d8047315459f6ff9b4c17747b39c0086
+  revision: f1f4324e35897d0d7281e3f4948a830dd597cf31
   specs:
     dotenv (2.1.2)
     dotenv-rails (2.1.2)
@@ -172,10 +172,10 @@ GEM
     haml (4.0.7)
       tilt
     hashie (3.4.6)
-    html2haml (2.0.0)
+    html2haml (2.1.0)
       erubis (~> 2.7.0)
-      haml (~> 4.0.0)
-      nokogiri (~> 1.6.0)
+      haml (~> 4.0)
+      nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -227,7 +227,7 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (3.18.0.329)
     nio4r (1.2.1)
-    nokogiri (1.6.8.1)
+    nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -383,7 +383,7 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
-    simplecov (0.12.0)
+    simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
