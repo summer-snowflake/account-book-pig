@@ -23,7 +23,7 @@ describe 'GET /admin/users', autodoc: true do
 
   context '管理ユーザーとしてログインしている場合' do
     context '1ページ以内のユーザー数の場合' do
-      let(:sign_in_at) { I18n.l(Time.zone.now) }
+      let(:sign_in_at) { Time.zone.now }
       before do
         Timecop.freeze(sign_in_at)
       end
@@ -43,7 +43,7 @@ describe 'GET /admin/users', autodoc: true do
               status: admin_user.human_status_name,
               nickname: admin_user.nickname,
               email: admin_user.email,
-              last_sign_in_at: sign_in_at
+              last_sign_in_at: I18n.l(sign_in_at)
             },
             {
               id: user.id,
