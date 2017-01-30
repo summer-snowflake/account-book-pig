@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126030354) do
+ActiveRecord::Schema.define(version: 20170126072522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.string   "name"
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["category_id"], name: "index_breakdowns_on_category_id", using: :btree
@@ -81,7 +80,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "barance_of_payments"
-    t.datetime "deleted_at"
     t.integer  "user_id"
     t.integer  "position"
     t.integer  "breakdowns_count",    default: 0, null: false
@@ -103,7 +101,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.text     "content"
     t.integer  "user_id"
     t.boolean  "checked"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
@@ -116,7 +113,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
     t.string   "type"
     t.boolean  "read",        default: false
     t.datetime "sent_at"
@@ -139,7 +135,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.string   "title"
     t.text     "content"
     t.string   "post_type"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "post_at"
@@ -158,7 +153,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.integer  "charge"
     t.integer  "breakdown_id"
     t.text     "memo"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -183,7 +177,6 @@ ActiveRecord::Schema.define(version: 20170126030354) do
     t.string   "name"
     t.string   "color_code"
     t.integer  "user_id"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_tags_on_user_id", using: :btree
