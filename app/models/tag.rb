@@ -9,6 +9,10 @@ class Tag < ActiveRecord::Base
             presence: true,
             uniqueness: { scope: :user_id },
             length: { maximum: Settings.tag.name.maximum_length }
+  validates :color_code,
+            uniqueness: { scope: :user_id },
+            format: { with: /\A\#[\w]{6}\Z/i },
+            allow_nil: true
 
   before_save :set_color_code
 
