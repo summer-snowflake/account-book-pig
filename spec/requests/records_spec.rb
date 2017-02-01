@@ -124,7 +124,7 @@ describe 'GET /records', autodoc: true do
     end
 
     context '年、月のパラメータがある場合' do
-      let!(:params) { { year: 2016, month: 1.month.ago.month } }
+      let!(:params) { { year: 1.month.ago.year, month: 1.month.ago.month } }
 
       it '200とその年の収支一覧を返すこと' do
         get '/records', params: params, headers: login_headers(user)
