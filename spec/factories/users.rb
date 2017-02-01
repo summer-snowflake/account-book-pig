@@ -28,7 +28,7 @@ FactoryGirl.define do
     end
 
     trait :admin_user do
-      admin
+      admin { build(:admin, user_id: id) }
     end
   end
 end
