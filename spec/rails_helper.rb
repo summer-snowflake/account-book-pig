@@ -30,7 +30,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include RSpec::JsonMatcher
   config.include ActiveJob::TestHelper
-  config.include(RequestSpecHelper, type: :request)
+  config.include RequestSpecHelper, type: :request
+  config.include Stream
 
   config.before :suite do
     I18n.locale = :ja
