@@ -7,6 +7,8 @@ RSpec.describe Tag, type: :model do
   it { is_expected.to have_many(:records).through(:tagged_records) }
 
   describe 'バリデーション' do
+    subject { create(:tag, name: 'dummy_name', color_code: '#ffffff') }
+
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id) }
     it do
