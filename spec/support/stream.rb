@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Stream
   def silence_stream(stream)
     old_stream = stream.dup
@@ -7,5 +8,5 @@ module Stream
   ensure
     stream.reopen(old_stream)
     old_stream.close
-  end 
+  end
 end
