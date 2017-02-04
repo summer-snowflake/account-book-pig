@@ -10,6 +10,7 @@ class Record < ActiveRecord::Base
   has_many :tags, through: :tagged_records
 
   validates :published_at, presence: true
+  validates :user_id, presence: true
   validates :charge, presence: true,
                      numericality: { only_integer: true,
                                      greater_than_or_equal_to: 0,
