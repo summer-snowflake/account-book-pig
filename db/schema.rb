@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202140912) do
+ActiveRecord::Schema.define(version: 20170204021228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,10 +140,11 @@ ActiveRecord::Schema.define(version: 20170202140912) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
+    t.index ["user_id", "name"], name: "index_places_on_user_id_and_name", unique: true, using: :btree
     t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
 

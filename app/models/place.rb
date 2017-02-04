@@ -6,10 +6,12 @@ class Place < ActiveRecord::Base
   has_many :records
   has_many :captures
 
+  validates :user_id, presence: true
   validates :name,
             presence: true,
+            uniqueness: { scope: :user_id, case_sensitive: true },
             length: { maximum: Settings.place.name.maximum_length }
-  validate :should_be_less_than_maximum, on: :create
+  before_create :should_be_less_than_maximum
 
   def categorize?(category_id)
     categories.map(&:id).include?(category_id)
@@ -26,7 +28,7 @@ class Place < ActiveRecord::Base
     if maximum_count <= user.places.count
       errors[:base] <<
         I18n.t('errors.messages.places.too_many', count: maximum_count)
+      throw :abort
     end
-    true
   end
 end
