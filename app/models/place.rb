@@ -20,15 +20,13 @@ class Place < ActiveRecord::Base
   private
 
   def should_be_less_than_maximum
-    maximum_count = if user.admin
-                      Settings.place.max_count_of_admin
-                    else
-                      Settings.place.max_count
-                    end
+    maximum_count =
+      user.admin ? Settings.place.max_count_of_admin : Settings.place.max_count
     if maximum_count <= user.places.count
       errors[:base] <<
         I18n.t('errors.messages.places.too_many', count: maximum_count)
       throw :abort
     end
+    true
   end
 end
