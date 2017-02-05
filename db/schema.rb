@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205152813) do
+ActiveRecord::Schema.define(version: 20170205160016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(version: 20170205152813) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "barance_of_payments"
-    t.integer  "user_id"
-    t.integer  "position"
-    t.integer  "breakdowns_count",    default: 0, null: false
-    t.integer  "places_count",        default: 0, null: false
-    t.integer  "records_count",       default: 0, null: false
+    t.boolean  "barance_of_payments", default: false, null: false
+    t.integer  "user_id",                             null: false
+    t.integer  "position",                            null: false
+    t.integer  "breakdowns_count",    default: 0,     null: false
+    t.integer  "places_count",        default: 0,     null: false
+    t.integer  "records_count",       default: 0,     null: false
     t.index ["user_id"], name: "index_categories_on_user_id", using: :btree
   end
 

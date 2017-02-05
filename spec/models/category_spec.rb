@@ -2,7 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  let!(:category) { create(:category, user: create(:email_user, :registered)) }
+  let(:user) { create(:email_user, :registered) }
+  let!(:category) { create(:category, user: user, barance_of_payments: true) }
 
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_many(:breakdowns) }
@@ -14,6 +15,8 @@ RSpec.describe Category, type: :model do
   describe 'validation' do
     subject { category }
     it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:user_id) }
+    it { is_expected.to validate_presence_of(:position) }
     it { is_expected.to validate_length_of(:name).is_at_most(100) }
   end
 
