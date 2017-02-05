@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204084638) do
+ActiveRecord::Schema.define(version: 20170205150528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170204084638) do
   end
 
   create_table "auths", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "provider"
+    t.integer  "user_id",     null: false
+    t.string   "provider",    null: false
     t.string   "uid"
     t.string   "screen_name"
     t.string   "name"
