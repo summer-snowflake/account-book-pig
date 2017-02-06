@@ -16,7 +16,6 @@ RSpec.describe Category, type: :model do
     subject { category }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:position) }
     it { is_expected.to validate_length_of(:name).is_at_most(100) }
   end
 

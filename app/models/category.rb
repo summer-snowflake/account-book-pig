@@ -14,7 +14,6 @@ class Category < ActiveRecord::Base
             length: { maximum: Settings.breakdown.max_count,
                       too_long: I18n.t('errors.messages.too_many') }
   validates :user_id, presence: true
-  validates :position, presence: true
   validates :barance_of_payments, inclusion: { in: [true, false] }
   validate :should_be_less_than_maximum, on: :create
 

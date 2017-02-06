@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205160016) do
+ActiveRecord::Schema.define(version: 20170205162938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,14 +109,13 @@ ActiveRecord::Schema.define(version: 20170205160016) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",                     null: false
     t.integer  "feedback_id"
-    t.text     "content"
+    t.text     "content",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
-    t.boolean  "read",        default: false
-    t.datetime "sent_at"
+    t.boolean  "read",        default: false, null: false
+    t.datetime "sent_at",                     null: false
     t.index ["feedback_id"], name: "index_messages_on_feedback_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
