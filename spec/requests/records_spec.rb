@@ -14,7 +14,7 @@ describe 'GET /records', autodoc: true do
     let!(:record1) { create(:record, user: user) }
     let!(:record2) { create(:record, user: user) }
     let!(:record3) do
-      create(:record, user: user, published_at: 1.month.ago)
+      create(:record, user: user, published_on: 1.month.ago)
     end
     let!(:tag) { create(:tag, user: user) }
 
@@ -32,7 +32,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record2.id,
-              published_at: record2.published_at.strftime('%Y-%m-%d'),
+              published_on: record2.published_on.strftime('%Y-%m-%d'),
               payments: record2.category.barance_of_payments,
               charge: record2.charge,
               category_id: record2.category.id,
@@ -48,7 +48,7 @@ describe 'GET /records', autodoc: true do
             },
             {
               id: record1.id,
-              published_at: record1.published_at.strftime('%Y-%m-%d'),
+              published_on: record1.published_on.strftime('%Y-%m-%d'),
               payments: record1.category.barance_of_payments,
               charge: record1.charge,
               category_id: record1.category.id,
@@ -84,7 +84,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record2.id,
-              published_at: record2.published_at.strftime('%Y-%m-%d'),
+              published_on: record2.published_on.strftime('%Y-%m-%d'),
               payments: record2.category.barance_of_payments,
               charge: record2.charge,
               category_id: record2.category.id,
@@ -98,7 +98,7 @@ describe 'GET /records', autodoc: true do
             },
             {
               id: record1.id,
-              published_at: record1.published_at.strftime('%Y-%m-%d'),
+              published_on: record1.published_on.strftime('%Y-%m-%d'),
               payments: record1.category.barance_of_payments,
               charge: record1.charge,
               category_id: record1.category.id,
@@ -134,7 +134,7 @@ describe 'GET /records', autodoc: true do
           records: [
             {
               id: record3.id,
-              published_at: record3.published_at.strftime('%Y-%m-%d'),
+              published_on: record3.published_on.strftime('%Y-%m-%d'),
               payments: record3.category.barance_of_payments,
               charge: record3.charge,
               category_id: record3.category.id,
@@ -172,7 +172,7 @@ describe 'GET /records', autodoc: true do
               records: [
                 {
                   id: record2.id,
-                  published_at: record2.published_at.strftime('%Y-%m-%d'),
+                  published_on: record2.published_on.strftime('%Y-%m-%d'),
                   payments: record2.category.barance_of_payments,
                   charge: record2.charge,
                   category_id: record2.category.id,
@@ -186,7 +186,7 @@ describe 'GET /records', autodoc: true do
                 },
                 {
                   id: record1.id,
-                  published_at: record1.published_at.strftime('%Y-%m-%d'),
+                  published_on: record1.published_on.strftime('%Y-%m-%d'),
                   payments: record1.category.barance_of_payments,
                   charge: record1.charge,
                   category_id: record1.category.id,
@@ -212,7 +212,7 @@ describe 'GET /records', autodoc: true do
               records: [
                 {
                   id: record2.id,
-                  published_at: record2.published_at.strftime('%Y-%m-%d'),
+                  published_on: record2.published_on.strftime('%Y-%m-%d'),
                   payments: record2.category.barance_of_payments,
                   charge: record2.charge,
                   category_id: record2.category.id,
@@ -226,7 +226,7 @@ describe 'GET /records', autodoc: true do
                 },
                 {
                   id: record1.id,
-                  published_at: record1.published_at.strftime('%Y-%m-%d'),
+                  published_on: record1.published_on.strftime('%Y-%m-%d'),
                   payments: record1.category.barance_of_payments,
                   charge: record1.charge,
                   category_id: record1.category.id,
@@ -240,7 +240,7 @@ describe 'GET /records', autodoc: true do
                 },
                 {
                   id: record3.id,
-                  published_at: record3.published_at.strftime('%Y-%m-%d'),
+                  published_on: record3.published_on.strftime('%Y-%m-%d'),
                   payments: record3.category.barance_of_payments,
                   charge: record3.charge,
                   category_id: record3.category.id,
@@ -286,7 +286,7 @@ describe 'GET /records/:id', autodoc: true do
 
       json = {
         id: record.id,
-        published_at: record.published_at.strftime('%Y-%m-%d'),
+        published_on: record.published_on.strftime('%Y-%m-%d'),
         payments: record.category.barance_of_payments,
         charge: record.charge,
         category_name: record.category.name,
@@ -372,7 +372,7 @@ describe 'POST /records', autodoc: true do
   let!(:charge) { '8000' }
   let!(:params) do
     {
-      charge: charge, published_at: Time.zone.today,
+      charge: charge, published_on: Time.zone.today,
       category_id: category.id, breakdown_id: breakdown.id, place_id: place.id,
       tags: [{ id: tag1.id, name: '既存タグ', color_code: '#ffffff' },
              { id: tag2.id, name: '既存タグ2' },
@@ -446,7 +446,7 @@ describe 'POST /records/import', autodoc: true do
           record_id: record.id
         }
         expect(response.body).to be_json_as(json)
-        expect(record.published_at).to eq capture.published_on
+        expect(record.published_on).to eq capture.published_on
         expect(record.charge).to eq capture.charge
         expect(record.category.name).to eq capture.category_name
         expect(record.breakdown.try(:name)).to eq capture.breakdown_name
@@ -468,7 +468,7 @@ describe 'POST /records/import', autodoc: true do
         expect(response.status).to eq 200
 
         record = user.records.last
-        expect(record.published_at).to eq capture.published_on
+        expect(record.published_on).to eq capture.published_on
         expect(record.charge).to eq capture.charge
         expect(record.category.name).to eq capture.category_name
         expect(record.breakdown.try(:name)).to eq capture.breakdown_name
@@ -538,7 +538,7 @@ describe 'GET /records/:id/edit', autodoc: true do
         },
         record: {
           id: record.id,
-          published_at: record.published_at.strftime('%Y-%m-%d'),
+          published_on: record.published_on.strftime('%Y-%m-%d'),
           payments: record.category.barance_of_payments,
           charge: record.charge,
           category_name: record.category.name,
@@ -559,7 +559,7 @@ describe 'PATCH /records/:id', autodoc: true do
   let!(:charge) { '900' }
   let!(:params) do
     {
-      charge: charge, published_at: Time.zone.today,
+      charge: charge, published_on: Time.zone.today,
       category: Category.last, breakdown: Breakdown.last, place: Place.last
     }
   end

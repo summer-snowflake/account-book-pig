@@ -25,8 +25,8 @@ class Tally < ActiveRecord::Base
     to = from.end_of_month
 
     records = user.records.joins(:category)
-                  .where('published_at >= ? and published_at <= ?', from, to)
-                  .pluck("date_trunc('day', published_at) as published",
+                  .where('published_on >= ? and published_on <= ?', from, to)
+                  .pluck("date_trunc('day', published_on) as published",
                          :charge, :barance_of_payments)
     records.group_by { |i| i[0].to_s.slice(0, 10) }
   end

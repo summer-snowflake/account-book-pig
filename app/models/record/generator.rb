@@ -15,7 +15,7 @@ class Record::Generator
   def build
     @capture = @user.captures.find(@capture_id)
     @record_params = {
-      published_at: @capture.published_on, memo: @capture.memo,
+      published_on: @capture.published_on, memo: @capture.memo,
       category_id: @capture.category_id, breakdown_id: @capture.breakdown_id,
       place_id: @capture.place_id, charge: @capture.charge || 0
     }

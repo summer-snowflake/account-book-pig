@@ -21,7 +21,7 @@ describe 'GET /mypage', autodoc: true do
     let!(:record1) { create(:record, user: user) }
     let!(:record2) { create(:record, user: user) }
     let!(:record3) do
-      create(:record, user: user, published_at: 1.month.ago)
+      create(:record, user: user, published_on: 1.month.ago)
     end
 
     it '200とお知らせ情報、メッセージ情報を返すこと' do
@@ -60,7 +60,7 @@ describe 'GET /mypage', autodoc: true do
         records: [
           {
             id: record3.id,
-            published_at: record3.published_at.strftime('%Y-%m-%d'),
+            published_on: record3.published_on.strftime('%Y-%m-%d'),
             payments: record3.category.barance_of_payments,
             charge: record3.charge,
             category_name: record3.category.name,
@@ -70,7 +70,7 @@ describe 'GET /mypage', autodoc: true do
           },
           {
             id: record2.id,
-            published_at: record2.published_at.strftime('%Y-%m-%d'),
+            published_on: record2.published_on.strftime('%Y-%m-%d'),
             payments: record2.category.barance_of_payments,
             charge: record2.charge,
             category_name: record2.category.name,
@@ -80,7 +80,7 @@ describe 'GET /mypage', autodoc: true do
           },
           {
             id: record1.id,
-            published_at: record1.published_at.strftime('%Y-%m-%d'),
+            published_on: record1.published_on.strftime('%Y-%m-%d'),
             payments: record1.category.barance_of_payments,
             charge: record1.charge,
             category_name: record1.category.name,

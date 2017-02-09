@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20170209123923) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.date     "published_at", null: false
+    t.date     "published_on", null: false
     t.integer  "charge",       null: false
     t.integer  "breakdown_id"
     t.text     "memo"
