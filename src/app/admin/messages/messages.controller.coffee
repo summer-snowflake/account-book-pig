@@ -37,12 +37,12 @@ MessagesController = (AdminFactory, $uibModal, $translate, toastr) ->
       return
     return
 
-  vm.send_mail = (message_id) ->
+  vm.send_mail = (message) ->
     modalInstance = $uibModal.open(
       templateUrl: 'app/components/modals/send_mail.html'
       controller: 'ConfirmSendMailController'
       controllerAs: 'modal'
-      resolve: { message_id: message_id }
+      resolve: { message: message }
     )
     modalInstance.result.then () ->
     return
@@ -87,17 +87,20 @@ AdminShowMessageController = ($uibModalInstance, AdminFactory, message, IndexSer
 
   return
 
-ConfirmSendMailController = (message_id, AdminFactory, $uibModalInstance, IndexService) ->
+ConfirmSendMailController = (message, AdminFactory, $uibModalInstance, IndexService, $translate) ->
   'ngInject'
   vm = this
+  vm.message = message
+  vm.errors = [$translate.instant('MESSAGES.NOT_FOUND_REGISTERED_EMAIL')] unless vm.message.user_email
 
   vm.submit = () ->
     IndexService.sending = true
-    AdminFactory.postMessageSendMail(message_id).then((res) ->
+    AdminFactory.postMessageSendMail(message.id).then((res) ->
       $uibModalInstance.close()
       IndexService.sending = false
     ).catch (res) ->
       IndexService.sending = false
+      alert res.error_messages
 
   vm.cancel = () ->
     $uibModalInstance.dismiss()
