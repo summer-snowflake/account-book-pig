@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       capture:
-        published_at: 日付
+        published_on: 日付
         category_name: カテゴリ名
         breakdown_name: 内訳
         place_name: お店・施設名

@@ -34,10 +34,10 @@ describe 'GET /dashboard', autodoc: true do
 
     context 'データが先月分と今月分あり、今月分表示する場合' do
       let!(:last_month_record1) do
-        create(:record, published_at: 1.month.ago, user: user)
+        create(:record, published_on: 1.month.ago, user: user)
       end
       let!(:last_month_record2) do
-        create(:record, published_at: 1.month.ago, user: user)
+        create(:record, published_on: 1.month.ago, user: user)
       end
       let!(:today_record1) { create(:record, user: user) }
       let!(:today_record2) { create(:record, user: user) }

@@ -5,10 +5,15 @@ class Tag < ActiveRecord::Base
   has_many :tagged_records
   has_many :records, through: :tagged_records
 
+  validates :user_id, presence: true
   validates :name,
             presence: true,
             uniqueness: { scope: :user_id },
             length: { maximum: Settings.tag.name.maximum_length }
+  validates :color_code,
+            uniqueness: { scope: :user_id },
+            format: { with: /\A\#[\w]{6}\Z/i },
+            allow_nil: true
 
   before_save :set_color_code
 

@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   validates :nickname,
             length: { maximum: Settings.user.nickname.maximum_length }
   # TODO: ユーザーのランクによって制限数を変更する
+  # TODO: 作成上限数をvalidatesを設定できるようにする
+  # validates :places, length: { maximum: MAX_PLACES_LENGTH, message: MESSAGES }
 
   before_create :set_currency
 

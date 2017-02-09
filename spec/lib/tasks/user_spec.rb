@@ -13,7 +13,9 @@ describe 'user:set_admin' do
       end
 
       it 'add administrator authority to the user' do
-        subject.invoke
+        silence_stream(STDOUT) do
+          subject.invoke
+        end
 
         user.reload
         expect(user.admin?).to be_truthy

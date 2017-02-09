@@ -28,3 +28,10 @@ ClassAndModuleChildren:
 Metrics/AbcSize:
   Enabled: true
   Max: 20
+
+# モジュールの行数、テストファイルの場合は除外
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/rails_helper.rb"
+    - "spec/factories/*.rb"
