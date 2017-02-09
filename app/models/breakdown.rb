@@ -7,4 +7,5 @@ class Breakdown < ActiveRecord::Base
 
   validates :name, presence: true,
                    length: { maximum: Settings.breakdown.name.maximum_length }
+  validates :category_id, presence: true
 end

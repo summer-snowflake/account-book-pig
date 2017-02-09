@@ -2,7 +2,7 @@
 FactoryGirl.define do
   factory :capture do
     user
-    published_at Time.zone.today
+    published_on Time.zone.today
     charge { rand(0..10_000) }
     sequence(:category_name) { |i| "カテゴリ#{i}" }
     sequence(:breakdown_name) { |i| "内訳#{i}" }

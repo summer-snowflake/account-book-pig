@@ -10,7 +10,7 @@ class Capture::Updator
   def import
     @lines.each do |line|
       next if line.first.empty?
-      capture = @user.captures.new(published_at: line[0], memo: line[5],
+      capture = @user.captures.new(published_on: line[0], memo: line[5],
                                    category_name: line[1], place_name: line[3],
                                    breakdown_name: line[2], charge: line[4],
                                    tags: line[6..-1].try(:join, ','))

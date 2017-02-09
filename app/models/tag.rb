@@ -5,6 +5,7 @@ class Tag < ActiveRecord::Base
   has_many :tagged_records
   has_many :records, through: :tagged_records
 
+  validates :user_id, presence: true
   validates :name,
             presence: true,
             uniqueness: { scope: :user_id },

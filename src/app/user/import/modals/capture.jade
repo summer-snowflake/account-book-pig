@@ -24,14 +24,14 @@ form.form-horizontal(novalidate=true name='form' ng-submit='modal.submit()')
         span {{ modal.capture.created_at }}
     // 日付
     .form-group
-      label.control-label.col-sm-3(for='published_at')
+      label.control-label.col-sm-3(for='published_on')
         span(translate='COLUMNS.PUBLISHED_AT')
         span.red *
       .modal-label.col-sm-9(ng-show='!modal.editing')
-        span {{ modal.capture.published_at }}
+        span {{ modal.capture.published_on }}
       .col-sm-9(ng-show='modal.editing')
-        input.btn.btn-default(type='date' name='published_at' ng-model='modal.published_at' datepicker-popup=true required='true')
-        span.errors(ng-messages='form.published_at.$error' ng-show='form.published_at.$error')
+        input.btn.btn-default(type='date' name='published_on' ng-model='modal.published_on' datepicker-popup=true required='true')
+        span.errors(ng-messages='form.published_on.$error' ng-show='form.published_on.$error')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.REQUIRED.PUBLISHED_AT')

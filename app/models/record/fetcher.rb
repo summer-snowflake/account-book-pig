@@ -16,7 +16,7 @@ class Record::Fetcher
   end
 
   def all
-    records = @user.records.order(published_at: :desc, created_at: :desc)
+    records = @user.records.order(published_on: :desc, created_at: :desc)
     records = find_by_date(records)
     records = find_by_refine(records)
     set_refine_word
@@ -31,7 +31,7 @@ class Record::Fetcher
   end
 
   def all_as_csv
-    records = @user.records.order(:published_at)
+    records = @user.records.order(:published_on)
     records = find_by_date(records)
     find_by_refine(records)
   end

@@ -44,7 +44,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[5].id,
             created_at: I18n.l(captures[5].created_at),
-            published_at: '2016-08-01',
+            published_on: '2016-08-01',
             category_name: '水道光熱費',
             category_payments: category.barance_of_payments,
             category_id: category.id,
@@ -60,7 +60,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[4].id,
             created_at: I18n.l(captures[4].created_at),
-            published_at: nil,
+            published_on: nil,
             category_name: 'カテゴリ' * 30,
             category_payments: nil,
             category_id: nil,
@@ -76,7 +76,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[3].id,
             created_at: I18n.l(captures[3].created_at),
-            published_at: '2016-08-06',
+            published_on: '2016-08-06',
             category_name: '',
             category_payments: nil,
             category_id: nil,
@@ -92,7 +92,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[2].id,
             created_at: I18n.l(captures[2].created_at),
-            published_at: '2016-08-03',
+            published_on: '2016-08-03',
             category_name: '飲食費',
             category_payments: nil,
             category_id: nil,
@@ -108,7 +108,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[1].id,
             created_at: I18n.l(captures[1].created_at),
-            published_at: '2016-08-03',
+            published_on: '2016-08-03',
             category_name: '消耗品費',
             category_payments: nil,
             category_id: nil,
@@ -124,7 +124,7 @@ describe 'GET /captures', autodoc: true do
           {
             id: captures[0].id,
             created_at: I18n.l(captures[0].created_at),
-            published_at: '2016-08-01',
+            published_on: '2016-08-01',
             category_name: '水道光熱費',
             category_payments: category.barance_of_payments,
             category_id: category.id,
@@ -167,7 +167,7 @@ describe 'GET /capture/:id', autodoc: true do
       json = {
         id: capture.id,
         created_at: capture.created_at.strftime('%Y/%m/%d %H:%M:%S'),
-        published_at: capture.published_at.strftime('%Y-%m-%d'),
+        published_on: capture.published_on.strftime('%Y-%m-%d'),
         category_name: capture.category_name,
         category_payments: capture.category.try(:barance_of_payments),
         category_id: capture.category_id,
@@ -216,7 +216,7 @@ describe 'POST /captures/import', autodoc: true do
 
       expect(user.captures.count).to eq 4
       capture1 = user.captures.first
-      expect(capture1.published_at).to eq '2016-08-01'.to_date
+      expect(capture1.published_on).to eq '2016-08-01'.to_date
       expect(capture1.category_name).to eq '水道光熱費'
       expect(capture1.breakdown_name).to eq '電気代'
       expect(capture1.place_name).to eq '東京電力'
@@ -232,7 +232,7 @@ describe 'PATCH /captures/:id', autodoc: true do
   let!(:capture) { create(:capture, user: user) }
   let!(:params) do
     {
-      published_at: '2016-08-08',
+      published_on: '2016-08-08',
       category_name: 'カテゴリ名',
       breakdown_name: '内訳',
       place_name: '場所',
@@ -257,7 +257,7 @@ describe 'PATCH /captures/:id', autodoc: true do
       expect(response.status).to eq 200
 
       capture.reload
-      expect(capture.published_at).to eq '2016-08-08'.to_date
+      expect(capture.published_on).to eq '2016-08-08'.to_date
       expect(capture.category_name).to eq 'カテゴリ名'
       expect(capture.breakdown_name).to eq '内訳'
       expect(capture.place_name).to eq '場所'

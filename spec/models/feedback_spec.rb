@@ -4,25 +4,20 @@ require 'rails_helper'
 RSpec.describe Feedback, type: :model do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_many(:messages) }
-  it { is_expected.to validate_presence_of(:content) }
-  it { is_expected.to validate_length_of(:content).is_at_most(10_000) }
-  it { is_expected.to validate_length_of(:email).is_at_most(100) }
 
-  context '内容が空の場合' do
-    let!(:user) { create(:user, :registered) }
+  describe 'バリデーション' do
+    it { is_expected.to validate_presence_of(:content) }
+    it { is_expected.to validate_length_of(:content).is_at_most(10_000) }
+    it { is_expected.to validate_length_of(:email).is_at_most(100) }
 
-    it 'エラーが発生すること' do
-      feedback = Feedback.new(user_id: user.id, content: '')
-      feedback.valid?
-      expect(feedback.errors.full_messages).to eq ['内容を入力してください']
+    context 'when email is null' do
+      before { allow(subject).to receive(:email).and_return(nil) }
+      it { is_expected.not_to validate_presence_of(:email) }
     end
-  end
 
-  context 'emailが空の場合' do
-    it 'エラーが発生すること' do
-      feedback = Feedback.new(email: '', content: 'Content')
-      feedback.valid?
-      expect(feedback.errors.full_messages).to eq ['メールアドレスを入力してください']
+    context 'when email is blank' do
+      before { allow(subject).to receive(:email).and_return('') }
+      it { is_expected.to validate_presence_of(:email) }
     end
   end
 end

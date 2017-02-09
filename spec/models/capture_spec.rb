@@ -8,7 +8,7 @@ RSpec.describe Capture, type: :model do
   it { is_expected.to belong_to(:place) }
 
   describe 'バリデーション' do
-    it { is_expected.to validate_presence_of(:published_at) }
+    it { is_expected.to validate_presence_of(:published_on) }
     it { is_expected.to validate_presence_of(:category_name) }
     it { is_expected.to validate_length_of(:category_name).is_at_most(100) }
     it { is_expected.to validate_length_of(:breakdown_name).is_at_most(100) }

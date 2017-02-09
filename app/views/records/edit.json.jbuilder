@@ -30,7 +30,7 @@ end
 
 json.record do
   json.id @record.id
-  json.published_at @record.published_at
+  json.published_on @record.published_on
   json.payments @record.category.barance_of_payments
   json.charge @record.charge
   json.category_name @record.category.name

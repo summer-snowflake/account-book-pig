@@ -19,7 +19,7 @@ end
 json.records do
   json.array! @records do |record|
     json.id record.id
-    json.published_at record.published_at
+    json.published_on record.published_on
     json.charge record.charge
     json.payments record.category.barance_of_payments
     json.category_name record.category.name
