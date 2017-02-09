@@ -11,6 +11,8 @@ ja:
         destroy_breakdowns: 登録した内訳を削除してから削除してください
         destroy_records: 登録した収支を削除してから削除してください
         too_many: カテゴリの作成上限は%{count}件です
+      messages:
+        not_found_email: メッセージを送信するにはメールアドレスが登録されている必要があります
       places:
         too_many: お店・施設の作成上限は%{count}件です
       records:

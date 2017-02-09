@@ -26,12 +26,11 @@ class Admin::MessagesController < ApplicationController
   def send_mail
     message = Message.find(params[:message_id])
     origin = "#{request.protocol}#{request.host_with_port}"
-    email = message.user.try(:email)
-    if email.present?
-      UserMailer.confirm_message(email, origin).deliver_later
-      message.update(sent_at: Time.zone.now) ? head(:ok) : render_error(message)
+
+    if message.send_mail(origin)
+      head :ok
     else
-      render :error404, status: 404, formats: :json
+      render_error message
     end
   end
 end

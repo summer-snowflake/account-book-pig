@@ -240,7 +240,11 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
         it '404が返ってくること' do
           post "/admin/messages/#{message2.id}/send_mail",
                params: '', headers: login_headers(admin_user)
-          expect(response.status).to eq 404
+          expect(response.status).to eq 422
+          json = {
+            error_messages: ['メッセージを送信するにはメールアドレスが登録されている必要があります']
+          }
+          expect(response.body).to be_json_as(json)
         end
       end
     end
