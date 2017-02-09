@@ -9,7 +9,8 @@ class Record < ActiveRecord::Base
   has_many :tagged_records
   has_many :tags, through: :tagged_records
 
-  validates :published_at, presence: true
+  validates :published_on, presence: true
+  validates :user_id, presence: true
   validates :charge, presence: true,
                      numericality: { only_integer: true,
                                      greater_than_or_equal_to: 0,
@@ -19,12 +20,12 @@ class Record < ActiveRecord::Base
   validates :memo, length: { maximum: Settings.record.memo.maximum_length }
   validate :should_be_less_than_maximum, on: :create
 
-  scope :the_day, ->(target_day) { where(published_at: target_day.to_date) }
+  scope :the_day, ->(target_day) { where(published_on: target_day.to_date) }
   scope :the_month, lambda { |first_day|
-    where(published_at: first_day..first_day.end_of_month)
+    where(published_on: first_day..first_day.end_of_month)
   }
   scope :the_year, lambda { |first_day|
-    where(published_at: first_day..first_day.end_of_year)
+    where(published_on: first_day..first_day.end_of_year)
   }
 
   def update_with_tags(record_params, tags_params)

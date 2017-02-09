@@ -3,7 +3,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   vm = this
   vm.capture = capture.capture
   vm.user_currency = capture.user_currency
-  vm.published_at = new Date(vm.capture.published_at)
+  vm.published_on = new Date(vm.capture.published_on)
   vm.category_name = vm.capture.category_name
   vm.category = { name: vm.category_name, payments: false }
   vm.breakdown_name = vm.capture.breakdown_name
@@ -19,7 +19,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   setCapture = () ->
     ImportFactory.getCapture(capture_id).then (res) ->
       vm.capture = res
-      vm.published_at = new Date(vm.capture.published_at)
+      vm.published_on = new Date(vm.capture.published_on)
       vm.category_name = vm.capture.category_name
       vm.breakdown_name = vm.capture.breakdown_name
       vm.place_name = vm.capture.place_name
@@ -65,7 +65,7 @@ EditCaptureController = (IndexService, ImportFactory, capture, $uibModalInstance
   vm.submit = () ->
     IndexService.sending = true
     params =
-      published_at: String(vm.published_at)
+      published_on: String(vm.published_on)
       category_name: vm.category_name
       breakdown_name: vm.breakdown_name
       place_name: vm.place_name

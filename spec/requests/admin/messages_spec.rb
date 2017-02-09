@@ -25,6 +25,12 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
   end
 
   context '管理ユーザーとしてログインしている場合' do
+    let!(:sent_at) { Time.zone.now }
+
+    before do
+      Timecop.freeze(sent_at)
+    end
+
     context '1ページ以内のメッセージ数の場合' do
       it '200が返り、メッセージ一覧が返ってくること' do
         get '/admin/messages/', params: '', headers: login_headers(admin_user)
@@ -35,7 +41,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message2.id,
               read: false,
-              sent_at: '',
+              sent_at: I18n.l(sent_at),
               user_name: message2.user.decorate.screen_name,
               feedback_content: message2.feedback.try(:content),
               content: message2.content,
@@ -44,7 +50,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message1.id,
               read: false,
-              sent_at: '',
+              sent_at: I18n.l(sent_at),
               user_name: message1.user.decorate.screen_name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
@@ -68,7 +74,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
             {
               id: message1.id,
               read: false,
-              sent_at: '',
+              sent_at: I18n.l(sent_at),
               user_name: message1.user.decorate.screen_name,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
@@ -79,6 +85,10 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
         }
         expect(response.body).to be_json_as(json)
       end
+    end
+
+    after do
+      Timecop.return
     end
   end
 end

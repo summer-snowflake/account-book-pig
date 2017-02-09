@@ -8,6 +8,7 @@ class Feedback < ActiveRecord::Base
             length: { maximum: Settings.feedback.content.maximum_length }
   validates :email,
             presence: true,
+            email_format: { allow_blank: true },
             length: { maximum: Settings.feedback.email.maximum_length },
             unless: 'email.nil?'
 
