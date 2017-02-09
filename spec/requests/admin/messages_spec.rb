@@ -72,6 +72,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               read: false,
               sent_at: '',
               user_name: message1.user.decorate.screen_name,
+              user_email: message1.user.email,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
               created_at: I18n.l(message1.created_at)
