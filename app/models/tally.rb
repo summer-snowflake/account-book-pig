@@ -3,6 +3,8 @@ class Tally < ActiveRecord::Base
   belongs_to :user
   serialize :list, JSON
 
+  validates :user_id, :year, presence: true
+
   attr_accessor :plus_count, :minus_count
 
   def update_list(year, month)
