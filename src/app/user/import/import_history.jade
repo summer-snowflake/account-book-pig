@@ -39,7 +39,7 @@
          ng-mouseover='import_history.selectLine($index)'
          ng-class="import_history.updateAnimate")
         td.line-color(ng-class="{ 'line-color-red': import_history.selectLineNumber == $index}")
-        td {{ capture.published_at | date:'yyyy-MM-dd' }}
+        td {{ capture.published_on | date:'yyyy-MM-dd' }}
         td
           payments-glyphicon-directive(payments='capture.category_payments')
         td

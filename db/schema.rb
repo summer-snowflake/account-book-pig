@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209123309) do
+ActiveRecord::Schema.define(version: 20170209123923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170209123309) do
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_admins_on_user_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_admins_on_user_id", using: :btree
   end
 
   create_table "auths", force: :cascade do |t|
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20170209123309) do
   end
 
   create_table "captures", force: :cascade do |t|
-    t.date     "published_at"
+    t.date     "published_on"
     t.integer  "charge"
     t.string   "category_name"
     t.string   "breakdown_name"
     t.string   "place_name"
     t.text     "memo"
-    t.integer  "user_id"
+    t.integer  "user_id",        null: false
     t.text     "tags"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -169,6 +169,8 @@ ActiveRecord::Schema.define(version: 20170209123309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["record_id", "tag_id"], name: "index_tagged_records_on_record_id_and_tag_id", unique: true, using: :btree
+    t.index ["record_id"], name: "index_tagged_records_on_record_id", using: :btree
+    t.index ["tag_id"], name: "index_tagged_records_on_tag_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|

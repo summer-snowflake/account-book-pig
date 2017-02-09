@@ -42,7 +42,7 @@ class CapturesController < ApplicationController
   private
 
   def capture_params
-    params.permit(:published_at, :category_name, :breakdown_name, :place_name,
+    params.permit(:published_on, :category_name, :breakdown_name, :place_name,
                   :charge, :memo, :tags)
   end
 end

@@ -446,7 +446,7 @@ describe 'POST /records/import', autodoc: true do
           record_id: record.id
         }
         expect(response.body).to be_json_as(json)
-        expect(record.published_at).to eq capture.published_at
+        expect(record.published_at).to eq capture.published_on
         expect(record.charge).to eq capture.charge
         expect(record.category.name).to eq capture.category_name
         expect(record.breakdown.try(:name)).to eq capture.breakdown_name
@@ -468,7 +468,7 @@ describe 'POST /records/import', autodoc: true do
         expect(response.status).to eq 200
 
         record = user.records.last
-        expect(record.published_at).to eq capture.published_at
+        expect(record.published_at).to eq capture.published_on
         expect(record.charge).to eq capture.charge
         expect(record.category.name).to eq capture.category_name
         expect(record.breakdown.try(:name)).to eq capture.breakdown_name
