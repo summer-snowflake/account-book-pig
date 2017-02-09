@@ -184,6 +184,7 @@
     "THERE_IS_NO_RECORD2": " からデータを登録してみてください♪",
     "UPDATE_PASSWORD": "パスワードを変更しました",
     "NOT_FOUND_EMAIL": "メールアドレスがすでに本登録されているか、登録されていないメールアドレスです",
+    "NOT_FOUND_REGISTERED_EMAIL": "メールアドレスが登録されていません",
     "NOT_FOUND_PAGE": "お探しのページは見つかりません。URLをご確認ください。",
     "NOT_FOUND_NOTICE": "お知らせはありません。",
     "NOT_FOUND_MESSAGE": "メッセージはありません。",

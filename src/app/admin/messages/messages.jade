@@ -24,7 +24,7 @@ admin-menu-directive
         td {{ message.feedback_content | truncate:true:10 }}
         td {{ message.sent_at }}
         td
-          label.label.label-warning(translate='LABELS.UNREAD' ng-show='!message.read' ng-click='admin_messages.send_mail(message.id)')
+          label.label.label-warning(translate='LABELS.UNREAD' ng-show='!message.read' ng-click='admin_messages.send_mail(message)')
         td
           a(href='' ng-click='admin_messages.showMessage($index)') {{ message.content | truncate:true:20 }}
         td {{ message.created_at }}

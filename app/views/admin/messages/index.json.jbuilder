@@ -5,6 +5,7 @@ json.messages do
     json.read message.read
     json.sent_at message.sent_at ? I18n.l(message.sent_at) : ''
     json.user_name user.try(:screen_name)
+    json.user_email user.try(:email)
     json.feedback_content message.feedback.try(:content)
     json.content message.content
     json.created_at I18n.l(message.created_at)

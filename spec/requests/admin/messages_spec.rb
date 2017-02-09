@@ -43,6 +43,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               read: false,
               sent_at: I18n.l(sent_at),
               user_name: message2.user.decorate.screen_name,
+              user_email: message2.user.email,
               feedback_content: message2.feedback.try(:content),
               content: message2.content,
               created_at: I18n.l(message2.created_at)
@@ -52,6 +53,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               read: false,
               sent_at: I18n.l(sent_at),
               user_name: message1.user.decorate.screen_name,
+              user_email: message1.user.email,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
               created_at: I18n.l(message1.created_at)
@@ -76,6 +78,7 @@ describe 'GET /admin/messages?offset=offset', autodoc: true do
               read: false,
               sent_at: I18n.l(sent_at),
               user_name: message1.user.decorate.screen_name,
+              user_email: message1.user.email,
               feedback_content: message1.feedback.try(:content),
               content: message1.content,
               created_at: I18n.l(message1.created_at)
@@ -250,7 +253,11 @@ describe 'POST /admin/messages/:message_id/send_mail', autodoc: true do
         it '404が返ってくること' do
           post "/admin/messages/#{message2.id}/send_mail",
                params: '', headers: login_headers(admin_user)
-          expect(response.status).to eq 404
+          expect(response.status).to eq 422
+          json = {
+            error_messages: ['メッセージを送信するにはメールアドレスが登録されている必要があります']
+          }
+          expect(response.body).to be_json_as(json)
         end
       end
     end
