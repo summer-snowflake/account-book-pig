@@ -7,5 +7,6 @@ FactoryGirl.define do
     end
     sequence(:content) { |n| "メッセージ内容#{n}" }
     read false
+    sent_at { Time.zone.now }
   end
 end

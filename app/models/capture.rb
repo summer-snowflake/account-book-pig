@@ -5,7 +5,7 @@ class Capture < ApplicationRecord
   belongs_to :breakdown, optional: true
   belongs_to :place, optional: true
 
-  validates :published_at, presence: true
+  validates :published_on, presence: true
   validates :category_name,
             presence: true,
             length: { maximum: Settings.category.name.maximum_length }

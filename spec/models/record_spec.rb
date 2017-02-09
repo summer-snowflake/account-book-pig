@@ -11,9 +11,12 @@ RSpec.describe Record, type: :model do
 
   describe 'validation' do
     subject { create(:record, user: create(:email_user, :registered)) }
-    it { is_expected.to validate_presence_of(:published_at) }
-    it { is_expected.to validate_presence_of(:charge) }
+
+    it { is_expected.to validate_presence_of(:published_on) }
+    it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:category) }
+    it { is_expected.to validate_presence_of(:charge) }
+    it { is_expected.to validate_numericality_of(:charge).only_integer }
     it { is_expected.to validate_length_of(:memo).is_at_most(10_000) }
   end
 end
