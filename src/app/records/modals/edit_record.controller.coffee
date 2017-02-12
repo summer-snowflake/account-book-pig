@@ -4,7 +4,7 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $uibModalInstan
   vm.editing = false
 
   setData = () ->
-    vm.published_at = new Date(vm.record.published_at)
+    vm.published_on = new Date(vm.record.published_on)
     vm.categories.forEach (c, i) ->
       if c.name == vm.record.category_name
         vm.category_id = c.id
@@ -45,12 +45,12 @@ EditRecordController = (IndexService, RecordsFactory, record_id, $uibModalInstan
     $uibModalInstance.dismiss()
 
   vm.setToday = () ->
-    vm.published_at = new Date()
+    vm.published_on = new Date()
 
   vm.submit = () ->
     IndexService.sending = true
     params =
-      published_at: String(vm.published_at)
+      published_on: String(vm.published_on)
       category_id: vm.category_id
       breakdown_id: vm.breakdown_id
       place_id: vm.place_id

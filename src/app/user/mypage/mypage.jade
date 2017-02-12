@@ -18,7 +18,7 @@
           span(translate='MESSAGES.THERE_IS_NO_RECORD2')
         table.table.table-condensed(ng-show='mypage.records.length >= 1')
           tr(ng-repeat='record in mypage.records | limitTo:5')
-            td {{ record.published_at }}
+            td {{ record.published_on }}
             td
               label.label.label-warning {{ record.category_name }}
             td
