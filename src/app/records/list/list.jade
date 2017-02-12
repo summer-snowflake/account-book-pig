@@ -54,7 +54,7 @@ form.form.form-inline
     loading-directive
     table.table(ng-show='list.records')
       tr(ng-repeat='record in list.records')
-        td {{ record.published_at }}
+        td {{ record.published_on }}
         td
           label.label.label-warning(ng-click='list.clickCategory(record.category_id)') {{ record.category_name }}
         td

@@ -2,8 +2,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
   'ngInject'
   vm = this
 
-  vm.published_at = new Date()
-  vm.records_published_at = new Date()
+  vm.published_on = new Date()
+  vm.records_published_on = new Date()
   vm.settings = false
 
   IndexService.loading = true
@@ -31,14 +31,14 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
       month: Number($filter('date')(target_date, 'MM'))
       day: Number($filter('date')(target_date, 'dd'))
     RecordsFactory.getRecords(params).then((res) ->
-      vm.records_published_at = target_date
+      vm.records_published_on = target_date
       vm.day_records = res.records
       IndexService.records_loading = false
     ).catch (res) ->
       IndexService.records_loading = false
     return
  
-  getRecordsWithDate(vm.published_at)
+  getRecordsWithDate(vm.published_on)
 
   # 「登録」ボタン
   vm.submit = () ->
@@ -47,7 +47,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
     if category
       vm.category_id = category.id
     params =
-      published_at: String(vm.published_at)
+      published_on: String(vm.published_on)
       category_id: vm.category_id
       breakdown_id: vm.breakdown_id
       place_id: vm.place_id
@@ -64,19 +64,19 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
       vm.tags = ''
       IndexService.sending = false
       $scope.newRecordForm.$setPristine()
-      getRecordsWithDate(vm.published_at)
+      getRecordsWithDate(vm.published_on)
     ).catch (res) ->
       IndexService.sending = false
 
   # 「<」ボタン
   vm.getYesterdayRecords = () ->
-    vm.records_published_at.setDate(vm.records_published_at.getDate() - 1)
-    getRecordsWithDate(vm.records_published_at)
+    vm.records_published_on.setDate(vm.records_published_on.getDate() - 1)
+    getRecordsWithDate(vm.records_published_on)
 
   # 「>」ボタン
   vm.getTomorrowRecords = () ->
-    vm.records_published_at.setDate(vm.records_published_at.getDate() + 1)
-    getRecordsWithDate(vm.records_published_at)
+    vm.records_published_on.setDate(vm.records_published_on.getDate() + 1)
+    getRecordsWithDate(vm.records_published_on)
 
   # 「カテゴリ」選択
   vm.selectCategory = () ->
@@ -101,7 +101,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
 
   # 日付変更
   vm.changeDate = () ->
-    getRecordsWithDate(vm.published_at)
+    getRecordsWithDate(vm.published_on)
 
   # コピーアイコン
   vm.copyRecord = (record) ->
@@ -126,8 +126,8 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
 
   # 「今日」ボタン
   vm.setToday = () ->
-    vm.published_at = new Date()
-    getRecordsWithDate(vm.published_at)
+    vm.published_on = new Date()
+    getRecordsWithDate(vm.published_on)
 
   SettingsFactory.getTags().then (res) ->
     vm.list_tags = res.tags
@@ -195,7 +195,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
       backdrop: 'static'
     )
     modalInstance.result.then () ->
-      getRecordsWithDate(vm.published_at)
+      getRecordsWithDate(vm.published_on)
 
   # 削除アイコン モーダル
   vm.destroyRecord = (index) ->
@@ -207,7 +207,7 @@ NewRecordController = (IndexService, toastr, RecordsFactory, $scope, $uibModal, 
       resolve: { record_id: record.id }
     )
     modalInstance.result.then () ->
-      getRecordsWithDate(vm.published_at)
+      getRecordsWithDate(vm.published_on)
 
   # ラベル名 モーダル
   vm.setColor = ($tag) ->
