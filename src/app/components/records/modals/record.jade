@@ -17,14 +17,14 @@ form.form-horizontal(novalidate=true name='editRecordForm' ng-submit='edit_recor
     loading-directive(target='modal')
     // 日付
     .form-group
-      label.control-label.col-sm-2(for='published_at')
+      label.control-label.col-sm-2(for='published_on')
         span(translate='COLUMNS.PUBLISHED_AT')
         span.red *
       .modal-label.col-sm-10(ng-show='!edit_record.editing')
-        span {{ edit_record.record.published_at }}
+        span {{ edit_record.record.published_on }}
       .col-sm-10(ng-show='edit_record.editing')
-        input.btn.btn-default(type='date' name='published_at' ng-model='edit_record.published_at' datepicker-popup=true required='true')
-        span.errors(ng-messages='editRecordForm.published_at.$error' ng-show='editRecordForm.$submitted && editRecordForm.published_at.$error')
+        input.btn.btn-default(type='date' name='published_on' ng-model='edit_record.published_on' datepicker-popup=true required='true')
+        span.errors(ng-messages='editRecordForm.published_on.$error' ng-show='editRecordForm.$submitted && editRecordForm.published_on.$error')
           div(ng-message='required')
             span.glyphicon.glyphicon-alert#left-icon
             span(translate='ERRORS.REQUIRED.PUBLISHED_AT')

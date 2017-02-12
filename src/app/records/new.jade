@@ -30,12 +30,12 @@
       form.form-horizontal(novalidate=true name='newRecordForm' ng-submit='new_record.submit()')
         // 日付
         .form-group
-          label.control-label.col-sm-2(for='published_at')
+          label.control-label.col-sm-2(for='published_on')
             span(translate='COLUMNS.PUBLISHED_AT')
             span.red *
           .col-sm-10
-            input.btn.btn-default(type='date' name='published_at' ng-model='new_record.published_at' datepicker-popup=true required='true' ng-change='new_record.changeDate()')
-            span.errors(ng-messages='newRecordForm.published_at.$error' ng-show='newRecordForm.$submitted && newRecordForm.published_at.$error')
+            input.btn.btn-default(type='date' name='published_on' ng-model='new_record.published_on' datepicker-popup=true required='true' ng-change='new_record.changeDate()')
+            span.errors(ng-messages='newRecordForm.published_on.$error' ng-show='newRecordForm.$submitted && newRecordForm.published_on.$error')
               div(ng-message='required')
                 span.glyphicon.glyphicon-alert#left-icon
                 span(translate='ERRORS.REQUIRED.PUBLISHED_AT')
@@ -156,7 +156,7 @@
           .btn.btn-info.btn-xs.pull-right(ng-click='new_record.getTomorrowRecords()')
             .glyphicon.glyphicon-chevron-right
           .text-center
-            | {{ new_record.records_published_at | date:'yyyy年MM月dd日' }}
+            | {{ new_record.records_published_on | date:'yyyy年MM月dd日' }}
             span(translate='LABELS.ADD_20')
           loading-directive(target='records')
           table.table.table-condensed
