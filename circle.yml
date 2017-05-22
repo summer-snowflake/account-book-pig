@@ -1,0 +1,19 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.4.0
+  node:
+    version: 7.8.0
+
+general:
+  artifacts:
+    - "~/account-book-pig/tmp/capybara/"
+    - "~/account-book-pig/brakeman"
+    - "~/account-book-pig/coverage"
+
+test:
+  pre:
+    - bundle exec rubocop app/ spec/ lib/
+  post:
+    - bundle exec rake brakeman:run
