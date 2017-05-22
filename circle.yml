@@ -15,5 +15,3 @@ general:
 test:
   pre:
     - bundle exec rubocop app/ spec/ lib/
-  post:
-    - bundle exec rake brakeman:run
