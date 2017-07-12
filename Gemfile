@@ -49,6 +49,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-collection_matchers'
+  gem 'rspec_junit_formatter'
   gem 'rspec-rails'
 end
 
