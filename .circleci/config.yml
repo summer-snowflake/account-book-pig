@@ -28,6 +28,9 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
+      # Run rubocop
+      - run: bundle exec rubocop app/ spec/ lib/
+
       # Run rspec in parallel
       - type: shell
         command: |
