@@ -4,7 +4,7 @@
   "homepage": "https://account-book-pig.herokuapp.com",
   "dependencies": {},
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
+    "postinstall": "node_modules/.bin/bower install",
     "test": "node_modules/.bin/gulp test",
     "start": "NODE_ENV=production node gulp/server.js"
   },
@@ -57,6 +57,7 @@
     "karma-phantomjs-launcher": "~1.0.2",
     "lodash": "~4.17.4",
     "main-bower-files": "~2.13.1",
+    "node-sass": "^4.5.3",
     "phantomjs": "~2.1.7",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~4.0.0",
