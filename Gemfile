@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.4.1'
 
 gem 'rails', '5.0.1'
 
@@ -49,6 +49,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-collection_matchers'
+  gem 'rspec_junit_formatter'
   gem 'rspec-rails'
 end
 
