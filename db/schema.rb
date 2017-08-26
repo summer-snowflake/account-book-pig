@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209123923) do
+ActiveRecord::Schema.define(version: 20170826190845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20170209123923) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_admins_on_user_id", using: :btree
+  end
+
+  create_table "all_done_tasks", force: :cascade do |t|
+    t.date     "confirmed_on"
+    t.string   "card_code"
+    t.string   "card_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "auths", force: :cascade do |t|
@@ -196,7 +204,7 @@ ActiveRecord::Schema.define(version: 20170209123923) do
 
   create_table "tokens", force: :cascade do |t|
     t.string   "name",             null: false
-    t.string   "tokenizable_type", null: false
+    t.string   "tokenizable_type"
     t.integer  "tokenizable_id",   null: false
     t.string   "token",            null: false
     t.text     "data"
