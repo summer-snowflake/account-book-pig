@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.category do
   json.name @category.name
   json.barance_of_payments @category.barance_of_payments

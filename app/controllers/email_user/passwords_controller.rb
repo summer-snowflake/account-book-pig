@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class EmailUser::PasswordsController < ApplicationController
-  before_action :set_user, only: %i(edit update)
+  before_action :set_user, only: %i[edit update]
 
   def send_mail
     origin = "#{request.protocol}#{request.host_with_port}"

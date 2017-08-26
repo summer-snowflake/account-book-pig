@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'GET /admin/users/:user_id/feedbacks', autodoc: true do

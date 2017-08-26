@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.feedbacks do
   json.array! @feedbacks do |feedback|
     json.id feedback.id

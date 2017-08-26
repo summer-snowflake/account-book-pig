@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class NoticesController < ApplicationController
-  before_action :authenticate, only: %i(index)
+  before_action :authenticate, only: %i[index]
 
   def index
     @notices = Notice::Fetcher.all(params: params).published

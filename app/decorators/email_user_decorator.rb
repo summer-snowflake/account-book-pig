@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EmailUserDecorator < UserDecorator
   delegate_all
 

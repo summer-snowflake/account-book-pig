@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id @capture.id
 json.created_at I18n.l(@capture.created_at)
 json.published_on @capture.published_on

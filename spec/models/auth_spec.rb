@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Auth, type: :model do
@@ -14,7 +15,7 @@ RSpec.describe Auth, type: :model do
 
     it do
       is_expected.to validate_inclusion_of(:provider)
-        .in_array(%w(twitter facebook))
+        .in_array(%w[twitter facebook])
     end
   end
 end

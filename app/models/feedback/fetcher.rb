@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Feedback::Fetcher
   def initialize(params: nil)
     @params = params

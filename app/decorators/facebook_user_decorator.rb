@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FacebookUserDecorator < UserDecorator
   delegate_all
 
