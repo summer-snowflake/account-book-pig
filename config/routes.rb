@@ -60,4 +60,12 @@ Rails.application.routes.draw do
   end
   resource :feedback, only: %i[create]
   resource :mypage, only: %i[show], on: :collection
+
+  namespace :api do
+    namespace :admin do
+      namespace :tasks do
+        resources :all_done_tasks, only: %i[create]
+      end
+    end
+  end
 end
