@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class User < ActiveRecord::Base
   tokenizable
   has_many :feedbacks

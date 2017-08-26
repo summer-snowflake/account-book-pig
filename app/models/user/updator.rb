@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class User::Updator
   include ActiveModel::Model
   # TODO: ニックネームとメールアドレスを分離する

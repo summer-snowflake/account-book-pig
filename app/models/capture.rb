@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Capture < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true

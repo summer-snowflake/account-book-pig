@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class EmailUser::RegistrationsController < ApplicationController
   def create
     @user = EmailUser.new(sign_up_params)

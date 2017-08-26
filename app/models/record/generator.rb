@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Record::Generator
   include ActiveModel::Model
 

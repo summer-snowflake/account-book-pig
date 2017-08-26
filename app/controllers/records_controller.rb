@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RecordsController < ApplicationController
   before_action :authenticate
 
@@ -81,6 +82,6 @@ class RecordsController < ApplicationController
   end
 
   def tags_params
-    params.permit(tags: [:id, :name, :color_code])[:tags]
+    params.permit(tags: %i[id name color_code])[:tags]
   end
 end

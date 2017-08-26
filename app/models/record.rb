@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Record < ActiveRecord::Base
   counter_culture :category
 
@@ -44,7 +45,7 @@ class Record < ActiveRecord::Base
 
   def create_and_update_tags(tags_params)
     tag_ids = tags_params.map { |n| n['id'].nil? ? nil : n['id'] }.compact
-    registered_tags = tags_params.select { |n| !n['id'].nil? }
+    registered_tags = tags_params.reject { |n| n['id'].nil? }
     user.tags.update(tag_ids, registered_tags) if registered_tags.present?
 
     unregistered_tags = tags_params.select { |n| n['id'].nil? }

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AdminMailer < ApplicationMailer
   # フィードバックのお知らせ
   def notice_feedback(feedback)

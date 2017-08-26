@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CategorizePlace < ActiveRecord::Base
   counter_culture :category, column_name: 'places_count'
   belongs_to :category

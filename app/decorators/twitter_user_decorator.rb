@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class TwitterUserDecorator < UserDecorator
   delegate_all
 

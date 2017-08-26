@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id @user.id
 json.breakdown_field @user.breakdown_field
 json.place_field @user.place_field

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authenticate, except: %i(authorize_email)
+  before_action :authenticate, except: %i[authorize_email]
 
   def show
     @user = current_user.decorate

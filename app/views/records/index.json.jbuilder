@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.records do
   json.array! @records do |record|
     json.id record.id

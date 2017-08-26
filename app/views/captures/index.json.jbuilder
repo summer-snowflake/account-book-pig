@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.captures do
   json.array! @captures do |capture|
     json.id capture.id

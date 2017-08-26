@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id @user.id
 json.admin @user.admin?
 json.type_label_name @user.type_label_name

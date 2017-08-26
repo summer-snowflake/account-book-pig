@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 class PlacesController < ApplicationController
   before_action :authenticate
-  before_action :set_place, only: [:update, :destroy]
+  before_action :set_place, only: %i[update destroy]
 
   def index
     @user = current_user.decorate

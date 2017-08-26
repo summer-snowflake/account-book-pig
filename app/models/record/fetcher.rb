@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Record::Fetcher
   include ActiveModel::Model
   attr_accessor :total_count, :category_name, :breakdown_name, :place_name
