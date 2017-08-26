@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20170826190845) do
   end
 
   create_table "all_done_tasks", force: :cascade do |t|
-    t.date     "confirmed_on"
-    t.string   "card_code"
-    t.string   "card_name"
+    t.date     "confirmed_on", null: false
+    t.string   "card_code",    null: false
+    t.string   "card_name",    null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
