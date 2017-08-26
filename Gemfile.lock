@@ -96,9 +96,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
-    bullet (5.5.1)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     capybara (2.14.4)
       addressable
@@ -433,7 +430,6 @@ GEM
     unicorn (5.2.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    uniform_notifier (1.10.0)
     validates_email_format_of (1.6.3)
       i18n
     vcr (3.0.3)
@@ -458,7 +454,6 @@ DEPENDENCIES
   bcrypt
   better_errors
   binding_of_caller
-  bullet
   capybara-email
   counter_culture
   database_rewinder
