@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :auth do
     user_id { create(:user, :registered, type: 'TwitterUser').id }
