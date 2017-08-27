@@ -22,9 +22,9 @@ class AllDoneTask::Fetcher
                             card_code: card['id'], card_name: card['name'])
       end
     end
-    return true
+    true
   rescue => ex
     errors[:base] << ex.message
-    return false
+    false
   end
 end
