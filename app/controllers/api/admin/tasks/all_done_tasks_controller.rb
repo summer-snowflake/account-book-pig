@@ -16,6 +16,6 @@ class Api::Admin::Tasks::AllDoneTasksController < ApplicationController
   private
 
   def task_params
-    params.permit(:list_id)
+    params.permit(:board_id, :list_id)
   end
 end
