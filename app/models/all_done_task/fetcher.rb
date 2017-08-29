@@ -12,8 +12,8 @@ class AllDoneTask::Fetcher
     @key = ENV['TRELLO_API_KEY']
     @token = ENV['TRELLO_API_TOKEN']
     @user_code = ENV['TRELLO_USER_ID']
-    @board_name = get_board_name
-    @cards = get_cards
+    @board_name = board_name
+    @cards = cards
   end
 
   def save_all
@@ -28,7 +28,7 @@ class AllDoneTask::Fetcher
 
   private
 
-  def get_board_name
+  def board_name
     parameters = "fields=name&key=#{@key}&token=#{@token}"
     boards_uri = "/members/#{@user_code}/boards?#{parameters}"
     res = Net::HTTP.get(URI.parse(@url + boards_uri))
@@ -37,7 +37,7 @@ class AllDoneTask::Fetcher
     board['name']
   end
 
-  def get_cards
+  def cards
     parameters = "fields=name&key=#{@key}&token=#{@token}"
     cards_uri = "/lists/#{@list_code}/cards?#{parameters}"
     res = Net::HTTP.get(URI.parse(@url + cards_uri))
