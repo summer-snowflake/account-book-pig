@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class AllDoneTask < ApplicationRecord
-  validates :confirmed_on, :board_name, :list_code, :card_code, :card_name, presence: true
+  validates :confirmed_on, :board_name, :list_code, :card_code, :card_name,
+            presence: true
 
   # 確認日「今日」のDoneカードを再登録する
   def self.recreate_all!(board_name, list_code, cards)

@@ -5,8 +5,6 @@ require 'net/http'
 class AllDoneTask::Fetcher
   include ActiveModel::Model
 
-  #attr_accessor :board_name, :cards
-
   def initialize(task_params)
     @board_code = task_params['board_id']
     @list_code = task_params['list_id']
