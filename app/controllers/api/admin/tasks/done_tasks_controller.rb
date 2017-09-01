@@ -12,7 +12,6 @@ class Api::Admin::Tasks::DoneTasksController < ApplicationController
         DoneTask.create!(end_on: Time.zone.yesterday, board_name: board_name, card_name: card_name)
       end
     end
-    head 201
-  rescue => ex
+    head DoneTask.where(end_on: Time.zone.today).exists? ? 201 : 200
   end
 end
