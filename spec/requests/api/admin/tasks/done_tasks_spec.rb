@@ -42,9 +42,9 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
       end
 
       context '昨日完了したタスクがなかった場合' do
-        it '201が返ってくること' do
+        it '200が返ってくること' do
           post '/api/admin/tasks/done_tasks', headers: login_headers(user)
-          expect(response.status).to eq 201
+          expect(response.status).to eq 200
         end
       end
     end
