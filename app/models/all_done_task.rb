@@ -19,7 +19,8 @@ class AllDoneTask < ApplicationRecord
 
   # 1日の実績を取得する
   def self.achievements_of(end_on)
-    keys = [:board_name, :card_name]
-    self.where(confirmed_on: end_on).pluck(*keys) - self.where(confirmed_on: end_on - 1.day).pluck(*keys)
+    keys = %i[board_name card_name]
+    where(confirmed_on: end_on).pluck(*keys) -
+      where(confirmed_on: end_on - 1.day).pluck(*keys)
   end
 end
