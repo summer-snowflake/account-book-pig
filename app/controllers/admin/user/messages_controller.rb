@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Admin::User::MessagesController < ApplicationController
   before_action :authenticate
   before_action :admin_authenticate

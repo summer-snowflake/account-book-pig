@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   # TODO: Locationが英語の場合、英語のメールが送信されるようにする
 

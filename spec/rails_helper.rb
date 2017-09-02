@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -47,11 +48,11 @@ RSpec.configure do |config|
     File.read(File.expand_path('../autodoc/templates/document.md.erb',
                                __FILE__))
   Autodoc.configuration.suppressed_request_header =
-    %w(Accept Content-Length Host)
+    %w[Accept Content-Length Host]
   Autodoc.configuration.suppressed_response_header =
-    %w(
+    %w[
       Cache-Control Content-Length ETag
       X-Content-Type-Options X-Frame-Options X-Request-Id
       X-Runtime X-XSS-Protection
-    )
+    ]
 end

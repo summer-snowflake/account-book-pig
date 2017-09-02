@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class User::Fetcher
   def initialize(params: nil)
     @params = params

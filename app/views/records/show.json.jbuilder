@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id @record.id
 json.published_on @record.published_on
 json.payments @record.category.barance_of_payments

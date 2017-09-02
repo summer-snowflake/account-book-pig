@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'POST /feedback?user_id=user_id&email=email&content=content',

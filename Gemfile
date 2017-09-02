@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'rails', '5.0.1'
+gem 'rails', '5.1.3'
 
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'activerecord-import'
@@ -11,7 +11,7 @@ gem 'counter_culture'
 gem 'doc_raptor'
 gem 'dotenv', github:'bkeepers/dotenv'
 gem 'dotenv-rails', github: 'bkeepers/dotenv'
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'draper'
 gem 'exception_notification'
 gem 'foreman'
 gem 'jbuilder'
@@ -39,7 +39,6 @@ gem 'unicorn'
 gem 'validates_email_format_of'
 
 group :development, :test do
-  gem 'bullet'
   gem 'rack-cors'
   gem 'factory_girl_rails'
   gem 'faker'

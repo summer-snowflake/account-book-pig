@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RequestSpecHelper
   def login_headers(user)
     valid_token = user.find_token_by_name(:access)

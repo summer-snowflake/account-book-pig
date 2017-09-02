@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.notices do
   json.array! @notices do |notice|
     json.id notice.id

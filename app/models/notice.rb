@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Notice < ActiveRecord::Base
   validates :title,
             presence: true,
