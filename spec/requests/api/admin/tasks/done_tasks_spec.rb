@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
-      post '/api/admin/tasks/done_tasks'
+      get '/api/admin/tasks/done_tasks'
       expect(response.status).to eq 401
     end
   end
@@ -14,7 +14,7 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
     let!(:user) { create(:email_user, :registered) }
 
     it '401が返ってくること' do
-      post '/api/admin/tasks/done_tasks', headers: login_headers(user)
+      get '/api/admin/tasks/done_tasks', headers: login_headers(user)
       expect(response.status).to eq 401
     end
   end
@@ -36,7 +36,7 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
         end
 
         it '200が返ってくること' do
-          post '/api/admin/tasks/done_tasks', headers: login_headers(user)
+          get '/api/admin/tasks/done_tasks', headers: login_headers(user)
           expect(response.status).to eq 200
           json = {
             tasks: [
@@ -57,7 +57,7 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
 
       context '昨日完了したタスクがなかった場合' do
         it '200が返ってくること' do
-          post '/api/admin/tasks/done_tasks', headers: login_headers(user)
+          get '/api/admin/tasks/done_tasks', headers: login_headers(user)
           expect(response.status).to eq 200
         end
       end
