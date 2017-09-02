@@ -16,4 +16,12 @@ class AllDoneTask < ApplicationRecord
                           card_code: card['id'], card_name: card['name'])
     end
   end
+
+  scope :the_day, ->(target_day) { where(confirmed_on: target_day) }
+
+  # 1日の実績を取得する
+  def self.achievements_of(end_on)
+    keys = %i[board_name card_name]
+    the_day(end_on).pluck(*keys) - the_day(end_on - 1.day).pluck(*keys)
+  end
 end
