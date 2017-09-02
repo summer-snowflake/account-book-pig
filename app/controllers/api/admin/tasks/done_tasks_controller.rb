@@ -14,6 +14,6 @@ class Api::Admin::Tasks::DoneTasksController < ApplicationController
                          board_name: board_name, card_name: card_name)
       end
     end
-    head DoneTask.where(end_on: yesterday).exists? ? 201 : 200
+    @tasks = DoneTask.where(end_on: yesterday)
   end
 end

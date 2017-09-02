@@ -35,9 +35,23 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
                                  board_name: 'ボード名２', card_name: 'カード３')
         end
 
-        it '201が返ってくること' do
+        it '200が返ってくること' do
           post '/api/admin/tasks/done_tasks', headers: login_headers(user)
-          expect(response.status).to eq 201
+          expect(response.status).to eq 200
+          json = {
+            tasks: [
+              {
+                card_name: 'カード１'
+              },
+              {
+                card_name: 'カード２'
+              },
+              {
+                card_name: 'カード３'
+              }
+            ]
+          }
+          expect(response.body).to be_json_as(json)
         end
       end
 
