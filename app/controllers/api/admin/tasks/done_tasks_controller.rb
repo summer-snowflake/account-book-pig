@@ -5,6 +5,6 @@ class Api::Admin::Tasks::DoneTasksController < ApplicationController
   before_action :admin_authenticate
 
   def index
-    @tasks = DoneTask.recreate!(Time.zone.yesterday)
+    @tasks = DoneTask.recreate!(Time.zone.today)
   end
 end
