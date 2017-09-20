@@ -21,7 +21,7 @@ class AllDoneTask::Fetcher
       AllDoneTask.recreate_all!(@board_name, @list_code, @cards)
     end
     true
-  rescue => ex
+  rescue StandardError => ex
     errors[:base] << ex.message
     false
   end
