@@ -11,7 +11,7 @@ class Feedback < ActiveRecord::Base
             presence: true,
             email_format: { allow_blank: true },
             length: { maximum: Settings.feedback.email.maximum_length },
-            unless: 'email.nil?'
+            unless: ->(obj) { obj.email.nil? }
 
   def notice_to_slack
     Slack.chat_postMessage(
@@ -19,5 +19,13 @@ class Feedback < ActiveRecord::Base
       username: "#{user.try(:id)}. #{user.try(:screen_name)}#{email}",
       channel: '#feedbacks'
     )
+  end
+
+  private
+
+  # NOTE: parameterにメールアドレスがあるかどうかで判定している
+  # TODO: validationの条件を適正なものに修正する
+  def no_email?
+    email.nil?
   end
 end
