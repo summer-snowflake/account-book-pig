@@ -64,7 +64,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :admin do
       namespace :tasks do
-        resources :all_done_tasks, only: %i[create]
+        resources :all_done_tasks, only: %i[create] do
+          delete :destroy, on: :collection
+        end
         resources :done_tasks, only: %i[index]
       end
     end

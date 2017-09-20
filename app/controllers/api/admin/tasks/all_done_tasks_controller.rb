@@ -13,6 +13,11 @@ class Api::Admin::Tasks::AllDoneTasksController < ApplicationController
     end
   end
 
+  def destroy
+    AllDoneTask.where('confirmed_on < ?', 7.days.ago).destroy_all
+    head 200
+  end
+
   private
 
   def task_params
