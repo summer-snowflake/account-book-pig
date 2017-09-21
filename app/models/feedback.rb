@@ -11,7 +11,7 @@ class Feedback < ActiveRecord::Base
             presence: true,
             email_format: { allow_blank: true },
             length: { maximum: Settings.feedback.email.maximum_length },
-            unless: 'email.nil?'
+            unless: ->(obj) { obj.email.nil? }
 
   def notice_to_slack
     Slack.chat_postMessage(
