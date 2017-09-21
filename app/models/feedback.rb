@@ -20,12 +20,4 @@ class Feedback < ActiveRecord::Base
       channel: '#feedbacks'
     )
   end
-
-  private
-
-  # NOTE: parameterにメールアドレスがあるかどうかで判定している
-  # TODO: validationの条件を適正なものに修正する
-  def no_email?
-    email.nil?
-  end
 end
