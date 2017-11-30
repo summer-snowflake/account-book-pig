@@ -1,4 +1,4 @@
-class ChangeColumnsToTallies < ActiveRecord::Migration[5.0]
+class ChangeColumnsToTallies < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :tallies, :user_id, :integer, null: false
     change_column :tallies, :year, :integer, null: false

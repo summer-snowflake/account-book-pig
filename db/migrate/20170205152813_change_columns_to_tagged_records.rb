@@ -1,4 +1,4 @@
-class ChangeColumnsToTaggedRecords < ActiveRecord::Migration[5.0]
+class ChangeColumnsToTaggedRecords < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :tagged_records, :tag_id, :integer, null: false, index: true
     change_column :tagged_records, :record_id, :integer, null: false, index: true

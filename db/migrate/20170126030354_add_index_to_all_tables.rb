@@ -1,4 +1,4 @@
-class AddIndexToAllTables < ActiveRecord::Migration[5.0]
+class AddIndexToAllTables < ActiveRecord::Migration[4.2][5.0]
   def change
     add_index :tallies, :user_id
     add_index :captures, :category_name

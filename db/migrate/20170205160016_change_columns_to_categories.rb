@@ -1,4 +1,4 @@
-class ChangeColumnsToCategories < ActiveRecord::Migration[5.0]
+class ChangeColumnsToCategories < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :categories, :name, :string, null: false
     change_column :categories, :user_id, :integer, null: false

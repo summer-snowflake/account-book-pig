@@ -1,4 +1,4 @@
-class ChangeColumnsToCaptures < ActiveRecord::Migration[5.0]
+class ChangeColumnsToCaptures < ActiveRecord::Migration[4.2][5.0]
   def up
     rename_column :captures, :published_at, :published_on
     change_column :captures, :user_id, :integer, null: false

@@ -1,4 +1,4 @@
-class CreateCaptures < ActiveRecord::Migration[5.0]
+class CreateCaptures < ActiveRecord::Migration[4.2][5.0]
   def change
     create_table :captures do |t|
       t.date :published_at

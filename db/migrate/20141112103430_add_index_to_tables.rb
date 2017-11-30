@@ -1,4 +1,4 @@
-class AddIndexToTables < ActiveRecord::Migration
+class AddIndexToTables < ActiveRecord::Migration[4.2]
   def change
     add_index :breakdowns, :category_id
     add_index :breakdowns, :user_id

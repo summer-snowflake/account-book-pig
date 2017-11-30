@@ -1,4 +1,4 @@
-class RemoveDeletedAtFromAllTables < ActiveRecord::Migration[5.0]
+class RemoveDeletedAtFromAllTables < ActiveRecord::Migration[4.2][5.0]
   def change
     remove_column :messages, :deleted_at, :timestamp
     remove_column :notices, :deleted_at, :timestamp

@@ -1,4 +1,4 @@
-class ChangeColumnsToBreakdowns < ActiveRecord::Migration[5.0]
+class ChangeColumnsToBreakdowns < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :breakdowns, :name, :string, null: false
     change_column :breakdowns, :category_id, :integer, null: false

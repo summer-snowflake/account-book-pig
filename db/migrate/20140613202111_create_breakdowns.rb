@@ -1,4 +1,4 @@
-class CreateBreakdowns < ActiveRecord::Migration
+class CreateBreakdowns < ActiveRecord::Migration[4.2]
   def change
     create_table :breakdowns do |t|
       t.string :name

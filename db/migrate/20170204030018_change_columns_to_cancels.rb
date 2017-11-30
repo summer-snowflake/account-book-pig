@@ -1,4 +1,4 @@
-class ChangeColumnsToCancels < ActiveRecord::Migration[5.0]
+class ChangeColumnsToCancels < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :cancels, :user_id, :integer, null: false
     change_column :cancels, :content, :text, null: false

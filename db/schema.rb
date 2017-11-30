@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20170830090535) do
 
   create_table "tokens", id: :serial, force: :cascade do |t|
     t.string "name", null: false
-    t.string "tokenizable_type"
+    t.string "tokenizable_type", null: false
     t.integer "tokenizable_id", null: false
     t.string "token", null: false
     t.text "data"

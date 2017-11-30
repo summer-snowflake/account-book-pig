@@ -1,4 +1,4 @@
-class ChangeColumnsToTags < ActiveRecord::Migration[5.0]
+class ChangeColumnsToTags < ActiveRecord::Migration[4.2][5.0]
   def up
     change_column :tags, :name, :string, null: false
     change_column :tags, :color_code, :string, null: false
