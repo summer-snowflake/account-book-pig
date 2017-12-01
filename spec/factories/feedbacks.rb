@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :feedback do
     trait :login_user do
       association :user, factory: :email_user

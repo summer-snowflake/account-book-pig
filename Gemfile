@@ -40,7 +40,7 @@ gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'rack-cors'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'gimei'
   gem 'html2haml'
