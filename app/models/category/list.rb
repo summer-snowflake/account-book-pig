@@ -13,7 +13,7 @@ class Category::List
       item.update!(position: @sequence.map(&:to_i).index(item.id))
     end
     true
-  rescue
+  rescue StandardError
     errors[:base] << I18n.t('errors.messages.categories.failed_to_sort')
     false
   end

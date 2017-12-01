@@ -1,4 +1,4 @@
-class ChangeEmailOptionOnUsers < ActiveRecord::Migration
+class ChangeEmailOptionOnUsers < ActiveRecord::Migration[4.2]
   def change
     # remove_column :users, :email
     # add_column :users, :email, :string, null: true, after: :id

@@ -28,7 +28,7 @@ describe 'user:set_admin' do
         ENV['USER_ID'] = (user.id + 1).to_s
       end
 
-      it 'add administrator authority to the user' do
+      it 'dont add administrator authority to the user' do
         subject.invoke
 
         user.reload

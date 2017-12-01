@@ -8,7 +8,7 @@ class EmailUser < User
   validates :password,
             length: { minimum: Settings.user.password.minimum_length },
             on: :create
-  validate :uniqueness_email, if: 'email.present?'
+  validate :uniqueness_email, if: ->(obj) { obj.email.present? }
 
   def registration_url(origin)
     token = registration_token.token

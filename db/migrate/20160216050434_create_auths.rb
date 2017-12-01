@@ -1,4 +1,4 @@
-class CreateAuths < ActiveRecord::Migration
+class CreateAuths < ActiveRecord::Migration[4.2]
   def change
     create_table :auths do |t|
       t.references :user
