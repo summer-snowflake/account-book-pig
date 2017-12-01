@@ -1,4 +1,4 @@
-class CreateCategorizePlaces < ActiveRecord::Migration
+class CreateCategorizePlaces < ActiveRecord::Migration[4.2]
   def change
     create_table :categorize_places do |t|
       t.integer :category_id

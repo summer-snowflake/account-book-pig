@@ -1,4 +1,4 @@
-class AddBreakdownsCountToCategories < ActiveRecord::Migration
+class AddBreakdownsCountToCategories < ActiveRecord::Migration[4.2]
 
   def self.up
     add_column :categories, :breakdowns_count, :integer, null: false, default: 0

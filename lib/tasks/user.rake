@@ -8,7 +8,7 @@ namespace :user do
       raise "ENV['USER_ID'] is not found." unless id
       user = User.find(id)
       user.create_admin!
-    rescue => ex
+    rescue ActiveRecord::RecordNotFound => ex
       puts ex.message
     end
   end

@@ -3,8 +3,6 @@
 class Session
   include ActiveModel::Model
 
-  attr_accessor :user
-
   def initialize(params)
     @params = params
   end
@@ -30,7 +28,7 @@ class Session
   private
 
   def authenticate
-    user && user.active? && user.authenticate(@params[:password])
+    user&.active? && user.authenticate(@params[:password])
   end
 
   def find_user
