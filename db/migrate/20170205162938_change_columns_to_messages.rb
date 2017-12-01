@@ -1,4 +1,4 @@
-class ChangeColumnsToMessages < ActiveRecord::Migration[4.2][5.0]
+class ChangeColumnsToMessages < ActiveRecord::Migration[5.0]
   def up
     change_column :messages, :user_id, :integer, null: false
     change_column :messages, :content, :text, null: false

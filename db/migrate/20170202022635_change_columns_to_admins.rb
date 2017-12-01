@@ -1,4 +1,4 @@
-class ChangeColumnsToAdmins < ActiveRecord::Migration[4.2][5.0]
+class ChangeColumnsToAdmins < ActiveRecord::Migration[5.0]
   def up
     change_column :admins, :user_id, :integer, null: false
   end

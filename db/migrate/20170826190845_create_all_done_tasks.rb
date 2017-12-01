@@ -1,4 +1,4 @@
-class CreateAllDoneTasks < ActiveRecord::Migration[4.2][5.0]
+class CreateAllDoneTasks < ActiveRecord::Migration[5.0]
   def change
     create_table :all_done_tasks do |t|
       t.date :confirmed_on, null: false

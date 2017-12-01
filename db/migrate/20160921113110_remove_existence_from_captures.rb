@@ -1,4 +1,4 @@
-class RemoveExistenceFromCaptures < ActiveRecord::Migration[4.2][5.0]
+class RemoveExistenceFromCaptures < ActiveRecord::Migration[5.0]
   def change
     remove_column :captures, :category_existence
     remove_column :captures, :breakdown_existence

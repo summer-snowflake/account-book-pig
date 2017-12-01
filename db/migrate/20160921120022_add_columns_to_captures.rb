@@ -1,4 +1,4 @@
-class AddColumnsToCaptures < ActiveRecord::Migration[4.2][5.0]
+class AddColumnsToCaptures < ActiveRecord::Migration[5.0]
   def change
     add_column :captures, :category_id, :integer
     add_column :captures, :breakdown_id, :integer

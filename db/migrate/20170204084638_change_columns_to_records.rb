@@ -1,4 +1,4 @@
-class ChangeColumnsToRecords < ActiveRecord::Migration[4.2][5.0]
+class ChangeColumnsToRecords < ActiveRecord::Migration[5.0]
   def up
     change_column :records, :published_at, :date, null: false
     change_column :records, :category_id, :integer, null: false

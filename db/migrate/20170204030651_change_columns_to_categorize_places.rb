@@ -1,4 +1,4 @@
-class ChangeColumnsToCategorizePlaces < ActiveRecord::Migration[4.2][5.0]
+class ChangeColumnsToCategorizePlaces < ActiveRecord::Migration[5.0]
   def up
     change_column :categorize_places, :category_id, :integer, null: false
     change_column :categorize_places, :place_id, :integer, null: false
