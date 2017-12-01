@@ -1,4 +1,4 @@
-class CreateTallies < ActiveRecord::Migration
+class CreateTallies < ActiveRecord::Migration[4.2]
   def change
     create_table :tallies do |t|
       t.integer :user_id

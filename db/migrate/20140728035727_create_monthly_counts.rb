@@ -1,4 +1,4 @@
-class CreateMonthlyCounts < ActiveRecord::Migration
+class CreateMonthlyCounts < ActiveRecord::Migration[4.2]
   def change
     create_table :monthly_counts do |t|
       t.integer :user_id
