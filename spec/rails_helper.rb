@@ -28,7 +28,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include RSpec::JsonMatcher
   config.include ActiveJob::TestHelper
   config.include RequestSpecHelper, type: :request
@@ -38,7 +38,7 @@ RSpec.configure do |config|
     I18n.locale = :ja
     Faker::Config.locale = :en
     begin
-      FactoryGirl.lint
+      FactoryBot.lint
     ensure
       DatabaseRewinder.clean_all
     end

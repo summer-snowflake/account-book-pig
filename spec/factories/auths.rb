@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :auth do
     user_id { create(:user, :registered, type: 'TwitterUser').id }
     provider 'twitter'

@@ -111,7 +111,7 @@ rails db:seed # 現在のところは不要
 
 ```
 bin/rails c
-> user = FactoryGirl.create(:email_user, :registered)
+> user = FactoryBot.create(:email_user, :registered)
 > user.save
 > exit
 
