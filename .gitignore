@@ -17,6 +17,8 @@
 .env.test
 .env
 
+/config/secrets.yml.key
+
 # Ignore the front app's plugin directories.
 /front/node_modules/
 /front/bower_components/
@@ -25,6 +27,8 @@
 /front/.idea/
 /front/.tmp/
 /front/dist/
+
+/public/
 
 node_modules/
 bower_components/
