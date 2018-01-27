@@ -37,3 +37,6 @@ coverage/
 .idea/
 .tmp/
 dist/
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
