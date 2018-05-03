@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :all_done_task do
-    confirmed_on Time.zone.today
+    confirmed_at Time.zone.now
     list_code SecureRandom.hex(12)
     card_code SecureRandom.hex(12)
     sequence(:card_name) { |i| "カードの名前#{i}" }

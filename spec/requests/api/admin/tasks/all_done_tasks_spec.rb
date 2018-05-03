@@ -50,9 +50,9 @@ describe 'DELETE /api/admin/tasks/all_done_tasks', autodoc: true do
 
   context '管理ユーザーがログインしている場合' do
     let!(:user) { create(:email_user, :admin_user, :registered) }
-    let!(:task) { create(:all_done_task, confirmed_on: 8.days.ago) }
+    let!(:task) { create(:all_done_task, confirmed_at: 8.days.ago) }
 
-    it '401が返り、8日前のタスクが削除されていること' do
+    it '200が返り、8日前のタスクが削除されていること' do
       expect(AllDoneTask.count).to eq 1
 
       delete '/api/admin/tasks/all_done_tasks', headers: login_headers(user)
