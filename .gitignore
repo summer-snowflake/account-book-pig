@@ -17,7 +17,6 @@
 .env.test
 .env
 
-/config/secrets.yml.key
 
 # Ignore the front app's plugin directories.
 /front/node_modules/
