@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
+describe 'GET /api/admin/tasks/done_tasks', autodoc: true do
   context 'ログインしていない場合' do
     it '401が返ってくること' do
       get '/api/admin/tasks/done_tasks'
@@ -36,6 +36,7 @@ describe 'POST /api/admin/tasks/done_tasks', autodoc: true do
         end
 
         it '200が返ってくること' do
+          pending '仕組み変更まで'
           get '/api/admin/tasks/done_tasks', headers: login_headers(user)
           expect(response.status).to eq 200
           json = {
