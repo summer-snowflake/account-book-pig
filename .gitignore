@@ -26,6 +26,8 @@
 /front/.tmp/
 /front/dist/
 
+/public/
+
 node_modules/
 bower_components/
 coverage/
@@ -33,3 +35,6 @@ coverage/
 .idea/
 .tmp/
 dist/
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
