@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
   root to: 'top#index'
 
+  namespace :v2 do
+    get '/', to: 'welcome#show'
+  end
+
   resource :session, only: %i[create]
   get '/auth/:provider/callback', to: 'sessions#callback'
 

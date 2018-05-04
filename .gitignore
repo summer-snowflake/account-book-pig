@@ -38,3 +38,5 @@ dist/
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+
+/app/assets/javascripts/
