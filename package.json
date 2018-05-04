@@ -4,7 +4,7 @@
   "homepage": "https://account-book-pig.herokuapp.com",
   "dependencies": {},
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install && node_modules/.bin/gulp build",
+    "postinstall": "node_modules/.bin/bower install",
     "test": "node_modules/.bin/gulp test",
     "start": "NODE_ENV=production node gulp/server.js"
   },
