@@ -7,4 +7,6 @@ task :build_frontend do
   end
 end
 
-Rake::Task['assets:precompile'].enhance(%i[build_frontend])
+if Rails.env.production?
+  Rake::Task['assets:precompile'].enhance(%i[build_frontend])
+end
