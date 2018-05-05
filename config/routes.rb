@@ -1,78 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'top#index'
+  root to: 'welcome#show'
 
-  namespace :v2 do
-    get '/', to: 'welcome#show'
-  end
-
-  resource :session, only: %i[create]
-  get '/auth/:provider/callback', to: 'sessions#callback'
-
-  namespace :admin do
-    resources :users, only: %i[index show] do
-      resources :messages, only: %i[create], module: :user
-      resources :feedbacks, only: %i[index], module: :user
+  namespace :api, format: :json do
+    resources :heros, only: %i[index] do
+      resources :hero_abilities, only: %i[index]
+      resources :core_abilities, only: %i[index]
     end
-    resources :feedbacks, only: %i[index] do
-      patch :check
+    resources :vip_abilities, only: %i[index]
+    resources :equipages, only: %i[show], param: :part
+    resources :equipages, only: [] do
+      resources :equipage_abilities, only: %i[show], param: :grade
     end
-    resources :notices, only: %i[index create update destroy]
-    resources :messages, only: %i[index update destroy] do
-      post :send_mail
-    end
-  end
-
-  namespace :email_user do
-    resources :registrations, only: %i[create] do
-      get :regist
-      patch :recreate, on: :collection
-    end
-    # TODO: resource :registrationに変更する
-
-    resource :password, only: %i[edit update] do
-      post :send_mail
-    end
-  end
-
-  resources :categories, except: %i[show new edit] do
-    post :sort, on: :collection
-    resources :breakdowns, only: %i[index create update destroy], module: :category
-    resources :places, only: %i[index create], module: :category
-  end
-  resources :messages, only: %i[index show]
-  resources :notices, only: %i[index show]
-  resources :places, only: %i[index create update destroy] do
-    resources :categories, only: %i[index update destroy], module: :place
-  end
-  resources :records, only: %i[index show new create edit update destroy] do
-    post :import, on: :collection
-    get :export, on: :collection
-  end
-  resources :tags, only: %i[index]
-  resources :captures, only: %i[index show update destroy] do
-    post :import, on: :collection
-  end
-  resource :dashboard, only: %i[show]
-  resource :user, only: %i[show update] do
-    get :authorize_email
-    get :settings
-    patch :setting
-    patch :password
-    post :send_mail, on: :collection
-  end
-  resource :feedback, only: %i[create]
-  resource :mypage, only: %i[show], on: :collection
-
-  namespace :api do
-    namespace :admin do
-      namespace :tasks do
-        resources :all_done_tasks, only: %i[create] do
-          delete :destroy, on: :collection
-        end
-        resources :done_tasks, only: %i[index]
-      end
+    resources :cards, only: %i[index] do
+      resources :card_abilities, only: %i[show], param: :grade
     end
   end
 end
