@@ -1,0 +1,27 @@
+{
+  "name": "account-book-pig",
+  "version": "1.0.0",
+  "description": "おこづかいちょうβ =======",
+  "main": "gulpfile.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/summer-snowflake/account-book-pig.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/summer-snowflake/account-book-pig/issues"
+  },
+  "homepage": "https://github.com/summer-snowflake/account-book-pig#readme"
+}
