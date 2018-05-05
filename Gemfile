@@ -1,85 +1,49 @@
 source 'https://rubygems.org'
 
-ruby '2.4.1'
-
-gem 'rails', '5.1.3'
-
-gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-gem 'activerecord-import'
-gem 'bcrypt'
-gem 'counter_culture'
-gem 'doc_raptor'
-gem 'dotenv', github:'bkeepers/dotenv'
-gem 'dotenv-rails', github: 'bkeepers/dotenv'
-gem 'draper'
-gem 'exception_notification'
-gem 'foreman'
-gem 'jbuilder'
-gem 'jquery-rails'
-gem 'json', github: 'flori/json', branch: 'v1.8'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'pg'
-gem 'pusher'
-gem 'rails-i18n'
-gem 'rake_shared_context'
-gem 'rdefs'
-gem 'rest-client'
-gem 'sass-rails'
-gem 'settingslogic'
-gem 'sdoc'
-gem 'sidekiq'
-gem 'slack-api'
-gem 'slack-notifier'
-gem 'slim-rails'
-gem 'tokens'
-gem 'uglifier'
-gem 'unicorn'
-gem 'validates_email_format_of'
-
-group :development, :test do
-  gem 'rack-cors'
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'gimei'
-  gem 'html2haml'
-  gem 'pry-byebug'
-  gem 'pry-rails'
-  gem 'pry-rescue'
-  gem 'rspec-collection_matchers'
-  gem 'rspec_junit_formatter'
-  gem 'rspec-rails'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
 end
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'guard-rspec'
-  gem 'guard-rubocop'
-  gem 'letter_opener'
-  gem 'letter_opener_web'
-  gem 'lol_dba'
-  gem 'rubocop', require: false
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'terminal-notifier-guard' 
-  gem 'web-console', '~> 2.0'
+ruby '2.4.1'
+
+gem 'rails'
+gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.7'
+
+gem 'active_model_serializers'
+gem 'bootstrap-sass'
+gem 'dotenv'
+gem 'dotenv-rails'
+gem 'draper', '> 3.x'
+gem 'jbuilder'
+gem 'rails-i18n'
+gem 'slim-rails'
+gem 'sass-rails'
+
+group :development, :test do
+  gem 'bullet'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rubocop'
 end
 
 group :test do
-  gem 'autodoc'
-  gem 'capybara-email'
+  gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'database_rewinder'
+  gem 'rspec-rails'
   gem 'rspec-json_matcher', require: false
-  # gem 'rspec-power_assert'
-  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'timecop'
-  gem 'vcr'
+  gem 'selenium-webdriver'
 end
 
-group :production do
-  gem 'newrelic_rpm'
-  gem 'rails_12factor'
+group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

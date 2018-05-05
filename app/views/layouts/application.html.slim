@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+
+  body
+    .container
+      .row
+        #content
+          = yield
+
+= javascript_include_tag 'application'

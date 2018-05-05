@@ -37,6 +37,8 @@ class ApplicationController < ActionController::Base
     options = args.extract_options!
     if args.present?
       render args, options.merge(formats: :json)
+    elsif self.class.parent == V2
+      render
     else
       render options.merge(formats: :json)
     end

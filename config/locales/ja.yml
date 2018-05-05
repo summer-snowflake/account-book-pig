@@ -1,52 +1,10 @@
 ja:
-  errors:
-    messages:
-      sessions:
-        invalid_parameters: メールアドレスまたはパスワードが正しくありません
-      users:
-        invalid_token: すでに登録が完了しているか有効期限が切れたURLに接続しました。
-        invalid_url: が無効、または有効期限が切れたURLからの接続です。
-      categories:
-        failed_to_sort: 並び替えに失敗しました。
-        destroy_breakdowns: 登録した内訳を削除してから削除してください
-        destroy_records: 登録した収支を削除してから削除してください
-        too_many: カテゴリの作成上限は%{count}件です
-      messages:
-        not_found_email: メッセージを送信するにはメールアドレスが登録されている必要があります
-      places:
-        too_many: お店・施設の作成上限は%{count}件です
-      records:
-        too_many: 登録上限は%{count}件です
-      registrations:
-        not_found_email: メールアドレスがすでに本登録されているか、登録されていないメールアドレスです
-      too_many: の作成上限は%{count}件です
   labels:
-    administrator: 管理者
-    status:
-      inactive: 仮登録
-      registered: 登録済み
-    type:
-      email_user: メール登録
-      twitter_user: Twitter経由
-      facebook_user: Facebook経由
-    barance_of_payments:
-      income: 収入
-      outgo: 支出
-  user_mailer:
-    registration:
-      subject: 【PIG BOOK β】アカウント登録のご案内
-    finished_registration:
-      subject: 【PIG BOOK β】アカウント登録完了のお知らせ
-    password_reset:
-      subject: 【PIG BOOK β】パスワードリセットのご案内
-    confirm_account:
-      subject: 【PIG BOOK β】アカウントのご確認と登録のご案内
-    confirm_registration:
-      subject: 【PIG BOOK β】アカウント登録状況のご確認と登録のご案内
-    confirm_message:
-      subject: 【PIG BOOK β】新しいメッセージが届いています
-    set_new_email:
-      subject: 【PIG BOOK β】メールアドレス変更のご案内
-  admin_mailer:
-    notice_feedback:
-      subject: フィードバックが届きました
+    level: レベル
+    part:
+      hand: 手
+      head: 頭
+      body: 胴
+      foot: 足
+      accessory1: アクセ1
+      accessory2: アクセ2
